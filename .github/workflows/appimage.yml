@@ -28,6 +28,9 @@ jobs:
       - name: Install build and runtime dependencies
         run: |
           sudo apt-get update
+          # The Jammy runner ships LLVM's libunwind-14-dev, which conflicts
+          # with the libunwind-dev package required by GStreamer.
+          sudo apt-get remove --yes libunwind-14-dev
           sudo apt-get install --yes --no-install-recommends \
             appstream \
             build-essential \
@@ -51,6 +54,7 @@ jobs:
             libgstreamer1.0-dev \
             libgtk-4-dev \
             libjson-glib-dev \
+            libunwind-dev \
             librsvg2-dev \
             meson \
             ninja-build \
