@@ -1,0 +1,76 @@
+name: AppImage
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: appimage-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+jobs:
+  build:
+    name: Build x86_64 AppImage
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build and runtime dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            appstream \
+            build-essential \
+            curl \
+            desktop-file-utils \
+            dpkg-dev \
+            file \
+            gettext \
+            gobject-introspection \
+            gstreamer1.0-libav \
+            gstreamer1.0-plugins-bad \
+            gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good \
+            gstreamer1.0-plugins-ugly \
+            gstreamer1.0-pulseaudio \
+            libadwaita-1-dev \
+            libfuse2 \
+            libgdk-pixbuf-2.0-dev \
+            libgirepository1.0-dev \
+            libgstreamer-plugins-base1.0-dev \
+            libgstreamer1.0-dev \
+            libgtk-4-dev \
+            libjson-glib-dev \
+            librsvg2-dev \
+            meson \
+            ninja-build \
+            patchelf \
+            pkg-config \
+            valac
+
+      - name: Build AppImage
+        run: ./scripts/build-appimage.sh
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: KIYORA-AppImage-${{ github.sha }}
+          path: dist/*.AppImage
+          if-no-files-found: error
+
+      - name: Attach AppImage to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.AppImage
+          generate_release_notes: true

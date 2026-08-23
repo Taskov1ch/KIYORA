@@ -24,7 +24,7 @@ namespace G4 {
         public const uint LAST = 4;
     }
 
-    [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/store-panel.ui")]
+    [GtkTemplate (ui = "/io/github/Taskov1ch/KIYORA/gtk/store-panel.ui")]
     public class StorePanel : Gtk.Box, SizeWatcher {
         [GtkChild]
         public unowned Gtk.HeaderBar header_bar;

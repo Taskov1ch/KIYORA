@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
     <id>@app_id@</id>
-    <name>Gapless</name>
+    <name>KIYORA</name>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
     <summary>Play your music elegantly</summary>
 
-    <developer id="com.github.neithern">
-        <name translate="no">Nanling</name>
+    <developer id="io.github.taskov1ch">
+        <name translate="no">Taskov1ch</name>
     </developer>
-    <update_contact>neithern@outlook.com</update_contact>
 
-    <url type="homepage">https://gitlab.gnome.org/neithern/g4music</url>
-    <url type="bugtracker">https://gitlab.gnome.org/neithern/g4music/issues</url>
-    <url type="translate">https://l10n.gnome.org/module/g4music</url>
+    <url type="homepage">https://github.com/Taskov1ch/KIYORA</url>
+    <url type="bugtracker">https://github.com/Taskov1ch/KIYORA/issues</url>
 
     <launchable type="desktop-id">@app_id@.desktop</launchable>
     <provides>@app_id@.desktop</provides>
     <content_rating type="oars-1.1"/>
-    <translation type="gettext">g4music</translation>
+    <translation type="gettext">kiyora</translation>
 
     <description>
-      	<p>Gapless (AKA: G4Music) is a light weight music player written in GTK4, focuses on large music collection.</p>
+        <p>KIYORA is a fast, lightweight GTK4 music player built for large music libraries.</p>
         <p>Features</p>
         <ul>
         <li>Supports most music file types, Samba and any other remote protocols (depends on GIO and GStreamer).</li>
@@ -41,28 +39,9 @@
     </description>
 
     <branding>
-        <color type="primary" scheme_preference="light">#d6f6d6</color>
-        <color type="primary" scheme_preference="dark">#266626</color>
+        <color type="primary" scheme_preference="light">#e9e5ff</color>
+        <color type="primary" scheme_preference="dark">#342a70</color>
     </branding>
-
-    <screenshots>
-        <screenshot type="default">
-            <caption>Main window</caption>
-            <image>https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/window.png</image>
-        </screenshot>
-        <screenshot>
-            <caption>Albums view</caption>
-            <image>https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/albums.png</image>
-        </screenshot>
-        <screenshot>
-            <caption>Playing view</caption>
-            <image>https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/playing.png</image>
-        </screenshot>
-        <screenshot>
-            <caption>Playlist view</caption>
-            <image>https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/playlist.png</image>
-        </screenshot>
-    </screenshots>
 
     <releases>
         <release version="4.6.2" date="2026-6-27">
@@ -107,7 +86,6 @@
                 <ul>
                 <li>Click index to open playing page, restore on next startup.</li>
                 <li>Set the main window as parent.</li>
-                <li>Drop MPRIS permission of flatpak.</li>
                 <li>Upgrade to GNOME 48.</li>
                 <li>Update Danish translation.</li>
                 </ul>
@@ -116,7 +94,6 @@
         <release version="4.3.1" date="2025-2-15">
             <description translate="no">
                 <ul>
-                <li>Remove unnecessary flatpak permissions.</li>
                 <li>Add Bulgarian translation</li>
                 <li>Update translation: Danish, Persian, Hebrew.</li>
                 </ul>
@@ -173,11 +150,6 @@
                 <li>Full support of color scheme: System/Light/Dark.</li>
                 <li>Don't enable pipewire manually, override the rank if still want to use it.</li>
                 </ul>
-                <p>Flatpak changes:</p>
-                <ul>
-                <li>Request writable permission of Music folder for editing playlists.</li>
-                <li>Upgrade to GNOME 47.</li>
-                </ul>
                 <p>Optimizations:</p>
                 <ul>
                 <li>Improve performance of loading large playlist.</li>
@@ -230,7 +202,6 @@
             <description translate="no">
                 <ul>
                 <li>Fix build issue before GTK 4.10.</li>
-                <li>Remove screen shots from flatpak package.</li>
                 <li>Update translation: Russian, Slovenian, Ukrainian.</li>
                 </ul>
             </description>
@@ -238,7 +209,7 @@
         <release version="3.8" date="2024-7-20">
             <description translate="no">
                 <ul>
-                <li>Rename to 'Gapless' to follow GNOME HIG.</li>
+                <li>Updated the application name to follow GNOME HIG.</li>
                 <li>Marquee animation for long title.</li>
                 <li>Fix cursor for clickable label.</li>
                 <li>Tweak blur background.</li>
@@ -300,7 +271,6 @@
         <release version="3.4" date="2023-10-15">
             <description translate="no">
                 <ul>
-                <li>Build flatpak with GNOME 45.</li>
                 <li>Fix style of switch bar.</li>
                 <li>Fix loading M3U playlist.</li>
                 <li>Add Hungarian translation.</li>
@@ -439,7 +409,6 @@
         <release version="1.10" date="2023-5-6">
             <description translate="no">
                 <ul>
-                <li>Build flatpak with GNOME 44.</li>
                 <li>MPRIS improvement.</li>
                 <li>UI improvement and fixing.</li>
                 <li>Update Spanish translation.</li>
@@ -476,7 +445,6 @@
         <release version="1.8" date="2022-10-19">
             <description translate="no">
                 <ul>
-                <li>Build flatpak with GNOME 43.</li>
                 <li>Cache directories for faster loading.</li>
                 <li>Show peaks more smoothly.</li>
                 <li>Update Spanish and German translation, thanks to the translators.</li>
@@ -576,7 +544,6 @@
                 <li>Scale album cover to fix large window.</li>
                 <li>Navigate back if start search and folded.</li>
                 <li>Draw peak to avoid resizing the window.</li>
-                <li>Request host file permission in flatpak.</li>
                 </ul>
             </description>
         </release>
@@ -626,7 +593,6 @@
             <description translate="no">
                 <ul>
                 <li>Recognize external images as cover art, supports transparency.</li>
-                <li>Showing peak now works with pipewire in flatpak.</li>
                 <li>Don't support tracker_sparql because it is slow.</li>
                 </ul>
             </description>
@@ -645,8 +611,6 @@
                 <ul>
                 <li>Add volume button.</li>
                 <li>Repeat single song mode.</li>
-                <li>Supports pipewire for flatpak.</li>
-                <li>Supports parsing GIO file tags for flatpak.</li>
                 <li>Press any key to search, ESC to quit search.</li>
                 <li>Show abbreviation as MPRIS's cover if no cover image.</li>
                 </ul>

@@ -1,54 +1,62 @@
-<img align="left" alt="Project logo" src="data/icons/hicolor/scalable/apps/app.svg" />
+<img align="left" alt="KIYORA logo" src="data/icons/hicolor/scalable/apps/app.svg" />
 
-# Gapless
-Play your music elegantly.
+# KIYORA
 
-<img src="https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/window.png" width="1134"/>
-<img src="https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/albums.png" width="1134"/>
-<img src="https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/playing.png" width="462"/>
-<img src="https://gitlab.gnome.org/neithern/screenshots/-/raw/main/g4music/playlist.png" width="466"/>
+KIYORA — Music Player. Play your music elegantly.
 
-Gapless (AKA: G4Music) is a light weight music player written in GTK4, focuses on large music collection.
+KIYORA is a fast, lightweight music player written in GTK4 and designed for large music libraries.
 
 ## Features
-- Supports most music file types, Samba and any other remote protocols (depends on GIO and GStreamer).
-- Fast loading and parsing thousands of music files in very few seconds, monitor local changes.
-- Low memory usage for large music collection with album covers (embedded and external), no thumbnail caches to store.
-- Group and sorts by album/artist/title, shuffle list, full-text searching.
-- Fluent adaptive user interface for different screen (Desktop, Tablet, Mobile).
-- Gaussian blurred cover as background, follows GNOME light/dark mode.
-- Supports creating and editing playlists, drag cover to change order or add to another playlist.
-- Supports drag and drop with other apps.
-- Supports audio peaks visualizer.
-- Supports gapless playback.
-- Supports normalizing volume with ReplayGain.
-- Supports specified audio sink.
-- Supports MPRIS control.
 
-## Install from Flathub
-<a href="https://flathub.org/apps/com.github.neithern.g4music">
-<img src="https://flathub.org/assets/badges/flathub-badge-en.png" width="240"/></a>
+- Supports most music file types, Samba and other remote protocols through GIO and GStreamer.
+- Loads and parses thousands of music files quickly and monitors local changes.
+- Uses little memory even with large libraries and embedded or external album art.
+- Groups and sorts by album, artist, or title, with shuffle and full-text search.
+- Adapts fluidly to desktop, tablet, and mobile screen sizes.
+- Uses Gaussian-blurred cover art and follows the GNOME light or dark appearance.
+- Creates and edits playlists, including drag-and-drop reordering.
+- Provides an audio peak visualizer, gapless playback, ReplayGain, and MPRIS controls.
+- Publishes the playing track to Discord Rich Presence as a Listening activity.
 
-## Install from Snapcraft (unofficial)
-<a href="https://snapcraft.io/g4music">
-<img alt="Get it from the Snap Store" src="https://camo.githubusercontent.com/ab077b20ad9938c23fbdac223ab101df5ed27329bbadbe7f98bfd62d5808f0a7/68747470733a2f2f736e617063726166742e696f2f7374617469632f696d616765732f6261646765732f656e2f736e61702d73746f72652d626c61636b2e737667" data-canonical-src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" width="240" style="max-width: 100%;"> 
-
-## FreeBSD Dependencies
+## FreeBSD dependencies
 
 ```bash
-pkg install vala meson libadwaita gstreamer1-plugins-all gettext gtk4
+pkg install vala meson libadwaita gstreamer1-plugins-all gettext gtk4 json-glib
 ```
 
-## How to build 
-It is written in Vala, simple and clean code, with few third-party dependencies:
+## Build
 
-1. Clone the code from gitlab.
-2. Install vala, develop packages of gtk4, libadwaita, gstreamer.
-3. Run in the project directory:
+1. Clone the repository.
+2. Install Vala and the development packages for GTK4, Libadwaita, and GStreamer.
+3. Configure and build the project:
 
-    `meson setup build --buildtype=release`
+   ```bash
+   meson setup build --buildtype=release
+   meson compile -C build
+   ```
 
-    `meson install -C build`
+4. Install it:
 
-## Change Log
-Check the [release tags](https://gitlab.gnome.org/neithern/g4music/-/tags) for change log.
+   ```bash
+   meson install -C build
+   ```
+
+The installed executable is `kiyora`, and the application ID is `io.github.Taskov1ch.KIYORA`.
+
+## AppImage
+
+The AppImage build script installs KIYORA into an AppDir and bundles GTK4,
+Libadwaita, GStreamer, its runtime plugins, and the other required libraries.
+Run it on an x86_64 Linux system with the build dependencies installed:
+
+```bash
+./scripts/build-appimage.sh
+```
+
+The resulting `KIYORA-<version>-x86_64.AppImage` is written to `dist/`.
+GitHub Actions runs the same script for every push and pull request, uploads the
+AppImage as a workflow artifact, and attaches it to the GitHub Release for tags.
+
+## Credits
+
+KIYORA is based on the GPL-3.0-or-later licensed G4Music project by Nanling.

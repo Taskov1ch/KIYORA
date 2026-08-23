@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/neithern/g4music/issues\n"
-"POT-Creation-Date: 2025-07-06 08:40+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-23 08:45+0600\n"
 "PO-Revision-Date: 2025-07-16 12:00+0600\n"
 "Last-Translator: AnmiTaliDev <anmitalli198@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
@@ -16,36 +16,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/app.desktop.in:3 data/app.metainfo.xml.in:4 src/application.vala:273
-#: src/main.vala:24
-msgid "Gapless"
-msgstr "Үзіліссіз"
+#: data/app.desktop.in:2 data/app.metainfo.xml.in:4
+msgid "KIYORA"
+msgstr ""
 
-#: data/app.desktop.in:4
+#: data/app.desktop.in:3
 msgid "Music Player"
 msgstr "Музыка ойнатқышы"
 
-#: data/app.desktop.in:5 data/app.metainfo.xml.in:7
+#: data/app.desktop.in:4 data/app.metainfo.xml.in:7
 msgid "Play your music elegantly"
 msgstr "Музыканы сәнді түрде ойнатыңыз"
 
-#: data/app.desktop.in:12
+#: data/app.desktop.in:11
 msgid "music;sound;player;media;audio;playlist;"
 msgstr "музыка;дыбыс;ойнатқыш;медиа;аудио;плейлист;"
 
-#: data/app.metainfo.xml.in:24
+#: data/app.metainfo.xml.in:22
 msgid ""
-"Gapless (AKA: G4Music) is a light weight music player written in GTK4, "
-"focuses on large music collection."
+"KIYORA is a fast, lightweight GTK4 music player built for large music "
+"libraries."
 msgstr ""
-"Gapless (G4Music деген де аталады) - GTK4-те жазылған жеңіл музыка ойнатқышы, "
-"үлкен музыка жинағына бағытталған."
 
-#: data/app.metainfo.xml.in:25
+#: data/app.metainfo.xml.in:23
 msgid "Features"
 msgstr "Мүмкіндіктер"
 
-#: data/app.metainfo.xml.in:27
+#: data/app.metainfo.xml.in:25
 msgid ""
 "Supports most music file types, Samba and any other remote protocols "
 "(depends on GIO and GStreamer)."
@@ -53,7 +50,7 @@ msgstr ""
 "Көптеген музыка файл түрлерін, Samba және басқа қашықтағы хаттамаларды "
 "қолдайды (GIO және GStreamer-ге тәуелді)."
 
-#: data/app.metainfo.xml.in:28
+#: data/app.metainfo.xml.in:26
 msgid ""
 "Fast loading and parsing thousands of music files in very few seconds, "
 "monitor local changes."
@@ -61,22 +58,22 @@ msgstr ""
 "Мыңдаған музыка файлдарын бірнеше секундта жылдам жүктеу және талдау, "
 "жергілікті өзгерістерді бақылау."
 
-#: data/app.metainfo.xml.in:29
+#: data/app.metainfo.xml.in:27
 msgid ""
 "Low memory usage for large music collection with album covers (embedded and "
 "external), no thumbnail caches to store."
 msgstr ""
-"Альбом мұқабаларымен (енгізілген және сыртқы) үлкен музыка жинағы үшін "
-"аз жад қолданылуы, кішірейтілген суреттер кэшін сақтау қажет емес."
+"Альбом мұқабаларымен (енгізілген және сыртқы) үлкен музыка жинағы үшін аз "
+"жад қолданылуы, кішірейтілген суреттер кэшін сақтау қажет емес."
 
-#: data/app.metainfo.xml.in:30
+#: data/app.metainfo.xml.in:28
 msgid ""
 "Group and sorts by album/artist/title, shuffle list, full-text searching."
 msgstr ""
 "Альбом/орындаушы/атау бойынша топтау және сұрыптау, тізімді араластыру, "
 "толық мәтінді іздеу."
 
-#: data/app.metainfo.xml.in:31
+#: data/app.metainfo.xml.in:29
 msgid ""
 "Fluent adaptive user interface for different screen (Desktop, Tablet, "
 "Mobile)."
@@ -84,13 +81,12 @@ msgstr ""
 "Әртүрлі экрандар үшін (Жұмыс үстелі, Планшет, Мобильді) икемді бейімделгіш "
 "пайдаланушы интерфейсі."
 
-#: data/app.metainfo.xml.in:32
+#: data/app.metainfo.xml.in:30
 msgid "Gaussian blurred cover as background, follows GNOME light/dark mode."
 msgstr ""
-"Фон ретінде Гаусс бұлдырланған мұқаба, GNOME ашық/қараңғы режимін "
-"қолдайды."
+"Фон ретінде Гаусс бұлдырланған мұқаба, GNOME ашық/қараңғы режимін қолдайды."
 
-#: data/app.metainfo.xml.in:33
+#: data/app.metainfo.xml.in:31
 msgid ""
 "Supports creating and editing playlists, drag cover to change order or add "
 "to another playlist."
@@ -98,45 +94,29 @@ msgstr ""
 "Плейлисттерді құру және өңдеуді қолдайды, ретін өзгерту немесе басқа "
 "плейлистке қосу үшін мұқабаны сүйреңіз."
 
-#: data/app.metainfo.xml.in:34
+#: data/app.metainfo.xml.in:32
 msgid "Supports drag and drop with other apps."
 msgstr "Басқа қолданбалармен сүйреп тастауды қолдайды."
 
-#: data/app.metainfo.xml.in:35
+#: data/app.metainfo.xml.in:33
 msgid "Supports audio peaks visualizer."
 msgstr "Аудио шыңдарының визуализаторын қолдайды."
 
-#: data/app.metainfo.xml.in:36
+#: data/app.metainfo.xml.in:34
 msgid "Supports gapless playback."
 msgstr "Үзіліссіз ойнатуды қолдайды."
 
-#: data/app.metainfo.xml.in:37
+#: data/app.metainfo.xml.in:35
 msgid "Supports normalizing volume with ReplayGain."
 msgstr "ReplayGain арқылы дыбыс деңгейін қалыпқа келтіруді қолдайды."
 
-#: data/app.metainfo.xml.in:38
+#: data/app.metainfo.xml.in:36
 msgid "Supports specified audio sink."
 msgstr "Көрсетілген аудио шығысын қолдайды."
 
-#: data/app.metainfo.xml.in:39
+#: data/app.metainfo.xml.in:37
 msgid "Supports MPRIS control."
 msgstr "MPRIS басқаруын қолдайды."
-
-#: data/app.metainfo.xml.in:50
-msgid "Main window"
-msgstr "Басты терезе"
-
-#: data/app.metainfo.xml.in:54
-msgid "Albums view"
-msgstr "Альбомдар көрінісі"
-
-#: data/app.metainfo.xml.in:58
-msgid "Playing view"
-msgstr "Ойнату көрінісі"
-
-#: data/app.metainfo.xml.in:62
-msgid "Playlist view"
-msgstr "Плейлист көрінісі"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -218,70 +198,78 @@ msgid "General"
 msgstr "Жалпы"
 
 #: src/gtk/preferences.ui:14
+msgid "Language"
+msgstr ""
+
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:81
+msgid "Changes take effect after restarting KIYORA"
+msgstr ""
+
+#: src/gtk/preferences.ui:21
 msgid "Background blur mode"
 msgstr "Фонды бұлдырлау режимі"
 
-#: src/gtk/preferences.ui:20
+#: src/gtk/preferences.ui:27
 msgid "Compact playlist view"
 msgstr "Ықшам плейлист көрінісі"
 
-#: src/gtk/preferences.ui:32
+#: src/gtk/preferences.ui:39
 msgid "Grid view for artists/albums"
 msgstr "Орындаушылар/альбомдар үшін тор көрінісі"
 
-#: src/gtk/preferences.ui:44
+#: src/gtk/preferences.ui:51
 msgid "Single click to activate item"
 msgstr "Элементті белсендіру үшін бір рет басу"
 
-#: src/gtk/preferences.ui:56 src/application.vala:434
+#: src/gtk/preferences.ui:63 src/application.vala:436
 msgid "Keep playing after window closed"
 msgstr "Терезе жабылғаннан кейін ойнатуды жалғастыру"
 
-#: src/gtk/preferences.ui:69
+#: src/gtk/preferences.ui:76
 msgid "Library"
 msgstr "Кітапхана"
 
-#: src/gtk/preferences.ui:73
+#: src/gtk/preferences.ui:80
 msgid "Load music from folder"
 msgstr "Қалтадан музыка жүктеу"
 
-#: src/gtk/preferences.ui:85
+#: src/gtk/preferences.ui:92
 msgid "Monitor local file changes"
 msgstr "Жергілікті файл өзгерістерін бақылау"
 
-#: src/gtk/preferences.ui:97
+#: src/gtk/preferences.ui:104
 msgid "Load thumbnails for non-local files"
 msgstr "Жергілікті емес файлдар үшін кішірейтілген суреттерді жүктеу"
 
-#: src/gtk/preferences.ui:98
+#: src/gtk/preferences.ui:105
 msgid "May cause slowdowns and excess network usage"
 msgstr "Баяулауға және желі трафигінің артық қолданылуына әкелуі мүмкін"
 
-#: src/gtk/preferences.ui:111
+#: src/gtk/preferences.ui:118
 msgid "Playback"
 msgstr "Ойнату"
 
-#: src/gtk/preferences.ui:115
+#: src/gtk/preferences.ui:122
 msgid "Show audio peak level"
 msgstr "Аудио шыңының деңгейін көрсету"
 
-#: src/gtk/preferences.ui:119
+#: src/gtk/preferences.ui:126
 msgid "Display characters"
 msgstr "Таңбаларды көрсету"
 
-#: src/gtk/preferences.ui:134
+#: src/gtk/preferences.ui:141
 msgid "Rotate album cover"
 msgstr "Альбом мұқабасын бұру"
 
-#: src/gtk/preferences.ui:146
+#: src/gtk/preferences.ui:153
 msgid "Enable gapless playback"
 msgstr "Үзіліссіз ойнатуды қосу"
 
-#: src/gtk/preferences.ui:158
+#: src/gtk/preferences.ui:165
 msgid "Normalize volume with ReplayGain"
 msgstr "ReplayGain арқылы дыбыс деңгейін қалыпқа келтіру"
 
-#: src/gtk/preferences.ui:164
+#: src/gtk/preferences.ui:171
 msgid "Prefer audio sink of GStreamer"
 msgstr "GStreamer аудио шығысын таңдау"
 
@@ -337,7 +325,7 @@ msgstr "_Пернетақта жылдам пернелері"
 msgid "_About"
 msgstr "_Туралы"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:66
+#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:106
 msgid "Album"
 msgstr "Альбом"
 
@@ -373,19 +361,19 @@ msgstr "Мұқаба сәтті экспортталды"
 msgid "Export cover failed"
 msgstr "Мұқабаны экспорттау сәтсіз аяқталды"
 
-#: src/application.vala:346
+#: src/application.vala:348
 msgid "Save playlist failed"
 msgstr "Плейлистті сақтау сәтсіз аяқталды"
 
-#: src/application.vala:470
+#: src/application.vala:472
 msgid "Playlist Files"
 msgstr "Плейлист файлдары"
 
-#: src/application.vala:485
+#: src/application.vala:487
 msgid "Save playlist successfully"
 msgstr "Плейлист сәтті сақталды"
 
-#: src/application.vala:620
+#: src/application.vala:622
 msgid "Keep playing"
 msgstr "Ойнатуды жалғастыру"
 
@@ -530,19 +518,25 @@ msgstr "Жаңа плейлист"
 msgid "No playlist found in %s"
 msgstr "%s ішінде плейлист табылмады"
 
-#: src/ui/preferences.vala:44 src/ui/preferences.vala:66
+#. Translators: "System" means following the system language.
+#: src/ui/preferences.vala:55
+#, fuzzy
+msgid "System"
+msgstr "_Жүйе"
+
+#: src/ui/preferences.vala:84 src/ui/preferences.vala:106
 msgid "Never"
 msgstr "Ешқашан"
 
-#: src/ui/preferences.vala:44
+#: src/ui/preferences.vala:84
 msgid "Always"
 msgstr "Әрқашан"
 
-#: src/ui/preferences.vala:44
+#: src/ui/preferences.vala:84
 msgid "Art Only"
 msgstr "Тек сурет"
 
-#: src/ui/preferences.vala:66
+#: src/ui/preferences.vala:106
 msgid "Track"
 msgstr "Трек"
 
@@ -568,7 +562,7 @@ msgstr "Көшіру"
 msgid "Volume %d%%"
 msgstr "Дыбыс деңгейі %d%%"
 
-#: src/ui/window.vala:126
+#: src/ui/window.vala:127
 msgid "Show"
 msgstr "Көрсету"
 
@@ -579,3 +573,25 @@ msgstr "Белгісіз альбом"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Белгісіз орындаушы"
+
+#~ msgid "Gapless"
+#~ msgstr "Үзіліссіз"
+
+#~ msgid ""
+#~ "Gapless (AKA: G4Music) is a light weight music player written in GTK4, "
+#~ "focuses on large music collection."
+#~ msgstr ""
+#~ "Gapless (G4Music деген де аталады) - GTK4-те жазылған жеңіл музыка "
+#~ "ойнатқышы, үлкен музыка жинағына бағытталған."
+
+#~ msgid "Main window"
+#~ msgstr "Басты терезе"
+
+#~ msgid "Albums view"
+#~ msgstr "Альбомдар көрінісі"
+
+#~ msgid "Playing view"
+#~ msgstr "Ойнату көрінісі"
+
+#~ msgid "Playlist view"
+#~ msgstr "Плейлист көрінісі"

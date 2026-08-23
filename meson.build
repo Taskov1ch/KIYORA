@@ -1,10 +1,10 @@
 project(
-  'g4music', [ 'vala', 'c' ],
+  'kiyora', [ 'vala', 'c' ],
   version: '4.6.2',
   license: 'GPL3'
 )
 
-app_id = 'com.github.neithern.' + meson.project_name()
+app_id = 'io.github.Taskov1ch.KIYORA'
 version = meson.project_version()
 
 gnome = import('gnome')
@@ -54,6 +54,8 @@ posix_dep = vala_compiler.find_library('posix', required: false)
 dependencies = [
   dependency('gstreamer-1.0'),
   dependency('gstreamer-tag-1.0'),
+  dependency('gio-unix-2.0'),
+  dependency('json-glib-1.0'),
   adw_dep,
   libm_dep,
   posix_dep,

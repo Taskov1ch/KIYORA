@@ -1,6 +1,6 @@
 namespace G4 {
 
-    [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/play-panel.ui")]
+    [GtkTemplate (ui = "/io/github/Taskov1ch/KIYORA/gtk/play-panel.ui")]
     public class PlayPanel : Gtk.Box, SizeWatcher {
         [GtkChild]
         private unowned Gtk.MenuButton action_btn;

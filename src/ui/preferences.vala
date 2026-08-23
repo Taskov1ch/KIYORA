@@ -5,8 +5,17 @@ namespace G4 {
         public const uint ART_ONLY = 2;
     }
 
-    [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/preferences.ui")]
+    [GtkTemplate (ui = "/io/github/Taskov1ch/KIYORA/gtk/preferences.ui")]
     public class PreferencesWindow : Adw.PreferencesWindow {
+        private const string[] LANGUAGE_CODES = {
+            "", "en", "be", "bg", "cs", "da", "de", "el", "es", "et", "eu",
+            "fa", "fi", "fr", "he", "hi", "hu", "ia", "id", "it", "ja", "ka",
+            "kk", "nl", "oc", "pl", "pt", "pt_BR", "ro", "ru", "sk", "sl", "sr",
+            "sv", "tr", "uk", "zh_CN", "zh_TW"
+        };
+
+        [GtkChild]
+        unowned Adw.ComboRow language_row;
         [GtkChild]
         unowned Adw.ComboRow blur_row;
         [GtkChild]
@@ -40,6 +49,37 @@ namespace G4 {
 
         public PreferencesWindow (Application app) {
             var settings = app.settings;
+
+            string[] language_names = {
+                /* Translators: "System" means following the system language. */
+                _("System"), "English", "Беларуская", "Български", "Čeština", "Dansk",
+                "Deutsch", "Ελληνικά", "Español", "Eesti", "Euskara", "فارسی", "Suomi",
+                "Français", "עברית", "हिन्दी", "Magyar", "Interlingua", "Bahasa Indonesia",
+                "Italiano", "日本語", "ქართული", "Қазақша", "Nederlands", "Occitan", "Polski",
+                "Português", "Português (Brasil)", "Română", "Русский", "Slovenčina",
+                "Slovenščina", "Српски", "Svenska", "Türkçe", "Українська", "简体中文", "繁體中文"
+            };
+            language_row.model = new Gtk.StringList (language_names);
+
+            var language = settings.get_string ("language");
+            for (var i = 0; i < LANGUAGE_CODES.length; i++) {
+                if (LANGUAGE_CODES[i] == language) {
+                    language_row.selected = i;
+                    break;
+                }
+            }
+            language_row.notify["selected"].connect (() => {
+                var selected = (int) language_row.selected;
+                if (selected < 0 || selected >= LANGUAGE_CODES.length)
+                    return;
+
+                var selected_language = LANGUAGE_CODES[selected];
+                if (settings.get_string ("language") == selected_language)
+                    return;
+
+                settings.set_string ("language", selected_language);
+                Window.get_default ()?.show_toast (_("Changes take effect after restarting KIYORA"));
+            });
 
             blur_row.model = new Gtk.StringList ({_("Never"), _("Always"), _("Art Only")});
             settings.bind ("blur-mode", blur_row, "selected", SettingsBindFlags.DEFAULT);

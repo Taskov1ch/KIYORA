@@ -2,6 +2,7 @@ conf = configuration_data()
 conf.set('app_id', app_id)
 conf.set('version', version)
 conf.set('bindir', get_option('prefix') / get_option('bindir'))
+conf.set('project_name', meson.project_name())
 
 desktop_conf = configure_file(
   input: 'app.desktop.in',

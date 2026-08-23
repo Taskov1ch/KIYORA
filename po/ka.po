@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/neithern/g4music/issues\n"
-"POT-Creation-Date: 2025-11-16 06:55+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-23 08:45+0600\n"
 "PO-Revision-Date: 2026-04-25 12:16+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
@@ -17,10 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
 
-#: data/app.desktop.in:2 data/app.metainfo.xml.in:4 src/application.vala:273
-#: src/main.vala:24
-msgid "Gapless"
-msgstr "პაუზის გარეშე"
+#: data/app.desktop.in:2 data/app.metainfo.xml.in:4
+msgid "KIYORA"
+msgstr ""
 
 #: data/app.desktop.in:3
 msgid "Music Player"
@@ -34,19 +33,17 @@ msgstr "დაუკარით თქვენი მუსიკა ელე
 msgid "music;sound;player;media;audio;playlist;"
 msgstr "music;sound;player;media;audio;playlist;"
 
-#: data/app.metainfo.xml.in:24
+#: data/app.metainfo.xml.in:22
 msgid ""
-"Gapless (AKA: G4Music) is a light weight music player written in GTK4, "
-"focuses on large music collection."
+"KIYORA is a fast, lightweight GTK4 music player built for large music "
+"libraries."
 msgstr ""
-"Gapless (AKA: G4Music) მსუბუქი მუსიკის დაკვრის პროგრამაა, რომელიც დაწერილია "
-"GTK4-ზე. მის ფოკუსს დიდი მუსიკის კოლექციები წარმოადგენს."
 
-#: data/app.metainfo.xml.in:25
+#: data/app.metainfo.xml.in:23
 msgid "Features"
 msgstr "მახასიათებლები"
 
-#: data/app.metainfo.xml.in:27
+#: data/app.metainfo.xml.in:25
 msgid ""
 "Supports most music file types, Samba and any other remote protocols "
 "(depends on GIO and GStreamer)."
@@ -54,7 +51,7 @@ msgstr ""
 "აქვს მუსიკის თითქმის ყველა ტიპის, Samba-ის და სხვა დაშორებული პროტოკოლების "
 "მხარდაჭერა (დამოკიდებულია GIO-ზე და GStreamer-ზე)."
 
-#: data/app.metainfo.xml.in:28
+#: data/app.metainfo.xml.in:26
 msgid ""
 "Fast loading and parsing thousands of music files in very few seconds, "
 "monitor local changes."
@@ -62,7 +59,7 @@ msgstr ""
 "ათასობით მუსიკალური ფაილის სწრაფი ჩატვირთვა და დამუშავება და ლოკალური "
 "ცვლილებების თვალყურის დევნება."
 
-#: data/app.metainfo.xml.in:29
+#: data/app.metainfo.xml.in:27
 msgid ""
 "Low memory usage for large music collection with album covers (embedded and "
 "external), no thumbnail caches to store."
@@ -70,72 +67,56 @@ msgstr ""
 "დაბალი მეხსიერების მოთხოვნები დიდი მუსიკის ალბომის ყდის მქონე კოლექციებით "
 "(ჩაშენებული და გარე). მინიატურების კეშის გარეშე."
 
-#: data/app.metainfo.xml.in:30
+#: data/app.metainfo.xml.in:28
 msgid ""
 "Group and sorts by album/artist/title, shuffle list, full-text searching."
 msgstr ""
 "დაჯგუფება და დალაგება ალბომით/შემსრულებლით/სათაურით, სიის არევა, "
 "სრულტექსტიანი ძებნა."
 
-#: data/app.metainfo.xml.in:31
+#: data/app.metainfo.xml.in:29
 msgid ""
 "Fluent adaptive user interface for different screen (Desktop, Tablet, "
 "Mobile)."
 msgstr ""
-"უნაკლო ადაპტიური მომხმარებლის ინტერფეისი სხვადასხვა ეკრანისთვის "
-"(კომპიუტერი, ტაბლეტი, მობილური)"
+"უნაკლო ადაპტიური მომხმარებლის ინტერფეისი სხვადასხვა ეკრანისთვის (კომპიუტერი, "
+"ტაბლეტი, მობილური)"
 
-#: data/app.metainfo.xml.in:32
+#: data/app.metainfo.xml.in:30
 msgid "Gaussian blurred cover as background, follows GNOME light/dark mode."
 msgstr "გაუსით გაუმჭვირვალე ყდა ფონად. მიჰყვება GNOME-ის ღია/მუქ რეჟიმს."
 
-#: data/app.metainfo.xml.in:33
+#: data/app.metainfo.xml.in:31
 msgid ""
 "Supports creating and editing playlists, drag cover to change order or add "
 "to another playlist."
 msgstr ""
-"აქვს დასაკრავი სიების შექმნისა და ჩასწორების მხარდაჭერა. გადაათრიეთ ყდა, "
-"რომ შეცვალოთ მიმდევრობა, ან დაამატოთ სხვა დასაკრავ სიას."
+"აქვს დასაკრავი სიების შექმნისა და ჩასწორების მხარდაჭერა. გადაათრიეთ ყდა, რომ "
+"შეცვალოთ მიმდევრობა, ან დაამატოთ სხვა დასაკრავ სიას."
 
-#: data/app.metainfo.xml.in:34
+#: data/app.metainfo.xml.in:32
 msgid "Supports drag and drop with other apps."
 msgstr "აქვს სხვა აპებში გადათრევა-დაგდების მხარდაჭერა."
 
-#: data/app.metainfo.xml.in:35
+#: data/app.metainfo.xml.in:33
 msgid "Supports audio peaks visualizer."
 msgstr "აუდიოს პიკების დონის ჩვენება."
 
-#: data/app.metainfo.xml.in:36
+#: data/app.metainfo.xml.in:34
 msgid "Supports gapless playback."
 msgstr "პაუზის-გარეშე დაკვრის ჩართვა."
 
-#: data/app.metainfo.xml.in:37
+#: data/app.metainfo.xml.in:35
 msgid "Supports normalizing volume with ReplayGain."
 msgstr "ხმის ნორმალიზაცია ReplayGain-ით."
 
-#: data/app.metainfo.xml.in:38
+#: data/app.metainfo.xml.in:36
 msgid "Supports specified audio sink."
 msgstr "აქვს მითითებული აუდიოგამოტანის მხარდაჭერა."
 
-#: data/app.metainfo.xml.in:39
+#: data/app.metainfo.xml.in:37
 msgid "Supports MPRIS control."
 msgstr "აქვს MPRIS კონტროლის მხარდაჭერა."
-
-#: data/app.metainfo.xml.in:50
-msgid "Main window"
-msgstr "მთავარი ფანჯარა"
-
-#: data/app.metainfo.xml.in:54
-msgid "Albums view"
-msgstr "ალბომების ხედი"
-
-#: data/app.metainfo.xml.in:58
-msgid "Playing view"
-msgstr "დაკვრის ხედი"
-
-#: data/app.metainfo.xml.in:62
-msgid "Playlist view"
-msgstr "დასაკრავი სიის ხედი"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -217,70 +198,78 @@ msgid "General"
 msgstr "ზოგადი"
 
 #: src/gtk/preferences.ui:14
+msgid "Language"
+msgstr ""
+
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:81
+msgid "Changes take effect after restarting KIYORA"
+msgstr ""
+
+#: src/gtk/preferences.ui:21
 msgid "Background blur mode"
 msgstr "ფონის გაბუნდოვნების რეჟიმი"
 
-#: src/gtk/preferences.ui:20
+#: src/gtk/preferences.ui:27
 msgid "Compact playlist view"
 msgstr "კომპაქტური დასაკრავი სიის რეჟიმი"
 
-#: src/gtk/preferences.ui:32
+#: src/gtk/preferences.ui:39
 msgid "Grid view for artists/albums"
 msgstr "ბადის ხედი შემსრულებლებისთვის/ალბომებისთვის"
 
-#: src/gtk/preferences.ui:44
+#: src/gtk/preferences.ui:51
 msgid "Single click to activate item"
 msgstr "ერთი წკაპი ელემენტის გასააქტიურებლად"
 
-#: src/gtk/preferences.ui:56 src/application.vala:434
+#: src/gtk/preferences.ui:63 src/application.vala:436
 msgid "Keep playing after window closed"
 msgstr "დაკვრის გაგრძელება ფანჯრის დახურვის შემდეგ"
 
-#: src/gtk/preferences.ui:69
+#: src/gtk/preferences.ui:76
 msgid "Library"
 msgstr "ბიბლიოთეკა"
 
-#: src/gtk/preferences.ui:73
+#: src/gtk/preferences.ui:80
 msgid "Load music from folder"
 msgstr "მუსიკის ჩატვირთვა საქაღალდიდან"
 
-#: src/gtk/preferences.ui:85
+#: src/gtk/preferences.ui:92
 msgid "Monitor local file changes"
 msgstr "ლოკალური ფაილის ცვლილებების თვალყურის დევნება"
 
-#: src/gtk/preferences.ui:97
+#: src/gtk/preferences.ui:104
 msgid "Load thumbnails for non-local files"
 msgstr "მინიატურების ჩატვირთვა არალოკალური ფაილებისთვის"
 
-#: src/gtk/preferences.ui:98
+#: src/gtk/preferences.ui:105
 msgid "May cause slowdowns and excess network usage"
 msgstr "შეიძლება, გამოიწვიოს შენელება და გადამეტებული ქსელის დატვირთვა"
 
-#: src/gtk/preferences.ui:111
+#: src/gtk/preferences.ui:118
 msgid "Playback"
 msgstr "დაკვრა"
 
-#: src/gtk/preferences.ui:115
+#: src/gtk/preferences.ui:122
 msgid "Show audio peak level"
 msgstr "აუდიოს პიკების დონის ჩვენება"
 
-#: src/gtk/preferences.ui:119
+#: src/gtk/preferences.ui:126
 msgid "Display characters"
 msgstr "სიმბოლოების ჩვენება"
 
-#: src/gtk/preferences.ui:134
+#: src/gtk/preferences.ui:141
 msgid "Rotate album cover"
 msgstr "ალბომის ყდის შებრუნება"
 
-#: src/gtk/preferences.ui:146
+#: src/gtk/preferences.ui:153
 msgid "Enable gapless playback"
 msgstr "პაუზის-გარეშე დაკვრის ჩართვა"
 
-#: src/gtk/preferences.ui:158
+#: src/gtk/preferences.ui:165
 msgid "Normalize volume with ReplayGain"
 msgstr "ხმის ნორმალიზაცია ReplayGain-ით"
 
-#: src/gtk/preferences.ui:164
+#: src/gtk/preferences.ui:171
 msgid "Prefer audio sink of GStreamer"
 msgstr "GStreamer-ის აუდიო კოდეკის გამოყენება"
 
@@ -336,7 +325,7 @@ msgstr "_კლავიატურის მალსახმობები"
 msgid "_About"
 msgstr "შესახებ"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:66
+#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:106
 msgid "Album"
 msgstr "ალბომი"
 
@@ -372,19 +361,19 @@ msgstr "ყდის გატანა წარმატებულია"
 msgid "Export cover failed"
 msgstr "ყდის გატანა ჩავარდა"
 
-#: src/application.vala:346
+#: src/application.vala:348
 msgid "Save playlist failed"
 msgstr "დასაკრავი სიის შენახვა ჩავარდა"
 
-#: src/application.vala:470
+#: src/application.vala:472
 msgid "Playlist Files"
 msgstr "დასაკრავი სიის ფაილები"
 
-#: src/application.vala:485
+#: src/application.vala:487
 msgid "Save playlist successfully"
 msgstr "დასაკრავი სიის შენახვა წარმატებულია"
 
-#: src/application.vala:620
+#: src/application.vala:622
 msgid "Keep playing"
 msgstr "დაკვრის გაგრძელება"
 
@@ -529,19 +518,25 @@ msgstr "ახალი დასაკრავი სია"
 msgid "No playlist found in %s"
 msgstr "%s-ში დასაკრავი სიები აღმოჩენილი არაა"
 
-#: src/ui/preferences.vala:44 src/ui/preferences.vala:66
+#. Translators: "System" means following the system language.
+#: src/ui/preferences.vala:55
+#, fuzzy
+msgid "System"
+msgstr "სისტემური"
+
+#: src/ui/preferences.vala:84 src/ui/preferences.vala:106
 msgid "Never"
 msgstr "არასდროს"
 
-#: src/ui/preferences.vala:44
+#: src/ui/preferences.vala:84
 msgid "Always"
 msgstr "ყოველთვის"
 
-#: src/ui/preferences.vala:44
+#: src/ui/preferences.vala:84
 msgid "Art Only"
 msgstr "მხოლოდ ყდა"
 
-#: src/ui/preferences.vala:66
+#: src/ui/preferences.vala:106
 msgid "Track"
 msgstr "ტრეკი"
 
@@ -567,7 +562,7 @@ msgstr "კოპირება"
 msgid "Volume %d%%"
 msgstr "ხმის სიმძლავრე %d%%"
 
-#: src/ui/window.vala:126
+#: src/ui/window.vala:127
 msgid "Show"
 msgstr "ჩვენება"
 
@@ -578,6 +573,28 @@ msgstr "უცნობი ალბომი"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "უცნობი შემსრულებელი"
+
+#~ msgid "Gapless"
+#~ msgstr "პაუზის გარეშე"
+
+#~ msgid ""
+#~ "Gapless (AKA: G4Music) is a light weight music player written in GTK4, "
+#~ "focuses on large music collection."
+#~ msgstr ""
+#~ "Gapless (AKA: G4Music) მსუბუქი მუსიკის დაკვრის პროგრამაა, რომელიც "
+#~ "დაწერილია GTK4-ზე. მის ფოკუსს დიდი მუსიკის კოლექციები წარმოადგენს."
+
+#~ msgid "Main window"
+#~ msgstr "მთავარი ფანჯარა"
+
+#~ msgid "Albums view"
+#~ msgstr "ალბომების ხედი"
+
+#~ msgid "Playing view"
+#~ msgstr "დაკვრის ხედი"
+
+#~ msgid "Playlist view"
+#~ msgstr "დასაკრავი სიის ხედი"
 
 #~ msgid "A fast, fluent, light weight music player written in GTK4."
 #~ msgstr "სწრაფი, წმინდა, მსუბუქი მუსიკმკვრელი GTK4-ში."

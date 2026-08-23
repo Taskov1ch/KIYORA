@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/neithern/g4music/issues\n"
-"POT-Creation-Date: 2025-09-10 13:36+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-23 08:45+0600\n"
 "PO-Revision-Date: 2025-09-11 09:31+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
@@ -18,10 +18,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.12.3\n"
 
-#: data/app.desktop.in:2 data/app.metainfo.xml.in:4 src/application.vala:273
-#: src/main.vala:24
-msgid "Gapless"
-msgstr "Szünetmentes"
+#: data/app.desktop.in:2 data/app.metainfo.xml.in:4
+msgid "KIYORA"
+msgstr ""
 
 #: data/app.desktop.in:3
 msgid "Music Player"
@@ -35,119 +34,93 @@ msgstr "Zenék elegáns lejátszása"
 msgid "music;sound;player;media;audio;playlist;"
 msgstr "zene;zaj;lejátszó;média;hang;lejátszási lista;"
 
-#: data/app.metainfo.xml.in:24
+#: data/app.metainfo.xml.in:22
 msgid ""
-"Gapless (AKA: G4Music) is a light weight music player written in GTK4, "
-"focuses on large music collection."
+"KIYORA is a fast, lightweight GTK4 music player built for large music "
+"libraries."
 msgstr ""
-"A Szünetmentes (más néven: G4Music) egy GTK4-ben írt, könnyűsúlyú zenelejátszó"
-", amely nagy zenei gyűjteményekre összpontosít."
 
-#: data/app.metainfo.xml.in:25
+#: data/app.metainfo.xml.in:23
 msgid "Features"
 msgstr "Funkciók"
 
-#: data/app.metainfo.xml.in:27
+#: data/app.metainfo.xml.in:25
 msgid ""
 "Supports most music file types, Samba and any other remote protocols "
 "(depends on GIO and GStreamer)."
 msgstr ""
-"Támogatja a legtöbb zenefájltípust, a Sambát és egyéb távoli protokollokat (a "
-"GIO-tól és a GStreamertől függően)."
+"Támogatja a legtöbb zenefájltípust, a Sambát és egyéb távoli protokollokat "
+"(a GIO-tól és a GStreamertől függően)."
 
-#: data/app.metainfo.xml.in:28
+#: data/app.metainfo.xml.in:26
 msgid ""
 "Fast loading and parsing thousands of music files in very few seconds, "
 "monitor local changes."
 msgstr ""
-"Több ezer zenefájl gyors betöltése és feldolgozása néhány másodperc alatt, a h"
-"elyi változtatások figyelése."
+"Több ezer zenefájl gyors betöltése és feldolgozása néhány másodperc alatt, a "
+"helyi változtatások figyelése."
 
-#: data/app.metainfo.xml.in:29
+#: data/app.metainfo.xml.in:27
 msgid ""
 "Low memory usage for large music collection with album covers (embedded and "
 "external), no thumbnail caches to store."
 msgstr ""
-"Alacsony memóriahasználat albumborítókkal (beágyazott és külső) rendelkező nag"
-"y zenei gyűjteményeknél, tárolandó bélyegkép-gyorsítótárak nélkül."
+"Alacsony memóriahasználat albumborítókkal (beágyazott és külső) rendelkező "
+"nagy zenei gyűjteményeknél, tárolandó bélyegkép-gyorsítótárak nélkül."
 
-#: data/app.metainfo.xml.in:30
+#: data/app.metainfo.xml.in:28
 msgid ""
 "Group and sorts by album/artist/title, shuffle list, full-text searching."
 msgstr ""
-"Csoportosítás és rendezés album, előadó vagy cím szerint, véletlenszerű lejáts"
-"zási lista, teljes szöveges keresés."
+"Csoportosítás és rendezés album, előadó vagy cím szerint, véletlenszerű "
+"lejátszási lista, teljes szöveges keresés."
 
-#: data/app.metainfo.xml.in:31
+#: data/app.metainfo.xml.in:29
 msgid ""
 "Fluent adaptive user interface for different screen (Desktop, Tablet, "
 "Mobile)."
 msgstr ""
-"Folyékony, adaptív felhasználói felület különböző képernyőkhöz (asztali számít"
-"ógép, táblagép, mobiltelefon)."
+"Folyékony, adaptív felhasználói felület különböző képernyőkhöz (asztali "
+"számítógép, táblagép, mobiltelefon)."
 
-#: data/app.metainfo.xml.in:32
+#: data/app.metainfo.xml.in:30
 msgid "Gaussian blurred cover as background, follows GNOME light/dark mode."
 msgstr ""
-"Gauss-elmosást alkalmazott borító háttérként, ami követi a GNOME világos vagy "
-"sötét módját."
+"Gauss-elmosást alkalmazott borító háttérként, ami követi a GNOME világos "
+"vagy sötét módját."
 
-#: data/app.metainfo.xml.in:33
+#: data/app.metainfo.xml.in:31
 msgid ""
 "Supports creating and editing playlists, drag cover to change order or add "
 "to another playlist."
 msgstr ""
-"Támogatja a lejátszási listák létrehozását és szerkesztését, a borító húzásáva"
-"l megváltoztathatja a sorrendet vagy hozzáadhatja egy másik lejátszási listáho"
-"z."
+"Támogatja a lejátszási listák létrehozását és szerkesztését, a borító "
+"húzásával megváltoztathatja a sorrendet vagy hozzáadhatja egy másik "
+"lejátszási listához."
 
-#: data/app.metainfo.xml.in:34
+#: data/app.metainfo.xml.in:32
 msgid "Supports drag and drop with other apps."
 msgstr "Támogatja a fogd és vidd funkciót más alkalmazásokkal."
 
-#: data/app.metainfo.xml.in:35
-#| msgid "Show audio peak level"
+#: data/app.metainfo.xml.in:33
 msgid "Supports audio peaks visualizer."
 msgstr "Támogatja a hangcsúcsok grafikus megjelenítését."
 
-#: data/app.metainfo.xml.in:36
-#| msgid "Enable gapless playback"
+#: data/app.metainfo.xml.in:34
 msgid "Supports gapless playback."
 msgstr "Támogatja a szünetmentes lejátszást."
 
-#: data/app.metainfo.xml.in:37
-#| msgid "Normalize volume with ReplayGain"
+#: data/app.metainfo.xml.in:35
 msgid "Supports normalizing volume with ReplayGain."
 msgstr "Támogatja a hangerő normalizálását hangerő-korrekcióval."
 
-#: data/app.metainfo.xml.in:38
+#: data/app.metainfo.xml.in:36
 msgid "Supports specified audio sink."
 msgstr "Támogatja a megadott hangelnyelőt."
 
-#: data/app.metainfo.xml.in:39
+#: data/app.metainfo.xml.in:37
 msgid "Supports MPRIS control."
 msgstr "Támogatja az MPRIS-vezérlést."
-
-#: data/app.metainfo.xml.in:50
-#| msgid "Main Menu"
-msgid "Main window"
-msgstr "Főablak"
-
-#: data/app.metainfo.xml.in:54
-#| msgid "Albums"
-msgid "Albums view"
-msgstr "Albumok nézet"
-
-#: data/app.metainfo.xml.in:58
-#| msgid "Playing"
-msgid "Playing view"
-msgstr "Lejátszás nézet"
-
-#: data/app.metainfo.xml.in:62
-#| msgctxt "shortcut window"
-#| msgid "Playlist"
-msgid "Playlist view"
-msgstr "Lejátszási lista nézet"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -229,70 +202,78 @@ msgid "General"
 msgstr "Általános"
 
 #: src/gtk/preferences.ui:14
+msgid "Language"
+msgstr ""
+
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:81
+msgid "Changes take effect after restarting KIYORA"
+msgstr ""
+
+#: src/gtk/preferences.ui:21
 msgid "Background blur mode"
 msgstr "Háttér elmosásának módja"
 
-#: src/gtk/preferences.ui:20
+#: src/gtk/preferences.ui:27
 msgid "Compact playlist view"
 msgstr "Tömör lejátszási lista nézet"
 
-#: src/gtk/preferences.ui:32
+#: src/gtk/preferences.ui:39
 msgid "Grid view for artists/albums"
 msgstr "Előadók vagy albumok rácsnézete"
 
-#: src/gtk/preferences.ui:44
+#: src/gtk/preferences.ui:51
 msgid "Single click to activate item"
 msgstr "Egy kattintás az elem aktiválásához"
 
-#: src/gtk/preferences.ui:56 src/application.vala:434
+#: src/gtk/preferences.ui:63 src/application.vala:436
 msgid "Keep playing after window closed"
 msgstr "Lejátszás folytatása az ablak bezárása után"
 
-#: src/gtk/preferences.ui:69
+#: src/gtk/preferences.ui:76
 msgid "Library"
 msgstr "Gyűjtemény"
 
-#: src/gtk/preferences.ui:73
+#: src/gtk/preferences.ui:80
 msgid "Load music from folder"
 msgstr "Zenék betöltése mappából"
 
-#: src/gtk/preferences.ui:85
+#: src/gtk/preferences.ui:92
 msgid "Monitor local file changes"
 msgstr "Helyi fájlváltozások figyelése"
 
-#: src/gtk/preferences.ui:97
+#: src/gtk/preferences.ui:104
 msgid "Load thumbnails for non-local files"
 msgstr "Bélyegképek betöltése a nem helyi fájlokhoz"
 
-#: src/gtk/preferences.ui:98
+#: src/gtk/preferences.ui:105
 msgid "May cause slowdowns and excess network usage"
 msgstr "Lassulást és túlzott hálózathasználatot okozhat"
 
-#: src/gtk/preferences.ui:111
+#: src/gtk/preferences.ui:118
 msgid "Playback"
 msgstr "Lejátszás"
 
-#: src/gtk/preferences.ui:115
+#: src/gtk/preferences.ui:122
 msgid "Show audio peak level"
 msgstr "Hang csúcsszintjének megjelenítése"
 
-#: src/gtk/preferences.ui:119
+#: src/gtk/preferences.ui:126
 msgid "Display characters"
 msgstr "Karakterek megjelenítése"
 
-#: src/gtk/preferences.ui:134
+#: src/gtk/preferences.ui:141
 msgid "Rotate album cover"
 msgstr "Albumborító forgatása"
 
-#: src/gtk/preferences.ui:146
+#: src/gtk/preferences.ui:153
 msgid "Enable gapless playback"
 msgstr "Szünetmentes lejátszás engedélyezése"
 
-#: src/gtk/preferences.ui:158
+#: src/gtk/preferences.ui:165
 msgid "Normalize volume with ReplayGain"
 msgstr "Hangerő normalizálása hangerő-korrekcióval"
 
-#: src/gtk/preferences.ui:164
+#: src/gtk/preferences.ui:171
 msgid "Prefer audio sink of GStreamer"
 msgstr "A GStreamer hangnyelőjének előnyben részesítése"
 
@@ -348,7 +329,7 @@ msgstr "_Gyorsbillentyűk"
 msgid "_About"
 msgstr "_Névjegy"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:66
+#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:106
 msgid "Album"
 msgstr "Album"
 
@@ -381,25 +362,22 @@ msgid "Export cover successfully"
 msgstr "A borító sikeresen exportálva"
 
 #: src/action-handles.vala:121
-#| msgid "_Export Cover"
 msgid "Export cover failed"
 msgstr "Nem sikerült a borító exportálása"
 
-#: src/application.vala:346
-#| msgid "Compact playlist view"
+#: src/application.vala:348
 msgid "Save playlist failed"
 msgstr "Nem sikerült a lejátszási lista mentése"
 
-#: src/application.vala:470
-#| msgid "Playlists"
+#: src/application.vala:472
 msgid "Playlist Files"
 msgstr "Lejátszási lista fájlok"
 
-#: src/application.vala:485
+#: src/application.vala:487
 msgid "Save playlist successfully"
 msgstr "A lejátszási lista sikeresen elmentve"
 
-#: src/application.vala:620
+#: src/application.vala:622
 msgid "Keep playing"
 msgstr "Lejátszás folytatása"
 
@@ -423,7 +401,6 @@ msgstr "A lejátszási lista megváltozott, elmenti?"
 #. Translators: Play this music at next position of current playing music
 #: src/ui/music-list.vala:399 src/ui/music-list.vala:415
 #: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:299
-#| msgid "Play at Next"
 msgid "Play at _Next"
 msgstr "Lejátszás a _következőnél"
 
@@ -458,8 +435,6 @@ msgid "Add to Queue"
 msgstr "Hozzáadás sorhoz"
 
 #: src/ui/music-list.vala:661 src/ui/playlist-dialog.vala:19
-#| msgctxt "shortcut window"
-#| msgid "Playlist"
 msgid "Add to Playlist"
 msgstr "Hozzáadás lejátszási listához"
 
@@ -477,7 +452,6 @@ msgid "_Random Play"
 msgstr "_Véletlenszerű lejátszás"
 
 #: src/ui/music-widgets.vala:285
-#| msgid "Show List File"
 msgid "Show List _File"
 msgstr "Lista_fájl megjelenítése"
 
@@ -494,7 +468,6 @@ msgid "Search Artist"
 msgstr "Előadó keresése"
 
 #: src/ui/music-widgets.vala:314
-#| msgid "Show _Cover File"
 msgid "Show Cover _File"
 msgstr "Borító_fájl megjelenítése"
 
@@ -507,7 +480,6 @@ msgid "Show _Tags…"
 msgstr "_Címkék megjelenítése…"
 
 #: src/ui/music-widgets.vala:318
-#| msgid "_Show Music File"
 msgid "Show Music _File"
 msgstr "Zene_fájl megjelenítése"
 
@@ -542,8 +514,6 @@ msgstr ""
 "vagy változtassa meg a zenék helyét: "
 
 #: src/ui/playlist-dialog.vala:24
-#| msgctxt "shortcut window"
-#| msgid "Playlist"
 msgid "New Playlist"
 msgstr "Új lejátszási lista"
 
@@ -552,19 +522,25 @@ msgstr "Új lejátszási lista"
 msgid "No playlist found in %s"
 msgstr "Nem található lejátszási lista ebben: %s"
 
-#: src/ui/preferences.vala:44 src/ui/preferences.vala:66
+#. Translators: "System" means following the system language.
+#: src/ui/preferences.vala:55
+#, fuzzy
+msgid "System"
+msgstr "_Rendszer"
+
+#: src/ui/preferences.vala:84 src/ui/preferences.vala:106
 msgid "Never"
 msgstr "Soha"
 
-#: src/ui/preferences.vala:44
+#: src/ui/preferences.vala:84
 msgid "Always"
 msgstr "Mindig"
 
-#: src/ui/preferences.vala:44
+#: src/ui/preferences.vala:84
 msgid "Art Only"
 msgstr "Csak borító"
 
-#: src/ui/preferences.vala:66
+#: src/ui/preferences.vala:106
 msgid "Track"
 msgstr "Szám"
 
@@ -590,7 +566,7 @@ msgstr "Másolás"
 msgid "Volume %d%%"
 msgstr "Hangerő %d%%"
 
-#: src/ui/window.vala:126
+#: src/ui/window.vala:127
 msgid "Show"
 msgstr "Megjelenítés"
 
@@ -601,3 +577,30 @@ msgstr "Ismeretlen album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Ismeretlen előadó"
+
+#~ msgid "Gapless"
+#~ msgstr "Szünetmentes"
+
+#~ msgid ""
+#~ "Gapless (AKA: G4Music) is a light weight music player written in GTK4, "
+#~ "focuses on large music collection."
+#~ msgstr ""
+#~ "A Szünetmentes (más néven: G4Music) egy GTK4-ben írt, könnyűsúlyú "
+#~ "zenelejátszó, amely nagy zenei gyűjteményekre összpontosít."
+
+#~| msgid "Main Menu"
+#~ msgid "Main window"
+#~ msgstr "Főablak"
+
+#~| msgid "Albums"
+#~ msgid "Albums view"
+#~ msgstr "Albumok nézet"
+
+#~| msgid "Playing"
+#~ msgid "Playing view"
+#~ msgstr "Lejátszás nézet"
+
+#~| msgctxt "shortcut window"
+#~| msgid "Playlist"
+#~ msgid "Playlist view"
+#~ msgstr "Lejátszási lista nézet"

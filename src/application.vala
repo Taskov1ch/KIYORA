@@ -11,6 +11,7 @@ namespace G4 {
         private bool _loading = false;
         private string _music_folder = "";
         private uint _mpris_id = 0;
+        private DiscordRpc? _discord_rpc = null;
         private MusicLoader _loader = new MusicLoader ();
         private Gtk.FilterListModel _current_list = new Gtk.FilterListModel (null, null);
         private ListStore _music_queue = new ListStore (typeof (Music));
@@ -57,6 +58,8 @@ namespace G4 {
             _player.next_uri_start.connect (on_player_next_uri_start);
             _player.state_changed.connect (on_player_state_changed);
             _player.tag_parsed.connect (on_player_tag_parsed);
+
+            _discord_rpc = new DiscordRpc (this);
 
             _mpris_id = Bus.own_name (BusType.SESSION,
                 "org.mpris.MediaPlayer2." + application_id,
@@ -133,6 +136,8 @@ namespace G4 {
         }
 
         public override void shutdown () {
+            _discord_rpc?.shutdown ();
+            _discord_rpc = null;
             _actions = null;
             _loader.save_tag_cache ();
             delete_cover_tmp_file_async.begin ((obj, res) => delete_cover_tmp_file_async.end (res));
@@ -272,7 +277,7 @@ namespace G4 {
 
         public string name {
             get {
-                return _("Gapless");
+                return "KIYORA";
             }
         }
 

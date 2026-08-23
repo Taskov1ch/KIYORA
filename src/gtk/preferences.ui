@@ -9,6 +9,13 @@
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">General</property>
             <child>
+              <object class="AdwComboRow" id="language_row">
+                <property name="icon-name">preferences-desktop-locale-symbolic</property>
+                <property name="title" translatable="yes">Language</property>
+                <property name="subtitle" translatable="yes">Changes take effect after restarting KIYORA</property>
+              </object>
+            </child>
+            <child>
               <object class="AdwComboRow" id="blur_row">
                 <property name="icon-name">view-dual-symbolic</property>
                 <property name="title" translatable="yes">Background blur mode</property>

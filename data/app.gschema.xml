@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="g4music">
-  <schema id="@app_id@" path="/com/github/neithern/g4music/">
+<schemalist gettext-domain="kiyora">
+  <schema id="@app_id@" path="/io/github/Taskov1ch/KIYORA/">
+    <key name="language" type="s">
+      <default>''</default>
+      <summary>Interface language, or an empty string to use the system language</summary>
+    </key>
     <key name="blur-mode" type="u">
       <range min="0" max="2"/>
       <default>1</default>
