@@ -135,9 +135,16 @@ export GSTREAMER_HELPERS_DIR="${GSTREAMER_HELPERS_DIR:-$(pkg-config --variable=p
     --plugin gtk \
     --plugin gstreamer
 
-# Prefer the user's native Wayland/X11 backend instead of forcing X11.
-sed -i '/^export GDK_BACKEND=x11/d' \
-    "$appdir/apprun-hooks/linuxdeploy-plugin-gtk.sh"
+# Libadwaita provides its own stylesheet and color-scheme handling. Forcing
+# GTK_THEME makes GTK load the legacy Adwaita theme on top of it, which changes
+# button shapes, spacing and window controls in the AppImage. Also prefer the
+# user's native Wayland/X11 backend instead of forcing X11.
+gtk_hook="$appdir/apprun-hooks/linuxdeploy-plugin-gtk.sh"
+sed -i \
+    -e '/^COLOR_SCHEME=/,/^APPIMAGE_GTK_THEME=/d' \
+    -e 's/^export GTK_THEME=.*/unset GTK_THEME/' \
+    -e '/^export GDK_BACKEND=x11/d' \
+    "$gtk_hook"
 
 "$linuxdeploy" \
     --appdir "$appdir" \
