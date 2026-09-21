@@ -163,6 +163,14 @@ namespace G4 {
         }
 
         private async string? upload_cover_async (Music music, Gdk.Pixbuf original, uint provider, string api_key, Cancellable? cancellable) throws Error {
+            var session = new Soup.Session ();
+            var check_uri = provider == 1 ? "https://catbox.moe/" : "https://api.imgbb.com/";
+            var check_msg = new Soup.Message ("HEAD", check_uri);
+            yield session.send_and_read_async (check_msg, Priority.DEFAULT, cancellable);
+            if (check_msg.status_code != 200) {
+                return "https://i.ibb.co/LXT2kyzG/b9267e02-8cd6-4560-bd23-750d6645ee6a.png";
+            }
+
             int width = original.get_width ();
             int height = original.get_height ();
             int size = int.min (width, height);
@@ -178,7 +186,6 @@ namespace G4 {
             uint8[] buffer;
             processed.save_to_buffer (out buffer, "jpeg", "quality", "90");
 
-            var session = new Soup.Session ();
             var multipart = new Soup.Multipart (Soup.FORM_MIME_TYPE_MULTIPART);
 
             var uri_str = provider == 1 ? "https://catbox.moe/user/api.php" : "https://api.imgbb.com/1/upload";
@@ -222,9 +229,9 @@ namespace G4 {
             }
 
             if (url != null && ((!)url).length > 0) {
-                var check_msg = new Soup.Message ("HEAD", (!)url);
-                yield session.send_and_read_async (check_msg, Priority.DEFAULT, cancellable);
-                if (check_msg.status_code == 404) {
+                var check_msg2 = new Soup.Message ("HEAD", (!)url);
+                yield session.send_and_read_async (check_msg2, Priority.DEFAULT, cancellable);
+                if (check_msg2.status_code == 404) {
                     return "https://i.ibb.co/LXT2kyzG/b9267e02-8cd6-4560-bd23-750d6645ee6a.png";
                 }
                 return url;
