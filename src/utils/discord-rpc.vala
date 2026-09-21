@@ -148,7 +148,7 @@ namespace G4 {
             if (cover == null) return;
 
             _upload_cancellable = new Cancellable ();
-            upload_cover_async.begin (((!)music).uri, (!)cover, provider, _settings.get_string ("discord-imgbb-api-key"), _upload_cancellable, (obj, res) => {
+            upload_cover_async.begin ((!)music, (!)cover, provider, _settings.get_string ("discord-imgbb-api-key"), _upload_cancellable, (obj, res) => {
                 try {
                     var url = upload_cover_async.end (res);
                     if (url != null && ((!)url).length > 0 && ((!)music).uri == _current_uri) {
@@ -162,7 +162,7 @@ namespace G4 {
             });
         }
 
-        private async string? upload_cover_async (string music_uri, Gdk.Pixbuf original, uint provider, string api_key, Cancellable? cancellable) throws Error {
+        private async string? upload_cover_async (Music music, Gdk.Pixbuf original, uint provider, string api_key, Cancellable? cancellable) throws Error {
             int width = original.get_width ();
             int height = original.get_height ();
             int size = int.min (width, height);
@@ -183,12 +183,16 @@ namespace G4 {
 
             var uri_str = provider == 1 ? "https://catbox.moe/user/api.php" : "https://api.imgbb.com/1/upload";
 
+            var title = get_title (music);
+            var artist = get_artist (music);
+            var filename = GLib.Base64.encode ((title + " - " + artist).data).replace ("/", "_").replace ("+", "-").replace ("=", "") + ".jpg";
+
             if (provider == 1) {
                 multipart.append_form_string ("reqtype", "fileupload");
-                multipart.append_form_file ("fileToUpload", "cover.jpg", "image/jpeg", new Bytes (buffer));
+                multipart.append_form_file ("fileToUpload", filename, "image/jpeg", new Bytes (buffer));
             } else if (provider == 2) {
                 multipart.append_form_string ("key", api_key);
-                multipart.append_form_file ("image", "cover.jpg", "image/jpeg", new Bytes (buffer));
+                multipart.append_form_file ("image", filename, "image/jpeg", new Bytes (buffer));
             }
 
             var msg = new Soup.Message.from_multipart (uri_str, multipart);
@@ -199,8 +203,9 @@ namespace G4 {
 
             string response = (string) bytes.get_data ();
             
+            string? url = null;
             if (provider == 1) {
-                return response.strip ();
+                url = response.strip ();
             } else if (provider == 2) {
                 var parser = new Json.Parser ();
                 parser.load_from_data (response);
@@ -208,10 +213,21 @@ namespace G4 {
                 if (root != null) {
                     unowned Json.Object? data = ((!)root).get_object_member ("data");
                     if (data != null) {
-                        return ((!)data).get_string_member ("url");
+                        url = ((!)data).get_string_member ("url");
                     }
                 }
-                throw new IOError.FAILED ("Invalid ImgBB response");
+                if (url == null) {
+                    throw new IOError.FAILED ("Invalid ImgBB response");
+                }
+            }
+
+            if (url != null && ((!)url).length > 0) {
+                var check_msg = new Soup.Message ("HEAD", (!)url);
+                yield session.send_and_read_async (check_msg, Priority.DEFAULT, cancellable);
+                if (check_msg.status_code == 404) {
+                    return "https://i.ibb.co/LXT2kyzG/b9267e02-8cd6-4560-bd23-750d6645ee6a.png";
+                }
+                return url;
             }
             return null;
         }
