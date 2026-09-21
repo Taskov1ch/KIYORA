@@ -152,25 +152,18 @@ namespace G4 {
                 try {
                     var url = upload_cover_async.end (res);
                     if (url != null && ((!)url).length > 0 && ((!)music).uri == _current_uri) {
+                        print ("Upload successful! URL: %s\n", (!)url);
                         _large_image = (!)url;
                         schedule_update ();
                     }
                 } catch (Error e) {
                     if (!(e is IOError.CANCELLED))
-                        warning ("Cover upload failed: %s", e.message);
+                        print ("Cover upload failed: %s\n", e.message);
                 }
             });
         }
 
         private async string? upload_cover_async (Music music, Gdk.Pixbuf original, uint provider, string api_key, Cancellable? cancellable) throws Error {
-            var session = new Soup.Session ();
-            var check_uri = provider == 1 ? "https://catbox.moe/" : "https://api.imgbb.com/";
-            var check_msg = new Soup.Message ("HEAD", check_uri);
-            yield session.send_and_read_async (check_msg, Priority.DEFAULT, cancellable);
-            if (check_msg.status_code != 200) {
-                return "https://i.ibb.co/LXT2kyzG/b9267e02-8cd6-4560-bd23-750d6645ee6a.png";
-            }
-
             int width = original.get_width ();
             int height = original.get_height ();
             int size = int.min (width, height);
@@ -186,6 +179,7 @@ namespace G4 {
             uint8[] buffer;
             processed.save_to_buffer (out buffer, "jpeg", "quality", "90");
 
+            var session = new Soup.Session ();
             var multipart = new Soup.Multipart (Soup.FORM_MIME_TYPE_MULTIPART);
 
             var uri_str = provider == 1 ? "https://catbox.moe/user/api.php" : "https://api.imgbb.com/1/upload";
@@ -229,9 +223,10 @@ namespace G4 {
             }
 
             if (url != null && ((!)url).length > 0) {
-                var check_msg2 = new Soup.Message ("HEAD", (!)url);
-                yield session.send_and_read_async (check_msg2, Priority.DEFAULT, cancellable);
-                if (check_msg2.status_code == 404) {
+                var check_msg = new Soup.Message ("HEAD", (!)url);
+                yield session.send_and_read_async (check_msg, Priority.DEFAULT, cancellable);
+                if (check_msg.status_code == 404) {
+                    print ("Image returned 404, using fallback URL.\n");
                     return "https://i.ibb.co/LXT2kyzG/b9267e02-8cd6-4560-bd23-750d6645ee6a.png";
                 }
                 return url;
@@ -379,7 +374,9 @@ namespace G4 {
 
             var generator = new Json.Generator ();
             generator.set_root ((!)builder.get_root ());
-            return generator.to_data (null);
+            var payload = generator.to_data (null);
+            print ("Sending payload: %s\n", payload);
+            return payload;
         }
 
         private static string get_title (Music music) {
@@ -440,7 +437,7 @@ namespace G4 {
                             send_frame ((!)connection, 1, command.payload);
                             receive_frame ((!)connection);
                         } catch (Error e) {
-                            debug ("Unable to clear Discord activity during shutdown: %s", e.message);
+                            print ("Unable to clear Discord activity during shutdown: %s\n", e.message);
                         }
                     }
                     close_connection (ref connection);
@@ -457,12 +454,11 @@ namespace G4 {
                     send_frame ((!)connection, 1, command.payload);
                     receive_frame ((!)connection);
                     activity_set = command.has_activity;
-                    debug (command.has_activity
-                        ? "Discord activity updated"
-                        : "Discord activity cleared");
+                    print ("Discord RPC: " + (command.has_activity
+                        ? "Discord activity updated\n" : "Discord activity cleared\n"));
                         
                 } catch (Error e) {
-                    warning ("Discord RPC update failed: %s", e.message);
+                    print ("Discord RPC update failed: %s\n", e.message);
                     activity_set = false;
                     close_connection (ref connection);
                 }
@@ -506,7 +502,7 @@ namespace G4 {
                                 @"{\"v\":1,\"client_id\":\"$CLIENT_ID\"}");
                             receive_frame ((!)candidate);
                             connection = candidate;
-                            debug ("Connected to Discord RPC at %s", path);
+                            print ("Connected to Discord RPC at %s\n", path);
                             return true;
                         } catch (Error e) {
                             last_error = e;
@@ -517,9 +513,9 @@ namespace G4 {
             }
 
             if (found_socket && last_error != null)
-                warning ("Unable to connect to Discord RPC: %s", ((!)last_error).message);
+                print ("Unable to connect to Discord RPC: %s\n", ((!)last_error).message);
             else
-                debug ("Discord RPC socket was not found");
+                print ("Discord RPC socket was not found\n");
             return false;
         }
 
