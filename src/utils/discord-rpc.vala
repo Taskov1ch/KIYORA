@@ -69,11 +69,12 @@ namespace G4 {
                 if (music.uri != _current_uri)
                     return;
                 var large_image = get_cover_image (uri);
-                if (_large_image != large_image) {
-                    _large_image = large_image;
-                    schedule_update ();
-                }
-                if (_large_image == DEFAULT_LARGE_IMAGE) {
+                if (large_image != DEFAULT_LARGE_IMAGE) {
+                    if (_large_image != large_image) {
+                        _large_image = large_image;
+                        schedule_update ();
+                    }
+                } else if (_large_image == DEFAULT_LARGE_IMAGE) {
                     try_upload_cover (music, pixbuf, uri);
                 }
             });
@@ -150,13 +151,14 @@ namespace G4 {
             upload_cover_async.begin (((!)music).uri, (!)cover, provider, _settings.get_string ("discord-imgbb-api-key"), _upload_cancellable, (obj, res) => {
                 try {
                     var url = upload_cover_async.end (res);
-                    if (url != null && url.length > 0 && ((!)music).uri == _current_uri) {
+                    if (url != null && ((!)url).length > 0 && ((!)music).uri == _current_uri) {
+                        print ("Upload successful! URL: %s\n", (!)url);
                         _large_image = (!)url;
                         schedule_update ();
                     }
                 } catch (Error e) {
                     if (!(e is IOError.CANCELLED))
-                        warning ("Cover upload failed: %s", e.message);
+                        print ("Cover upload failed: %s\n", e.message);
                 }
             });
         }
@@ -355,7 +357,9 @@ namespace G4 {
 
             var generator = new Json.Generator ();
             generator.set_root ((!)builder.get_root ());
-            return generator.to_data (null);
+            var payload = generator.to_data (null);
+            print ("Sending payload: %s\n", payload);
+            return payload;
         }
 
         private static string get_title (Music music) {
@@ -416,7 +420,7 @@ namespace G4 {
                             send_frame ((!)connection, 1, command.payload);
                             receive_frame ((!)connection);
                         } catch (Error e) {
-                            debug ("Unable to clear Discord activity during shutdown: %s", e.message);
+                            print ("Unable to clear Discord activity during shutdown: %s\n", e.message);
                         }
                     }
                     close_connection (ref connection);
@@ -433,11 +437,11 @@ namespace G4 {
                     send_frame ((!)connection, 1, command.payload);
                     receive_frame ((!)connection);
                     activity_set = command.has_activity;
-                    debug (command.has_activity
-                        ? "Discord activity updated"
-                        : "Discord activity cleared");
+                    print ("Discord RPC: " + (command.has_activity
+                        ? "Discord activity updated\n" : "Discord activity cleared\n"));
+                        
                 } catch (Error e) {
-                    warning ("Discord RPC update failed: %s", e.message);
+                    print ("Discord RPC update failed: %s\n", e.message);
                     activity_set = false;
                     close_connection (ref connection);
                 }
@@ -481,7 +485,7 @@ namespace G4 {
                                 @"{\"v\":1,\"client_id\":\"$CLIENT_ID\"}");
                             receive_frame ((!)candidate);
                             connection = candidate;
-                            debug ("Connected to Discord RPC at %s", path);
+                            print ("Connected to Discord RPC at %s\n", path);
                             return true;
                         } catch (Error e) {
                             last_error = e;
@@ -492,9 +496,9 @@ namespace G4 {
             }
 
             if (found_socket && last_error != null)
-                warning ("Unable to connect to Discord RPC: %s", ((!)last_error).message);
+                print ("Unable to connect to Discord RPC: %s\n", ((!)last_error).message);
             else
-                debug ("Discord RPC socket was not found");
+                print ("Discord RPC socket was not found\n");
             return false;
         }
 
