@@ -171,6 +171,15 @@ namespace G4 {
             }
         }
 
+        public Gst.ClockTime duration {
+            get {
+                if (_duration == Gst.CLOCK_TIME_NONE && _pipeline != null) {
+                    ((!)_pipeline).query_duration (Gst.Format.TIME, out _duration);
+                }
+                return _duration;
+            }
+        }
+
         public Gst.ClockTime position {
             get {
                 return _position;

@@ -17,14 +17,12 @@ namespace G4 {
     }
 
     public class DiscordRpc : Object {
-        // Keep KIYORA's application so Discord displays "KIYORA", while mirroring
-        // Harmonoid's Rich Presence fields and state transitions.
         private const string CLIENT_ID = "1358358227913543821";
-        private const string DEFAULT_LARGE_IMAGE = "cover_default";
+        private const string DEFAULT_LARGE_IMAGE = "b9267e02-8cd6-4560-bd23-750d6645ee6a";
         private const string PAUSE_SMALL_IMAGE = "pause";
         private const string PLAY_SMALL_IMAGE = "play";
         private const int ACTIVITY_TYPE_LISTENING = 2;
-        private const uint UPDATE_DELAY_MS = 250;
+        private const uint UPDATE_DELAY_MS = 300;
         private const uint RETRY_INTERVAL_SECONDS = 15;
         private const uint SOCKET_TIMEOUT_SECONDS = 2;
         private const uint32 MAX_FRAME_SIZE = 1024 * 1024;
@@ -34,17 +32,22 @@ namespace G4 {
         private string _current_uri = "";
         private string _large_image = DEFAULT_LARGE_IMAGE;
         private Gst.ClockTime _duration = Gst.CLOCK_TIME_NONE;
-        private Gst.ClockTime _flag_position = Gst.CLOCK_TIME_NONE;
+        private int64 _last_start_time = 0;
+        private bool _has_started = false;
         private Thread<bool>? _worker = null;
         private ulong _cover_changed_id = 0;
         private Cancellable? _upload_cancellable = null;
+        private string _uploading_uri = "";
+        private HashTable<string, string> _uploaded_covers = new HashTable<string, string> (str_hash, str_equal);
         private Settings _settings;
+        private ulong _provider_changed_id = 0;
         private ulong _duration_changed_id = 0;
         private ulong _music_changed_id = 0;
         private ulong _position_updated_id = 0;
         private ulong _state_changed_id = 0;
         private uint _retry_id = 0;
         private uint _update_id = 0;
+        private bool _connected = false;
         private bool _stopped = false;
 
         public DiscordRpc (Application app) {
@@ -57,41 +60,93 @@ namespace G4 {
                 if (_current_uri != uri) {
                     _current_uri = uri;
                     _duration = Gst.CLOCK_TIME_NONE;
-                    _flag_position = Gst.CLOCK_TIME_NONE;
-                    _large_image = get_cover_image (music?.cover_uri);
-                    if (music != null) {
-                        try_upload_cover (music, null, ((!)music).cover_uri);
+                    _last_start_time = 0;
+
+                    if (_has_started && music != null) {
+                        var cache_key = ((!)music).cover_key;
+                        if (_uploaded_covers.contains (cache_key)) {
+                            _large_image = (!) _uploaded_covers.get (cache_key);
+                        } else {
+                            _large_image = get_cover_image (((!)music).cover_uri);
+                            try_upload_cover (music, null, ((!)music).cover_uri);
+                        }
+                    } else {
+                        _large_image = DEFAULT_LARGE_IMAGE;
                     }
                 }
                 schedule_update ();
             });
+
             _cover_changed_id = app.music_cover_parsed.connect ((music, pixbuf, uri) => {
-                if (music.uri != _current_uri)
+                if (!_has_started || music.uri != _current_uri)
                     return;
+
                 var large_image = get_cover_image (uri);
                 if (large_image != DEFAULT_LARGE_IMAGE) {
                     if (_large_image != large_image) {
                         _large_image = large_image;
                         schedule_update ();
                     }
-                } else if (_large_image == DEFAULT_LARGE_IMAGE) {
+                } else {
                     try_upload_cover (music, pixbuf, uri);
                 }
             });
+
             _duration_changed_id = app.player.duration_changed.connect ((duration) => {
-                _duration = duration;
+                if (_duration != duration) {
+                    _duration = duration;
+                    schedule_update ();
+                }
+            });
+
+            _position_updated_id = app.player.position_updated.connect ((position) => {
+                if (position_requires_update (position)) {
+                    schedule_update ();
+                }
+            });
+
+            _state_changed_id = app.player.state_changed.connect (() => {
+                if (_app.player.state == Gst.State.PLAYING) {
+                    if (!_has_started) {
+                        _has_started = true;
+                        unowned Music? music = _app.current_music;
+                        if (music != null) {
+                            var cache_key = ((!)music).cover_key;
+                            if (_uploaded_covers.contains (cache_key)) {
+                                _large_image = (!) _uploaded_covers.get (cache_key);
+                            } else {
+                                _large_image = get_cover_image (((!)music).cover_uri);
+                                try_upload_cover (music, null, ((!)music).cover_uri);
+                            }
+                        }
+                    }
+                }
                 schedule_update ();
             });
-            _position_updated_id = app.player.position_updated.connect ((position) => {
-                if (position_requires_update (position))
-                    schedule_update ();
+
+            _provider_changed_id = _settings.changed["discord-cover-provider"].connect (() => {
+                if (!_has_started)
+                    return;
+
+                unowned Music? music = _app.current_music;
+                if (music != null) {
+                    var provider = _settings.get_uint ("discord-cover-provider");
+                    if (provider == 0) {
+                        if (_large_image != DEFAULT_LARGE_IMAGE) {
+                            _large_image = DEFAULT_LARGE_IMAGE;
+                            schedule_update ();
+                        }
+                    } else {
+                        try_upload_cover (music, null, ((!)music).cover_uri);
+                    }
+                }
             });
-            _state_changed_id = app.player.state_changed.connect (() => schedule_update ());
 
             _retry_id = Timeout.add_seconds (RETRY_INTERVAL_SECONDS, () => {
                 if (_stopped)
                     return Source.REMOVE;
-                enqueue_current_activity ();
+                if (!_connected)
+                    enqueue_current_activity ();
                 return Source.CONTINUE;
             });
 
@@ -103,6 +158,11 @@ namespace G4 {
                 return;
             _stopped = true;
 
+            if (_upload_cancellable != null) {
+                ((!)_upload_cancellable).cancel ();
+                _upload_cancellable = null;
+            }
+
             if (_update_id != 0) {
                 Source.remove (_update_id);
                 _update_id = 0;
@@ -113,22 +173,34 @@ namespace G4 {
             }
 
             disconnect_signals ();
-            _commands.push (new DiscordRpcCommand (build_command (null, false), false, true));
+            _commands.push (new DiscordRpcCommand (build_clear_command (), false, true));
             _worker?.join ();
             _worker = null;
         }
 
-                private void try_upload_cover (Music? music, Gdk.Pixbuf? pixbuf, string? uri) {
-            if (music == null) return;
-            if (_upload_cancellable != null) {
-                ((!)_upload_cancellable).cancel ();
-                _upload_cancellable = null;
-            }
+        private void try_upload_cover (Music? music, Gdk.Pixbuf? pixbuf, string? uri) {
+            if (music == null)
+                return;
 
             var provider = _settings.get_uint ("discord-cover-provider");
-            if (provider == 0) return;
+            if (provider == 0)
+                return;
 
             if (uri != null && (((!)uri).has_prefix ("http://") || ((!)uri).has_prefix ("https://")))
+                return;
+
+            var cache_key = ((!)music).cover_key;
+            if (_uploaded_covers.contains (cache_key)) {
+                var cached = (!) _uploaded_covers.get (cache_key);
+                if (_large_image != cached) {
+                    _large_image = cached;
+                    schedule_update ();
+                }
+                return;
+            }
+
+            // If already uploading cover for this exact track and no new pixbuf is given, don't restart
+            if (_upload_cancellable != null && _uploading_uri == ((!)music).uri && pixbuf == null)
                 return;
 
             Gdk.Pixbuf? cover = pixbuf;
@@ -145,20 +217,45 @@ namespace G4 {
                 }
             }
 
-            if (cover == null) return;
+            if (cover == null)
+                return;
 
+            if (_upload_cancellable != null) {
+                ((!)_upload_cancellable).cancel ();
+                _upload_cancellable = null;
+            }
+
+            _uploading_uri = ((!)music).uri;
             _upload_cancellable = new Cancellable ();
-            upload_cover_async.begin ((!)music, (!)cover, provider, _settings.get_string ("discord-imgbb-api-key"), _upload_cancellable, (obj, res) => {
+            var cancellable = _upload_cancellable;
+
+            upload_cover_async.begin ((!)music, (!)cover, provider, _settings.get_string ("discord-imgbb-api-key"), cancellable, (obj, res) => {
+                if (cancellable != null && ((!)cancellable).is_cancelled ())
+                    return;
+
                 try {
                     var url = upload_cover_async.end (res);
-                    if (url != null && ((!)url).length > 0 && ((!)music).uri == _current_uri) {
-                        print ("Upload successful! URL: %s\n", (!)url);
-                        _large_image = (!)url;
-                        schedule_update ();
+                    if (url != null && ((!)url).length > 0) {
+                        _uploaded_covers.insert (cache_key, (!)url);
+                        if (((!)music).uri == _current_uri) {
+                            print ("Upload successful! URL: %s\n", (!)url);
+                            _large_image = (!)url;
+                            schedule_update ();
+                        }
                     }
                 } catch (Error e) {
-                    if (!(e is IOError.CANCELLED))
+                    if (!(e is IOError.CANCELLED)) {
                         print ("Cover upload failed: %s\n", e.message);
+                        if (_large_image != DEFAULT_LARGE_IMAGE && ((!)music).uri == _current_uri) {
+                            _large_image = DEFAULT_LARGE_IMAGE;
+                            schedule_update ();
+                        }
+                    }
+                } finally {
+                    if (_upload_cancellable == cancellable) {
+                        _upload_cancellable = null;
+                        _uploading_uri = "";
+                    }
                 }
             });
         }
@@ -167,7 +264,7 @@ namespace G4 {
             int width = original.get_width ();
             int height = original.get_height ();
             int size = int.min (width, height);
-            
+
             Gdk.Pixbuf processed = original;
             if (width != height) {
                 processed = new Gdk.Pixbuf.subpixbuf (original, (width - size) / 2, (height - size) / 2, size, size);
@@ -192,7 +289,9 @@ namespace G4 {
                 multipart.append_form_string ("reqtype", "fileupload");
                 multipart.append_form_file ("fileToUpload", filename, "image/jpeg", new Bytes (buffer));
             } else if (provider == 2) {
-                multipart.append_form_string ("key", api_key);
+                if (api_key.strip ().length == 0)
+                    throw new IOError.FAILED ("ImgBB API key is empty");
+                multipart.append_form_string ("key", api_key.strip ());
                 multipart.append_form_file ("image", filename, "image/jpeg", new Bytes (buffer));
             }
 
@@ -203,7 +302,7 @@ namespace G4 {
             }
 
             string response = (string) bytes.get_data ();
-            
+
             string? url = null;
             if (provider == 1) {
                 url = response.strip ();
@@ -226,8 +325,8 @@ namespace G4 {
                 var check_msg = new Soup.Message ("HEAD", (!)url);
                 yield session.send_and_read_async (check_msg, Priority.DEFAULT, cancellable);
                 if (check_msg.status_code == 404) {
-                    print ("Image returned 404, using fallback URL.\n");
-                    return "https://i.ibb.co/LXT2kyzG/b9267e02-8cd6-4560-bd23-750d6645ee6a.png";
+                    print ("Image returned 404, using fallback asset.\n");
+                    return DEFAULT_LARGE_IMAGE;
                 }
                 return url;
             }
@@ -255,17 +354,33 @@ namespace G4 {
                 SignalHandler.disconnect (_app.player, _state_changed_id);
                 _state_changed_id = 0;
             }
+            if (_provider_changed_id != 0) {
+                SignalHandler.disconnect (_settings, _provider_changed_id);
+                _provider_changed_id = 0;
+            }
         }
 
         private bool position_requires_update (Gst.ClockTime position) {
-            if (position == Gst.CLOCK_TIME_NONE)
+            if (!_has_started || position == Gst.CLOCK_TIME_NONE || _app.player.state != Gst.State.PLAYING)
                 return false;
-            if (_flag_position == Gst.CLOCK_TIME_NONE)
+
+            if (_last_start_time == 0)
+                return false;
+
+            var now = get_real_time () / 1000000;
+            var expected_pos = (now - _last_start_time) * Gst.SECOND;
+            var difference = position > expected_pos
+                ? position - expected_pos
+                : expected_pos - position;
+
+            // Only update if position drifted from timer by more than 3 seconds (e.g. seeking)
+            if (difference > 3 * Gst.SECOND) {
+                var position_seconds = (int64) (position / Gst.SECOND);
+                _last_start_time = int64.max (0, now - position_seconds);
                 return true;
-            var difference = position > _flag_position
-                ? position - _flag_position
-                : _flag_position - position;
-            return difference > 10 * Gst.SECOND;
+            }
+
+            return false;
         }
 
         private void schedule_update () {
@@ -285,10 +400,9 @@ namespace G4 {
                 return;
 
             unowned Music? music = _app.current_music;
-            var playing = music != null && _app.player.state == Gst.State.PLAYING;
-            _flag_position = _app.player.position;
+            var playing = _has_started && music != null && _app.player.state == Gst.State.PLAYING;
             _commands.push (new DiscordRpcCommand (
-                build_command (music, playing), music != null
+                build_command (music, playing), true
             ));
         }
 
@@ -303,8 +417,21 @@ namespace G4 {
             builder.add_int_value ((int64) Posix.getpid ());
             builder.set_member_name ("activity");
 
-            if (music == null) {
-                builder.add_null_value ();
+            if (!_has_started || music == null) {
+                _last_start_time = 0;
+                builder.begin_object ();
+                builder.set_member_name ("type");
+                builder.add_int_value (ACTIVITY_TYPE_LISTENING);
+                builder.set_member_name ("details");
+                builder.add_string_value (_("Choosing a track"));
+                builder.set_member_name ("assets");
+                builder.begin_object ();
+                builder.set_member_name ("large_image");
+                builder.add_string_value (DEFAULT_LARGE_IMAGE);
+                builder.set_member_name ("large_text");
+                builder.add_string_value ("KIYORA");
+                builder.end_object ();
+                builder.end_object ();
             } else {
                 var title = get_title ((!)music);
                 var artist = get_artist ((!)music);
@@ -315,11 +442,11 @@ namespace G4 {
                 builder.add_int_value (ACTIVITY_TYPE_LISTENING);
                 if (title.strip ().length > 0) {
                     builder.set_member_name ("details");
-                    builder.add_string_value (truncate_rpc_text (title));
+                    builder.add_string_value (sanitize_rpc_text (title));
                 }
-                if (artist.length > 0) {
+                if (artist.strip ().length > 0) {
                     builder.set_member_name ("state");
-                    builder.add_string_value (truncate_rpc_text (artist));
+                    builder.add_string_value (sanitize_rpc_text (artist));
                 }
 
                 if (playing) {
@@ -328,29 +455,35 @@ namespace G4 {
                         var now = get_real_time () / 1000000;
                         var position_seconds = (int64) (position / Gst.SECOND);
                         var start = int64.max (0, now - position_seconds);
+                        _last_start_time = start;
 
                         builder.set_member_name ("timestamps");
                         builder.begin_object ();
                         builder.set_member_name ("start");
                         builder.add_int_value (start);
-                        if (_duration != Gst.CLOCK_TIME_NONE && _duration > 0) {
+                        var duration = _duration != Gst.CLOCK_TIME_NONE ? _duration : _app.player.duration;
+                        if (duration != Gst.CLOCK_TIME_NONE && duration > 0) {
                             builder.set_member_name ("end");
-                            builder.add_int_value (start + (int64) (_duration / Gst.SECOND));
+                            builder.add_int_value (start + (int64) (duration / Gst.SECOND));
                         }
                         builder.end_object ();
+                    } else {
+                        _last_start_time = 0;
                     }
+                } else {
+                    _last_start_time = 0;
                 }
 
                 builder.set_member_name ("assets");
                 builder.begin_object ();
                 builder.set_member_name ("large_image");
                 builder.add_string_value (_large_image);
+                if (description.strip ().length > 0) {
+                    builder.set_member_name ("large_text");
+                    builder.add_string_value (sanitize_rpc_text (description));
+                }
                 builder.set_member_name ("small_image");
                 builder.add_string_value (playing ? PLAY_SMALL_IMAGE : PAUSE_SMALL_IMAGE);
-                if (description.length > 0) {
-                    builder.set_member_name ("large_text");
-                    builder.add_string_value (truncate_rpc_text (description));
-                }
                 builder.set_member_name ("small_text");
                 builder.add_string_value (playing ? _("Playing") : _("Paused"));
                 builder.end_object ();
@@ -377,6 +510,27 @@ namespace G4 {
             var payload = generator.to_data (null);
             print ("Sending payload: %s\n", payload);
             return payload;
+        }
+
+        private static string build_clear_command () {
+            var builder = new Json.Builder ();
+            builder.begin_object ();
+            builder.set_member_name ("cmd");
+            builder.add_string_value ("SET_ACTIVITY");
+            builder.set_member_name ("args");
+            builder.begin_object ();
+            builder.set_member_name ("pid");
+            builder.add_int_value ((int64) Posix.getpid ());
+            builder.set_member_name ("activity");
+            builder.add_null_value ();
+            builder.end_object ();
+            builder.set_member_name ("nonce");
+            builder.add_string_value (Uuid.string_random ());
+            builder.end_object ();
+
+            var generator = new Json.Generator ();
+            generator.set_root ((!)builder.get_root ());
+            return generator.to_data (null);
         }
 
         private static string get_title (Music music) {
@@ -414,11 +568,16 @@ namespace G4 {
             return "https://www.google.com/search?q=" + Uri.escape_string (query, null, false);
         }
 
-        private static string truncate_rpc_text (string text) {
+        private static string sanitize_rpc_text (string text) {
+            var trimmed = text.strip ();
+            if (trimmed.char_count () == 0)
+                return "";
+            if (trimmed.char_count () == 1)
+                return trimmed + " ";
             const int MAX_CHARS = 128;
-            if (text.char_count () <= MAX_CHARS)
-                return text;
-            return text.substring (0, text.index_of_nth_char (MAX_CHARS - 3)) + "...";
+            if (trimmed.char_count () <= MAX_CHARS)
+                return trimmed;
+            return trimmed.substring (0, trimmed.index_of_nth_char (MAX_CHARS - 3)) + "...";
         }
 
         private bool worker_loop () {
@@ -440,6 +599,7 @@ namespace G4 {
                             print ("Unable to clear Discord activity during shutdown: %s\n", e.message);
                         }
                     }
+                    _connected = false;
                     close_connection (ref connection);
                     return true;
                 }
@@ -447,8 +607,13 @@ namespace G4 {
                 if (!command.has_activity && (!activity_set || connection == null))
                     continue;
 
-                if (connection == null && !connect_discord (out connection))
-                    continue;
+                if (connection == null) {
+                    if (!connect_discord (out connection)) {
+                        _connected = false;
+                        continue;
+                    }
+                    _connected = true;
+                }
 
                 try {
                     send_frame ((!)connection, 1, command.payload);
@@ -460,6 +625,7 @@ namespace G4 {
                 } catch (Error e) {
                     print ("Discord RPC update failed: %s\n", e.message);
                     activity_set = false;
+                    _connected = false;
                     close_connection (ref connection);
                 }
             }

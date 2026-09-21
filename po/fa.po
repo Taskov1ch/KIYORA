@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-23 08:45+0600\n"
+"POT-Creation-Date: 2026-09-22 00:02+0600\n"
 "PO-Revision-Date: 2025-01-13 16:21+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <kde-i18n-doc@kde.org>\n"
@@ -117,6 +117,937 @@ msgstr "پشتیانی از سامانهٔ صوتی مشخّص."
 msgid "Supports MPRIS control."
 msgstr "پشتیبانی از واپایش MPRIS."
 
+#: data/app.metainfo.xml.in:50
+msgid "Try to fix clipping labels."
+msgstr ""
+
+#: data/app.metainfo.xml.in:51
+msgid "Update translation: Italian, Polish."
+msgstr ""
+
+#: data/app.metainfo.xml.in:58
+msgid "Present window from activate."
+msgstr ""
+
+#: data/app.metainfo.xml.in:59
+msgid "Upgrade to GNOME 50."
+msgstr ""
+
+#: data/app.metainfo.xml.in:60
+msgid "Add translation: Serbian, Polish, Portuguese, Kazakh."
+msgstr ""
+
+#: data/app.metainfo.xml.in:61
+msgid "Update translation: Georgian, Romanian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:68
+msgid "Get filtered items as a playlist."
+msgstr ""
+
+#: data/app.metainfo.xml.in:69
+msgid "Upgrade to GNOME 49."
+msgstr ""
+
+#: data/app.metainfo.xml.in:70
+msgid "Add translation: Interlingua, Greek."
+msgstr ""
+
+#: data/app.metainfo.xml.in:71
+msgid "Update Hungarian translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:78
+msgid "Always insert to the next position when play an album."
+msgstr ""
+
+#: data/app.metainfo.xml.in:79
+msgid "Click index always to open the playing page."
+msgstr ""
+
+#: data/app.metainfo.xml.in:80
+msgid "Load the library into the queue only when it is empty."
+msgstr ""
+
+#: data/app.metainfo.xml.in:87
+msgid "Click index to open playing page, restore on next startup."
+msgstr ""
+
+#: data/app.metainfo.xml.in:88
+msgid "Set the main window as parent."
+msgstr ""
+
+#: data/app.metainfo.xml.in:89
+msgid "Upgrade to GNOME 48."
+msgstr ""
+
+#: data/app.metainfo.xml.in:90
+msgid "Update Danish translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:97
+msgid "Add Bulgarian translation"
+msgstr ""
+
+#: data/app.metainfo.xml.in:98
+msgid "Update translation: Danish, Persian, Hebrew."
+msgstr ""
+
+#: data/app.metainfo.xml.in:105
+msgid "Optimize scrolling to current item at startup."
+msgstr ""
+
+#: data/app.metainfo.xml.in:106
+msgid "Update translation: Swedish, Finnish, Occitan, Turkish."
+msgstr ""
+
+#: data/app.metainfo.xml.in:113
+msgid "Optimize relative file paths for playlists."
+msgstr ""
+
+#: data/app.metainfo.xml.in:114
+msgid "Start drag only when the pointer inside the cover image."
+msgstr ""
+
+#: data/app.metainfo.xml.in:115
+msgid "Show the full date of the album if possible."
+msgstr ""
+
+#: data/app.metainfo.xml.in:116
+msgid "Build with low version of vala compiler."
+msgstr ""
+
+#: data/app.metainfo.xml.in:117
+msgid "Update translation: Slovak, German, Dutch, Occitan."
+msgstr ""
+
+#: data/app.metainfo.xml.in:124
+msgid ""
+"Use the main queue as the actual \"Now Playing\" and \"Playing History\"."
+msgstr ""
+
+#: data/app.metainfo.xml.in:125
+msgid "New style for the number of files being dragging."
+msgstr ""
+
+#: data/app.metainfo.xml.in:126
+msgid "Optimize updating the library."
+msgstr ""
+
+#: data/app.metainfo.xml.in:127
+msgid "Support volume for mpris."
+msgstr ""
+
+#: data/app.metainfo.xml.in:128
+msgid "Update translation: German, Russian, Georgian, Belarusian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:134
+#, fuzzy
+msgid "New features:"
+msgstr "ویژگی‌ها"
+
+#: data/app.metainfo.xml.in:136
+msgid "Add music to playlist, edit/rename/remove existing playlists."
+msgstr ""
+
+#: data/app.metainfo.xml.in:137
+msgid ""
+"Drag cover image to re-arrange in a playlist, add to another playlist, or "
+"share to another app."
+msgstr ""
+
+#: data/app.metainfo.xml.in:138
+msgid "Insert music files to playlist drag from another app."
+msgstr ""
+
+#: data/app.metainfo.xml.in:139
+msgid "Show detail tags in a dialog."
+msgstr ""
+
+#: data/app.metainfo.xml.in:140
+msgid "Move music/playlist file to trash."
+msgstr ""
+
+#: data/app.metainfo.xml.in:141
+#, fuzzy
+msgid "New option: single click to activate item."
+msgstr "یک بار زدن برای فعّال کردن مورد"
+
+#: data/app.metainfo.xml.in:143
+msgid "Breaking changes:"
+msgstr ""
+
+#: data/app.metainfo.xml.in:145
+msgid "Long press an item to enter multiple selection mode."
+msgstr ""
+
+#: data/app.metainfo.xml.in:146
+msgid "The main queue is editable and recoverable on next startup."
+msgstr ""
+
+#: data/app.metainfo.xml.in:147
+msgid ""
+"Except the main queue, albums/playlists are no longer sort-able, but can be "
+"random played."
+msgstr ""
+
+#: data/app.metainfo.xml.in:148
+msgid ""
+"Won't switch playing list unless activate manually or play end, open on next "
+"startup."
+msgstr ""
+
+#: data/app.metainfo.xml.in:149
+msgid "Parse ORIGINALDATE/YEAR from Extended-Comment as album's date."
+msgstr ""
+
+#: data/app.metainfo.xml.in:150
+msgid "Full support of color scheme: System/Light/Dark."
+msgstr ""
+
+#: data/app.metainfo.xml.in:151
+msgid ""
+"Don't enable pipewire manually, override the rank if still want to use it."
+msgstr ""
+
+#: data/app.metainfo.xml.in:153
+msgid "Optimizations:"
+msgstr ""
+
+#: data/app.metainfo.xml.in:155
+msgid "Improve performance of loading large playlist."
+msgstr ""
+
+#: data/app.metainfo.xml.in:156
+msgid "Group popover menu actions."
+msgstr ""
+
+#: data/app.metainfo.xml.in:157
+msgid "Many other optimizations by code refactoring."
+msgstr ""
+
+#: data/app.metainfo.xml.in:164
+msgid "Fix audio seeking stutter, thanks to @dov-vai."
+msgstr ""
+
+#: data/app.metainfo.xml.in:165
+msgid "Load last played file first before load other files."
+msgstr ""
+
+#: data/app.metainfo.xml.in:166
+msgid "Update the library pages when file changes."
+msgstr ""
+
+#: data/app.metainfo.xml.in:167 data/app.metainfo.xml.in:513
+msgid "Many UI optimizations."
+msgstr ""
+
+#: data/app.metainfo.xml.in:168
+msgid "Update translation: Occitan, Persian, Hebrew, Russian, Georgian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:175
+msgid "Play the next album after end of an album."
+msgstr ""
+
+#: data/app.metainfo.xml.in:176
+msgid "Optimize UI layout, shrink the window."
+msgstr ""
+
+#: data/app.metainfo.xml.in:177
+msgid "Fix crash when open an album with invalid utf-8 name."
+msgstr ""
+
+#: data/app.metainfo.xml.in:178
+msgid ""
+"Update translation: Ukrainian, Slovenian, German, Slovenian, Belarusian, "
+"Chinese."
+msgstr ""
+
+#: data/app.metainfo.xml.in:185
+msgid "Optimize UI layout and style for small screen."
+msgstr ""
+
+#: data/app.metainfo.xml.in:186
+msgid "Optimize loading cover of playing music."
+msgstr ""
+
+#: data/app.metainfo.xml.in:187
+msgid "Optimize pressing Space to toggle play/pause."
+msgstr ""
+
+#: data/app.metainfo.xml.in:188
+msgid "Update translation: Chinese, German."
+msgstr ""
+
+#: data/app.metainfo.xml.in:195
+msgid "Fix initial view when no music."
+msgstr ""
+
+#: data/app.metainfo.xml.in:196
+msgid "Fix Drag-drop when no music."
+msgstr ""
+
+#: data/app.metainfo.xml.in:197
+msgid ""
+"Update translation: Hindi, Occitan, Persian, Brazilian Portuguese, "
+"Hungarian, Swedish, Turkish, Belarusian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:204
+msgid "Fix build issue before GTK 4.10."
+msgstr ""
+
+#: data/app.metainfo.xml.in:205
+msgid "Update translation: Russian, Slovenian, Ukrainian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:212
+msgid "Updated the application name to follow GNOME HIG."
+msgstr ""
+
+#: data/app.metainfo.xml.in:213
+msgid "Marquee animation for long title."
+msgstr ""
+
+#: data/app.metainfo.xml.in:214
+msgid "Fix cursor for clickable label."
+msgstr ""
+
+#: data/app.metainfo.xml.in:215
+msgid "Tweak blur background."
+msgstr ""
+
+#: data/app.metainfo.xml.in:216
+msgid "Add Hebrew translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:217
+msgid "Update Occitan translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:224
+msgid "Drag the play-panel to move the window."
+msgstr ""
+
+#: data/app.metainfo.xml.in:225
+msgid "Individual sort-mode for albums."
+msgstr ""
+
+#: data/app.metainfo.xml.in:226
+msgid "show indicator and scroll to the playing artist/album."
+msgstr ""
+
+#: data/app.metainfo.xml.in:227
+msgid "Save and restore window's maximized."
+msgstr ""
+
+#: data/app.metainfo.xml.in:228
+msgid "Many other UI improvement and fixing."
+msgstr ""
+
+#: data/app.metainfo.xml.in:229
+msgid "Use playbin3 if gstreamer>=1.24."
+msgstr ""
+
+#: data/app.metainfo.xml.in:236
+msgid "Optimize pressing Space to play/pause."
+msgstr ""
+
+#: data/app.metainfo.xml.in:237
+msgid "Add translation: Persian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:244
+msgid "Press Space to toggle play/pause."
+msgstr ""
+
+#: data/app.metainfo.xml.in:245
+msgid "Add Position property for MPRIS."
+msgstr ""
+
+#: data/app.metainfo.xml.in:246
+msgid "Don't change playing music after reload library."
+msgstr ""
+
+#: data/app.metainfo.xml.in:253
+msgid "Update current item when items changed."
+msgstr ""
+
+#: data/app.metainfo.xml.in:254
+msgid "Free memory when music be removed."
+msgstr ""
+
+#: data/app.metainfo.xml.in:255
+msgid "Add translation: Georgian, Hindi."
+msgstr ""
+
+#: data/app.metainfo.xml.in:256
+msgid "Update translation: Spanish, Slovenian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:263
+msgid "Fix \"playing\" state for music entries."
+msgstr ""
+
+#: data/app.metainfo.xml.in:264
+msgid "Use Overlay to avoid changing list's width."
+msgstr ""
+
+#: data/app.metainfo.xml.in:265
+msgid "Sorting albums by Disc Number."
+msgstr ""
+
+#: data/app.metainfo.xml.in:266
+msgid "Add translation: Romanian, Danish, Slovenian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:267
+msgid "Update translation: Belarusian, Occitan."
+msgstr ""
+
+#: data/app.metainfo.xml.in:274
+msgid "Fix style of switch bar."
+msgstr ""
+
+#: data/app.metainfo.xml.in:275
+msgid "Fix loading M3U playlist."
+msgstr ""
+
+#: data/app.metainfo.xml.in:276
+msgid "Add Hungarian translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:277
+msgid "Update Swedish translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:284
+msgid "Make seek_bar auto width."
+msgstr ""
+
+#: data/app.metainfo.xml.in:285 data/app.metainfo.xml.in:296
+#: data/app.metainfo.xml.in:342 data/app.metainfo.xml.in:354
+#: data/app.metainfo.xml.in:397 data/app.metainfo.xml.in:405
+#: data/app.metainfo.xml.in:413 data/app.metainfo.xml.in:430
+#: data/app.metainfo.xml.in:440
+msgid "UI improvement and fixing."
+msgstr ""
+
+#: data/app.metainfo.xml.in:286
+msgid "Add translation: Ukrainian, Finnish, Indonesian, Basque."
+msgstr ""
+
+#: data/app.metainfo.xml.in:287
+msgid "Update translation: Spanish, French, German, Turkish, Russian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:294
+#, fuzzy
+msgid "Option: Grid view for artists/albums."
+msgstr "نمای شبکه‌ای برای هنرمند‌ها و آلبوم‌ها"
+
+#: data/app.metainfo.xml.in:295
+msgid "Bigger image size and column width for grid view."
+msgstr ""
+
+#: data/app.metainfo.xml.in:303
+msgid "Group by album-artist, sort albums by year."
+msgstr ""
+
+#: data/app.metainfo.xml.in:304
+msgid "Save and restore the last library view."
+msgstr ""
+
+#: data/app.metainfo.xml.in:305
+msgid "Open a new page when play all music of an artist."
+msgstr ""
+
+#: data/app.metainfo.xml.in:306
+msgid "Stay in the current list when playing the whole album."
+msgstr ""
+
+#: data/app.metainfo.xml.in:307
+msgid "Show the local playlists."
+msgstr ""
+
+#: data/app.metainfo.xml.in:308
+msgid "Optimize searching."
+msgstr ""
+
+#: data/app.metainfo.xml.in:309
+msgid "Update German and Japanese translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:316
+#, fuzzy
+msgid "Group artists/albums as library."
+msgstr "نمای شبکه‌ای برای هنرمند‌ها و آلبوم‌ها"
+
+#: data/app.metainfo.xml.in:317
+msgid "Optimize layout for landscape view."
+msgstr ""
+
+#: data/app.metainfo.xml.in:318
+msgid "Show progressbar when loading."
+msgstr ""
+
+#: data/app.metainfo.xml.in:319
+msgid "Add icons for preference rows."
+msgstr ""
+
+#: data/app.metainfo.xml.in:320
+msgid "Optimize seeking."
+msgstr ""
+
+#: data/app.metainfo.xml.in:321
+msgid "Add Japanese translation, thanks to @Gnuey56."
+msgstr ""
+
+#: data/app.metainfo.xml.in:328
+msgid "App icon refresh from @ddaudix."
+msgstr ""
+
+#: data/app.metainfo.xml.in:329
+msgid "Add a sort mode by: Artist/Album"
+msgstr ""
+
+#: data/app.metainfo.xml.in:330
+#, fuzzy
+msgid "Drag-drop folders works from Files."
+msgstr "کشیدن-رها کردن از پرونده‌های کنوم، نمایش آهنگ در پرونده‌ها."
+
+#: data/app.metainfo.xml.in:331
+msgid "Rotating cover sync with play progress, fix issues."
+msgstr ""
+
+#: data/app.metainfo.xml.in:332
+msgid "Fix gapless related issues."
+msgstr ""
+
+#: data/app.metainfo.xml.in:333 data/app.metainfo.xml.in:355
+#: data/app.metainfo.xml.in:378 data/app.metainfo.xml.in:431
+msgid "Update German translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:340
+msgid "Support .m3u/.pls playlist from command line."
+msgstr ""
+
+#: data/app.metainfo.xml.in:341
+msgid "Modeless preferences window."
+msgstr ""
+
+#: data/app.metainfo.xml.in:343 data/app.metainfo.xml.in:414
+msgid "Update Spanish translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:350
+msgid "Option: rotate cover when playing."
+msgstr ""
+
+#: data/app.metainfo.xml.in:351
+msgid "Click music title to search."
+msgstr ""
+
+#: data/app.metainfo.xml.in:352
+msgid "Revert to single page of preferences."
+msgstr ""
+
+#: data/app.metainfo.xml.in:353
+msgid "Add 2 shortcut keys."
+msgstr ""
+
+#: data/app.metainfo.xml.in:362
+msgid "App startup acceleration."
+msgstr ""
+
+#: data/app.metainfo.xml.in:363
+#, fuzzy
+msgid "Option: Prefer audio sink."
+msgstr "پشتیانی از سامانهٔ صوتی مشخّص."
+
+#: data/app.metainfo.xml.in:364
+msgid "Replay-gain supports album mode."
+msgstr ""
+
+#: data/app.metainfo.xml.in:365
+msgid "Show same album cover in app and MPRIS."
+msgstr ""
+
+#: data/app.metainfo.xml.in:372
+#, fuzzy
+msgid "Option: Monitor local file changes."
+msgstr "پایش تغییرات پرونده‌های محلی"
+
+#: data/app.metainfo.xml.in:373
+msgid "Right click or long press to show popover menu."
+msgstr ""
+
+#: data/app.metainfo.xml.in:374
+msgid "Scroll playlist smoothly."
+msgstr ""
+
+#: data/app.metainfo.xml.in:375
+msgid "Many UI improvements."
+msgstr ""
+
+#: data/app.metainfo.xml.in:376
+msgid "Optimize searching by album/artist/title."
+msgstr ""
+
+#: data/app.metainfo.xml.in:377
+msgid "Optimize loading files and cache."
+msgstr ""
+
+#: data/app.metainfo.xml.in:385
+#, fuzzy
+msgid "Option: compact playlist view."
+msgstr "نمای‌ سیاههٔ پخش فشرده"
+
+#: data/app.metainfo.xml.in:386
+msgid "Option: custom characters for audio peaks."
+msgstr ""
+
+#: data/app.metainfo.xml.in:387
+msgid "Optimize playlist text size."
+msgstr ""
+
+#: data/app.metainfo.xml.in:388
+msgid "Optimize for macOS."
+msgstr ""
+
+#: data/app.metainfo.xml.in:395
+msgid "Save memory and CPU usage."
+msgstr ""
+
+#: data/app.metainfo.xml.in:396
+msgid "New style for no-cover images."
+msgstr ""
+
+#: data/app.metainfo.xml.in:404 data/app.metainfo.xml.in:412
+msgid "MPRIS improvement."
+msgstr ""
+
+#: data/app.metainfo.xml.in:421
+msgid "Fix wrong icon name of repeat-song."
+msgstr ""
+
+#: data/app.metainfo.xml.in:422
+msgid "Fix wrong state of Switch buttons."
+msgstr ""
+
+#: data/app.metainfo.xml.in:429
+msgid "Optimize loading thumbnails."
+msgstr ""
+
+#: data/app.metainfo.xml.in:438
+msgid "Select a music file to \"Play at Next\"."
+msgstr ""
+
+#: data/app.metainfo.xml.in:439
+msgid "Lazy load thumbnails to faster startup and saving memory."
+msgstr ""
+
+#: data/app.metainfo.xml.in:441
+msgid "Add Occitan translation, thanks to Quentin PAGÈS."
+msgstr ""
+
+#: data/app.metainfo.xml.in:448
+msgid "Cache directories for faster loading."
+msgstr ""
+
+#: data/app.metainfo.xml.in:449
+msgid "Show peaks more smoothly."
+msgstr ""
+
+#: data/app.metainfo.xml.in:450
+msgid "Update Spanish and German translation, thanks to the translators."
+msgstr ""
+
+#: data/app.metainfo.xml.in:451
+msgid "v1.8.2: Build with vala 0.54."
+msgstr ""
+
+#: data/app.metainfo.xml.in:458
+msgid "Start to play when music changed."
+msgstr ""
+
+#: data/app.metainfo.xml.in:459
+#, fuzzy
+msgid "Optimize audio peaks visualizer."
+msgstr "پشتیبانی از نمایش سطح اوج صدا."
+
+#: data/app.metainfo.xml.in:460
+msgid "New style of popover menu."
+msgstr ""
+
+#: data/app.metainfo.xml.in:461
+msgid "Update many translation, thanks to the translators."
+msgstr ""
+
+#: data/app.metainfo.xml.in:468
+#, fuzzy
+msgid "Option: Background blur mode."
+msgstr "حالت محوی پس‌زمینه"
+
+#: data/app.metainfo.xml.in:469
+msgid "Shortcut key for toggle sort."
+msgstr ""
+
+#: data/app.metainfo.xml.in:470
+msgid "Don't changing current song when searching."
+msgstr ""
+
+#: data/app.metainfo.xml.in:471
+msgid "Add Estonian translation, thanks to Henri."
+msgstr ""
+
+#: data/app.metainfo.xml.in:472
+msgid "Add Traditional Chinese translation, thanks to Julian."
+msgstr ""
+
+#: data/app.metainfo.xml.in:473
+msgid "v1.6.1: Fix wrong sort order of cached tags."
+msgstr ""
+
+#: data/app.metainfo.xml.in:480
+msgid "Show loading songs progress with percent."
+msgstr ""
+
+#: data/app.metainfo.xml.in:481
+msgid "Add sort by recently added, thanks to Mek101."
+msgstr ""
+
+#: data/app.metainfo.xml.in:482
+msgid "Add German translation, thanks to Jürgen Benvenuti."
+msgstr ""
+
+#: data/app.metainfo.xml.in:483
+msgid "Bug fix and UI improvement."
+msgstr ""
+
+#: data/app.metainfo.xml.in:490
+msgid "Popover menu for song entry."
+msgstr ""
+
+#: data/app.metainfo.xml.in:491
+msgid "Show initial status if no sound found."
+msgstr ""
+
+#: data/app.metainfo.xml.in:492
+msgid "Try parse album and track from file path."
+msgstr ""
+
+#: data/app.metainfo.xml.in:493
+msgid "Add Italian translation, thanks to Albano Aattistella."
+msgstr ""
+
+#: data/app.metainfo.xml.in:500
+msgid "App inhibit suspend to keep playing."
+msgstr ""
+
+#: data/app.metainfo.xml.in:501
+msgid "Performance improvement and memory saving."
+msgstr ""
+
+#: data/app.metainfo.xml.in:502
+msgid "Parse tags of MKV/MKA."
+msgstr ""
+
+#: data/app.metainfo.xml.in:503
+msgid "Add French translation, thanks to Aurélien Hamy."
+msgstr ""
+
+#: data/app.metainfo.xml.in:504
+msgid "Add Dutch translation, thanks to Heimen Stoffels."
+msgstr ""
+
+#: data/app.metainfo.xml.in:511
+msgid "Faster parsing OGG and MP4 tags."
+msgstr ""
+
+#: data/app.metainfo.xml.in:512
+msgid "Faster drawing texts using pango."
+msgstr ""
+
+#: data/app.metainfo.xml.in:514
+msgid "Add Brazilian Portuguese translation, thanks to @PedroHSilva."
+msgstr ""
+
+#: data/app.metainfo.xml.in:521
+#, fuzzy
+msgid "Option: Gapless playback."
+msgstr "پشتیبانی از پخش بی‌وقفه."
+
+#: data/app.metainfo.xml.in:522
+msgid "Make label clickable instead of hypelinks."
+msgstr ""
+
+#: data/app.metainfo.xml.in:523
+msgid "Add Turkish translation, thanks to @Sabri Ünal."
+msgstr ""
+
+#: data/app.metainfo.xml.in:524
+msgid "Fix cover image issues."
+msgstr ""
+
+#: data/app.metainfo.xml.in:525
+msgid "Fix saving tag cache issues."
+msgstr ""
+
+#: data/app.metainfo.xml.in:532
+msgid "Support ReplayGain to normalize volume."
+msgstr ""
+
+#: data/app.metainfo.xml.in:533
+#, fuzzy
+msgid "Option: Keep playing after window closed."
+msgstr "ادامهٔ پخش پس از بستن پنجره"
+
+#: data/app.metainfo.xml.in:534
+msgid "Cache tags to make next loading faster."
+msgstr ""
+
+#: data/app.metainfo.xml.in:535
+msgid "Share album cover with same artist."
+msgstr ""
+
+#: data/app.metainfo.xml.in:536
+msgid "Fix some UI issues."
+msgstr ""
+
+#: data/app.metainfo.xml.in:537
+msgid "v1.0.1: Updated Russian translation."
+msgstr ""
+
+#: data/app.metainfo.xml.in:544
+msgid "Scale album cover to fix large window."
+msgstr ""
+
+#: data/app.metainfo.xml.in:545
+msgid "Navigate back if start search and folded."
+msgstr ""
+
+#: data/app.metainfo.xml.in:546
+msgid "Draw peak to avoid resizing the window."
+msgstr ""
+
+#: data/app.metainfo.xml.in:553
+#, fuzzy
+msgid "Show current song in Files."
+msgstr "نمایش _پروندهٔ آهنگ"
+
+#: data/app.metainfo.xml.in:554
+msgid "Sort by track number in an album."
+msgstr ""
+
+#: data/app.metainfo.xml.in:555
+msgid "Sort text by prefix number."
+msgstr ""
+
+#: data/app.metainfo.xml.in:556
+msgid "Always follow sym-links when enumerate a folder."
+msgstr ""
+
+#: data/app.metainfo.xml.in:557
+msgid "Add spanish translation, thanks to @Radi4Ever."
+msgstr ""
+
+#: data/app.metainfo.xml.in:564
+msgid "Parallel parsing tags to make loading songs even faster."
+msgstr ""
+
+#: data/app.metainfo.xml.in:565
+msgid "Merge all kinds of tags as possible."
+msgstr ""
+
+#: data/app.metainfo.xml.in:566
+msgid "Fix crash when parsing some FLAC files, thanks to @GeoffreyCoulaud."
+msgstr ""
+
+#: data/app.metainfo.xml.in:573
+msgid "Use Adw.Leaflet to adapt to PC and phone screens."
+msgstr ""
+
+#: data/app.metainfo.xml.in:574
+msgid "Show a mini play bar when only the playlist on the window."
+msgstr ""
+
+#: data/app.metainfo.xml.in:575
+msgid "Show a spinner when loading songs."
+msgstr ""
+
+#: data/app.metainfo.xml.in:576
+msgid "Save and restore the window size."
+msgstr ""
+
+#: data/app.metainfo.xml.in:577
+msgid "Add Swedish translation, thanks to Åke Engelbrektson."
+msgstr ""
+
+#: data/app.metainfo.xml.in:578
+msgid "Faster parsing FLAC tags."
+msgstr ""
+
+#: data/app.metainfo.xml.in:585
+msgid "Detect music file type to fix incorrect parsing."
+msgstr ""
+
+#: data/app.metainfo.xml.in:586
+msgid "Update app icon to follow GNOME HIG, thanks to @daudix-UFO."
+msgstr ""
+
+#: data/app.metainfo.xml.in:587
+msgid "Add Russian translation, thanks to @daudix-UFO."
+msgstr ""
+
+#: data/app.metainfo.xml.in:588
+msgid "Change \"Force Dark\" to \"Prefer Dark\"."
+msgstr ""
+
+#: data/app.metainfo.xml.in:595
+msgid "Recognize external images as cover art, supports transparency."
+msgstr ""
+
+#: data/app.metainfo.xml.in:596
+msgid "Don't support tracker_sparql because it is slow."
+msgstr ""
+
+#: data/app.metainfo.xml.in:603
+msgid "Sort songs by Album/Artist/Title."
+msgstr ""
+
+#: data/app.metainfo.xml.in:604
+#, fuzzy
+msgid "Option: Force dark theme."
+msgstr "ترجیح پوستهٔ تیره"
+
+#: data/app.metainfo.xml.in:605
+msgid "Optimized for responsiveness."
+msgstr ""
+
+#: data/app.metainfo.xml.in:612
+msgid "Add volume button."
+msgstr ""
+
+#: data/app.metainfo.xml.in:613
+msgid "Repeat single song mode."
+msgstr ""
+
+#: data/app.metainfo.xml.in:614
+msgid "Press any key to search, ESC to quit search."
+msgstr ""
+
+#: data/app.metainfo.xml.in:615
+msgid "Show abbreviation as MPRIS's cover if no cover image."
+msgstr ""
+
+#: data/app.metainfo.xml.in:621
+msgid "First release."
+msgstr ""
+
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -200,7 +1131,7 @@ msgstr "عمومی"
 msgid "Language"
 msgstr ""
 
-#: src/gtk/preferences.ui:15 src/ui/preferences.vala:81
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:87
 msgid "Changes take effect after restarting KIYORA"
 msgstr ""
 
@@ -220,55 +1151,67 @@ msgstr "نمای شبکه‌ای برای هنرمند‌ها و آلبوم‌ه
 msgid "Single click to activate item"
 msgstr "یک بار زدن برای فعّال کردن مورد"
 
-#: src/gtk/preferences.ui:63 src/application.vala:436
+#: src/gtk/preferences.ui:63 src/application.vala:453
 msgid "Keep playing after window closed"
 msgstr "ادامهٔ پخش پس از بستن پنجره"
 
-#: src/gtk/preferences.ui:76
+#: src/gtk/preferences.ui:75
+msgid "Discord Rich Presence"
+msgstr ""
+
+#: src/gtk/preferences.ui:79
+msgid "Cover Upload Provider"
+msgstr ""
+
+#: src/gtk/preferences.ui:84
+msgid "ImgBB API Key"
+msgstr ""
+
+#: src/gtk/preferences.ui:93
 msgid "Library"
 msgstr "کتابخانه"
 
-#: src/gtk/preferences.ui:80
+#: src/gtk/preferences.ui:97
 msgid "Load music from folder"
 msgstr "بار کردن آهنگ‌ها از شاخه"
 
-#: src/gtk/preferences.ui:92
+#: src/gtk/preferences.ui:109
 msgid "Monitor local file changes"
 msgstr "پایش تغییرات پرونده‌های محلی"
 
-#: src/gtk/preferences.ui:104
+#: src/gtk/preferences.ui:121
 msgid "Load thumbnails for non-local files"
 msgstr "بار کردن بندانگشتی‌ها برای پرونده‌های غیرمحلی"
 
-#: src/gtk/preferences.ui:105
+#: src/gtk/preferences.ui:122
 msgid "May cause slowdowns and excess network usage"
 msgstr "ممکن است موجب کندی و افزایش استفاده از شبکه شود"
 
-#: src/gtk/preferences.ui:118
+#: src/gtk/preferences.ui:135
 msgid "Playback"
 msgstr "پخش"
 
-#: src/gtk/preferences.ui:122
+#: src/gtk/preferences.ui:139
 msgid "Show audio peak level"
 msgstr "نمایش سطح اوج صدا"
 
-#: src/gtk/preferences.ui:126
+#: src/gtk/preferences.ui:143
 msgid "Display characters"
 msgstr "نمایش نویسه‌ها"
 
-#: src/gtk/preferences.ui:141
+#: src/gtk/preferences.ui:158
 msgid "Rotate album cover"
 msgstr "چرخاندن طرح جلد آلبوم"
 
-#: src/gtk/preferences.ui:153
+#: src/gtk/preferences.ui:170
 msgid "Enable gapless playback"
 msgstr "به کار انداختن پخش بی‌وقفه"
 
-#: src/gtk/preferences.ui:165
+#: src/gtk/preferences.ui:182
 msgid "Normalize volume with ReplayGain"
 msgstr "عادی سازی حجم صدا با ReplayGain"
 
-#: src/gtk/preferences.ui:171
+#: src/gtk/preferences.ui:188
 msgid "Prefer audio sink of GStreamer"
 msgstr "ترجیح سینک صدای GStreamer"
 
@@ -324,7 +1267,7 @@ msgstr "میان‌برهای _صفحه‌کلید"
 msgid "_About"
 msgstr "_درباره‌"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:106
+#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:122
 msgid "Album"
 msgstr "آلبوم"
 
@@ -360,19 +1303,19 @@ msgstr "برون‌ریزی موفّق طرح جلد"
 msgid "Export cover failed"
 msgstr "برون‌ریزی طرح جلد شکست خورد"
 
-#: src/application.vala:348
+#: src/application.vala:365
 msgid "Save playlist failed"
 msgstr "ذخیرهٔ سیاههٔ پخش شکست خورد"
 
-#: src/application.vala:472
+#: src/application.vala:489
 msgid "Playlist Files"
 msgstr "پرونده‌های سیاههٔ پخش"
 
-#: src/application.vala:487
+#: src/application.vala:504
 msgid "Save playlist successfully"
 msgstr "ذخیرهٔ موفّق سیاههٔ پخش"
 
-#: src/application.vala:622
+#: src/application.vala:639
 msgid "Keep playing"
 msgstr "ادامهٔ پخش"
 
@@ -499,6 +1442,7 @@ msgid "Play Next"
 msgstr "پخش بعدی"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
+#: src/utils/discord-rpc.vala:488
 msgid "Playing"
 msgstr "پخش کردن"
 
@@ -520,24 +1464,36 @@ msgid "No playlist found in %s"
 msgstr "هیچ سیاههٔ پخشی در %s پیدا نشد."
 
 #. Translators: "System" means following the system language.
-#: src/ui/preferences.vala:55
+#: src/ui/preferences.vala:61
 #, fuzzy
 msgid "System"
 msgstr "_سامانه"
 
-#: src/ui/preferences.vala:84 src/ui/preferences.vala:106
+#: src/ui/preferences.vala:90 src/ui/preferences.vala:122
 msgid "Never"
 msgstr "هرگز"
 
-#: src/ui/preferences.vala:84
+#: src/ui/preferences.vala:90
 msgid "Always"
 msgstr "همیشه"
 
-#: src/ui/preferences.vala:84
+#: src/ui/preferences.vala:90
 msgid "Art Only"
 msgstr "فقط کار هنری"
 
-#: src/ui/preferences.vala:106
+#: src/ui/preferences.vala:98
+msgid "None"
+msgstr ""
+
+#: src/ui/preferences.vala:98
+msgid "Catbox.moe"
+msgstr ""
+
+#: src/ui/preferences.vala:98
+msgid "ImgBB"
+msgstr ""
+
+#: src/ui/preferences.vala:122
 msgid "Track"
 msgstr "قطعه"
 
@@ -566,6 +1522,18 @@ msgstr "حجم صدا %d٪"
 #: src/ui/window.vala:127
 msgid "Show"
 msgstr "نمایش"
+
+#: src/utils/discord-rpc.vala:426
+msgid "Choosing a track"
+msgstr "در حال انتخاب آهنگ"
+
+#: src/utils/discord-rpc.vala:488
+msgid "Paused"
+msgstr "متوقف شد"
+
+#: src/utils/discord-rpc.vala:495
+msgid "Find"
+msgstr "جستجو"
 
 #: src/utils/music.vala:2
 msgid "Unknown Album"
@@ -603,14 +1571,8 @@ msgstr "هنرمند ناشناس"
 #~ msgid "Nanling"
 #~ msgstr "نانلینگ"
 
-#~ msgid "Drag-drop from GNOME Files, showing music in Files."
-#~ msgstr "کشیدن-رها کردن از پرونده‌های کنوم، نمایش آهنگ در پرونده‌ها."
-
 #~ msgid "Play music"
 #~ msgstr "پخش آهنگ‌ها"
-
-#~ msgid "Prefer dark theme"
-#~ msgstr "ترجیح پوستهٔ تیره"
 
 #~ msgid "G4Music"
 #~ msgstr "آهنگ‌های جی‌فور"
