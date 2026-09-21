@@ -152,13 +152,12 @@ namespace G4 {
                 try {
                     var url = upload_cover_async.end (res);
                     if (url != null && ((!)url).length > 0 && ((!)music).uri == _current_uri) {
-                        print ("Upload successful! URL: %s\n", (!)url);
                         _large_image = (!)url;
                         schedule_update ();
                     }
                 } catch (Error e) {
                     if (!(e is IOError.CANCELLED))
-                        print ("Cover upload failed: %s\n", e.message);
+                        warning ("Cover upload failed: %s", e.message);
                 }
             });
         }
@@ -357,9 +356,7 @@ namespace G4 {
 
             var generator = new Json.Generator ();
             generator.set_root ((!)builder.get_root ());
-            var payload = generator.to_data (null);
-            print ("Sending payload: %s\n", payload);
-            return payload;
+            return generator.to_data (null);
         }
 
         private static string get_title (Music music) {
@@ -420,7 +417,7 @@ namespace G4 {
                             send_frame ((!)connection, 1, command.payload);
                             receive_frame ((!)connection);
                         } catch (Error e) {
-                            print ("Unable to clear Discord activity during shutdown: %s\n", e.message);
+                            debug ("Unable to clear Discord activity during shutdown: %s", e.message);
                         }
                     }
                     close_connection (ref connection);
@@ -437,11 +434,12 @@ namespace G4 {
                     send_frame ((!)connection, 1, command.payload);
                     receive_frame ((!)connection);
                     activity_set = command.has_activity;
-                    print ("Discord RPC: " + (command.has_activity
-                        ? "Discord activity updated\n" : "Discord activity cleared\n"));
+                    debug (command.has_activity
+                        ? "Discord activity updated"
+                        : "Discord activity cleared");
                         
                 } catch (Error e) {
-                    print ("Discord RPC update failed: %s\n", e.message);
+                    warning ("Discord RPC update failed: %s", e.message);
                     activity_set = false;
                     close_connection (ref connection);
                 }
@@ -485,7 +483,7 @@ namespace G4 {
                                 @"{\"v\":1,\"client_id\":\"$CLIENT_ID\"}");
                             receive_frame ((!)candidate);
                             connection = candidate;
-                            print ("Connected to Discord RPC at %s\n", path);
+                            debug ("Connected to Discord RPC at %s", path);
                             return true;
                         } catch (Error e) {
                             last_error = e;
@@ -496,9 +494,9 @@ namespace G4 {
             }
 
             if (found_socket && last_error != null)
-                print ("Unable to connect to Discord RPC: %s\n", ((!)last_error).message);
+                warning ("Unable to connect to Discord RPC: %s", ((!)last_error).message);
             else
-                print ("Discord RPC socket was not found\n");
+                debug ("Discord RPC socket was not found");
             return false;
         }
 
