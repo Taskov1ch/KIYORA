@@ -35,6 +35,10 @@
       <default>false</default>
       <summary>Load thumbnails for non-local files</summary>
     </key>
+    <key name="discord-rpc" type="b">
+      <default>true</default>
+      <summary>Enable Discord Rich Presence</summary>
+    </key>
     <key name="remain-progress" type="b">
       <default>false</default>
       <summary>Show remain progress</summary>
@@ -100,6 +104,16 @@
     </key>
     <key name="volume" type="d">
       <default>1</default>
+    </key>
+  
+    <key name="discord-cover-provider" type="u">
+      <range min="0" max="2"/>
+      <default>0</default>
+      <summary>Cover upload provider for Discord RPC</summary>
+    </key>
+    <key name="discord-imgbb-api-key" type="s">
+      <default>''</default>
+      <summary>ImgBB API Key for Discord RPC cover uploads</summary>
     </key>
   </schema>
 </schemalist>

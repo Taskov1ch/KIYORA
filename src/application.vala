@@ -37,6 +37,8 @@ namespace G4 {
         public override void startup () {
             base.startup ();
 
+            var settings = _settings = new Settings (application_id);
+
             //  Must load tag cache after the app register (GLib init), to make sort works
             _loader.load_tag_cache ();
 
@@ -59,7 +61,8 @@ namespace G4 {
             _player.state_changed.connect (on_player_state_changed);
             _player.tag_parsed.connect (on_player_tag_parsed);
 
-            _discord_rpc = new DiscordRpc (this);
+            update_discord_rpc ();
+            settings.changed["discord-rpc"].connect (update_discord_rpc);
 
             _mpris_id = Bus.own_name (BusType.SESSION,
                 "org.mpris.MediaPlayer2." + application_id,
@@ -70,7 +73,6 @@ namespace G4 {
             if (_mpris_id == 0)
                 warning ("Initialize MPRIS session failed\n");
 
-            var settings = _settings = new Settings (application_id); 
             settings.bind ("color-scheme", this, "color-scheme", SettingsBindFlags.DEFAULT);
             settings.bind ("music-dir", this, "music-folder", SettingsBindFlags.DEFAULT);
             settings.bind ("sort-mode", this, "sort-mode", SettingsBindFlags.DEFAULT);
@@ -80,6 +82,16 @@ namespace G4 {
             settings.bind ("replay-gain", _player, "replay-gain", SettingsBindFlags.DEFAULT);
             settings.bind ("audio-sink", _player, "audio-sink", SettingsBindFlags.DEFAULT);
             settings.bind ("volume", _player, "volume", SettingsBindFlags.DEFAULT);
+        }
+
+        private void update_discord_rpc () {
+            if (_settings.get_boolean ("discord-rpc")) {
+                if (_discord_rpc == null)
+                    _discord_rpc = new DiscordRpc (this);
+            } else if (_discord_rpc != null) {
+                _discord_rpc?.shutdown ();
+                _discord_rpc = null;
+            }
         }
 
         public override void activate () {

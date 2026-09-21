@@ -69,6 +69,23 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="AdwExpanderRow" id="discord_row">
+                <property name="icon-name">network-transmit-receive-symbolic</property>
+                <property name="title" translatable="yes">Discord Rich Presence</property>
+                <property name="show-enable-switch">true</property>
+                <child>
+                  <object class="AdwComboRow" id="discord_provider_row">
+                    <property name="title" translatable="yes">Cover Upload Provider</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="discord_imgbb_key_row">
+                    <property name="title" translatable="yes">ImgBB API Key</property>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
         <child>

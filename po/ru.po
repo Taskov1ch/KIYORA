@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-23 08:45+0600\n"
+"POT-Creation-Date: 2026-08-29 08:44+0600\n"
 "PO-Revision-Date: 2024-10-11 13:49+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
@@ -204,7 +204,7 @@ msgstr "Общие"
 msgid "Language"
 msgstr "Язык"
 
-#: src/gtk/preferences.ui:15 src/ui/preferences.vala:81
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:83
 msgid "Changes take effect after restarting KIYORA"
 msgstr "Изменения вступят в силу после перезапуска KIYORA"
 
@@ -224,55 +224,59 @@ msgstr "Вид сеткой для исполнителей/альбомов"
 msgid "Single click to activate item"
 msgstr "Активация элемента одним щелчком мыши"
 
-#: src/gtk/preferences.ui:63 src/application.vala:436
+#: src/gtk/preferences.ui:63 src/application.vala:453
 msgid "Keep playing after window closed"
 msgstr "Продолжать воспроизведение после закрытия окна"
 
-#: src/gtk/preferences.ui:76
+#: src/gtk/preferences.ui:75
+msgid "Enable Discord Rich Presence"
+msgstr "Включить Discord Rich Presence"
+
+#: src/gtk/preferences.ui:88
 msgid "Library"
 msgstr "Библиотека"
 
-#: src/gtk/preferences.ui:80
+#: src/gtk/preferences.ui:92
 msgid "Load music from folder"
 msgstr "Загружать музыку из папки"
 
-#: src/gtk/preferences.ui:92
+#: src/gtk/preferences.ui:104
 msgid "Monitor local file changes"
 msgstr "Следить за изменениями в локальных файлах"
 
-#: src/gtk/preferences.ui:104
+#: src/gtk/preferences.ui:116
 msgid "Load thumbnails for non-local files"
 msgstr "Загружать миниатюры для нелокальных файлов"
 
-#: src/gtk/preferences.ui:105
+#: src/gtk/preferences.ui:117
 msgid "May cause slowdowns and excess network usage"
 msgstr "Может вызвать замедление работы и чрезмерное использование сети"
 
-#: src/gtk/preferences.ui:118
+#: src/gtk/preferences.ui:130
 msgid "Playback"
 msgstr "Воспроизведение"
 
-#: src/gtk/preferences.ui:122
+#: src/gtk/preferences.ui:134
 msgid "Show audio peak level"
 msgstr "Показывать уровень звука"
 
-#: src/gtk/preferences.ui:126
+#: src/gtk/preferences.ui:138
 msgid "Display characters"
 msgstr "Показывать символы"
 
-#: src/gtk/preferences.ui:141
+#: src/gtk/preferences.ui:153
 msgid "Rotate album cover"
 msgstr "Вращать обложку альбома"
 
-#: src/gtk/preferences.ui:153
+#: src/gtk/preferences.ui:165
 msgid "Enable gapless playback"
 msgstr "Включить непрерывное воспроизведение"
 
-#: src/gtk/preferences.ui:165
+#: src/gtk/preferences.ui:177
 msgid "Normalize volume with ReplayGain"
 msgstr "Нормализовывать громкость с помощью ReplayGain"
 
-#: src/gtk/preferences.ui:171
+#: src/gtk/preferences.ui:183
 msgid "Prefer audio sink of GStreamer"
 msgstr "Отдавать предпочтение приёмнику звука GStreamer"
 
@@ -328,7 +332,7 @@ msgstr "_Комбинации клавиш"
 msgid "_About"
 msgstr "_О приложении"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:106
+#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:109
 msgid "Album"
 msgstr "Альбом"
 
@@ -364,19 +368,19 @@ msgstr "Обложка успешно экспортирована"
 msgid "Export cover failed"
 msgstr "Экспортировать обложку не удалось"
 
-#: src/application.vala:348
+#: src/application.vala:365
 msgid "Save playlist failed"
 msgstr "Сохранить список воспроизведения не удалось"
 
-#: src/application.vala:472
+#: src/application.vala:489
 msgid "Playlist Files"
 msgstr "Файлы списка воспроизведения"
 
-#: src/application.vala:487
+#: src/application.vala:504
 msgid "Save playlist successfully"
 msgstr "Список воспроизведения успешно сохранен"
 
-#: src/application.vala:622
+#: src/application.vala:639
 msgid "Keep playing"
 msgstr "Продолжать воспроизведение"
 
@@ -501,6 +505,7 @@ msgid "Play Next"
 msgstr "Воспроизвести следующую"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
+#: src/utils/discord-rpc.vala:229
 msgid "Playing"
 msgstr "Играет сейчас"
 
@@ -522,23 +527,23 @@ msgid "No playlist found in %s"
 msgstr "Список воспроизведения не найден в %s"
 
 #. Translators: "System" means following the system language.
-#: src/ui/preferences.vala:55
+#: src/ui/preferences.vala:57
 msgid "System"
 msgstr "Системный"
 
-#: src/ui/preferences.vala:84 src/ui/preferences.vala:106
+#: src/ui/preferences.vala:86 src/ui/preferences.vala:109
 msgid "Never"
 msgstr "Никогда"
 
-#: src/ui/preferences.vala:84
+#: src/ui/preferences.vala:86
 msgid "Always"
 msgstr "Всегда"
 
-#: src/ui/preferences.vala:84
+#: src/ui/preferences.vala:86
 msgid "Art Only"
 msgstr "Только оформление"
 
-#: src/ui/preferences.vala:106
+#: src/ui/preferences.vala:109
 msgid "Track"
 msgstr "Композиция"
 
@@ -567,6 +572,14 @@ msgstr "Громкость %d%%"
 #: src/ui/window.vala:127
 msgid "Show"
 msgstr "Показать"
+
+#: src/utils/discord-rpc.vala:229
+msgid "Paused"
+msgstr "На паузе"
+
+#: src/utils/discord-rpc.vala:236
+msgid "Find"
+msgstr "Найти"
 
 #: src/utils/music.vala:2
 msgid "Unknown Album"

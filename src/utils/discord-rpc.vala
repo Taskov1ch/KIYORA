@@ -17,7 +17,12 @@ namespace G4 {
     }
 
     public class DiscordRpc : Object {
+        // Keep KIYORA's application so Discord displays "KIYORA", while mirroring
+        // Harmonoid's Rich Presence fields and state transitions.
         private const string CLIENT_ID = "1358358227913543821";
+        private const string DEFAULT_LARGE_IMAGE = "cover_default";
+        private const string PAUSE_SMALL_IMAGE = "pause";
+        private const string PLAY_SMALL_IMAGE = "play";
         private const int ACTIVITY_TYPE_LISTENING = 2;
         private const uint UPDATE_DELAY_MS = 250;
         private const uint RETRY_INTERVAL_SECONDS = 15;
@@ -27,29 +32,60 @@ namespace G4 {
         private unowned Application _app;
         private AsyncQueue<DiscordRpcCommand> _commands = new AsyncQueue<DiscordRpcCommand> ();
         private string _current_uri = "";
+        private string _large_image = DEFAULT_LARGE_IMAGE;
         private Gst.ClockTime _duration = Gst.CLOCK_TIME_NONE;
+        private Gst.ClockTime _flag_position = Gst.CLOCK_TIME_NONE;
         private Thread<bool>? _worker = null;
+        private ulong _cover_changed_id = 0;
+        private Cancellable? _upload_cancellable = null;
+        private Settings _settings;
+        private ulong _duration_changed_id = 0;
+        private ulong _music_changed_id = 0;
+        private ulong _position_updated_id = 0;
+        private ulong _state_changed_id = 0;
         private uint _retry_id = 0;
         private uint _update_id = 0;
         private bool _stopped = false;
 
         public DiscordRpc (Application app) {
+            _settings = app.settings;
             _app = app;
             _worker = new Thread<bool> ("discord-rpc", worker_loop);
 
-            app.music_changed.connect ((music) => {
+            _music_changed_id = app.music_changed.connect ((music) => {
                 var uri = music?.uri ?? "";
                 if (_current_uri != uri) {
                     _current_uri = uri;
                     _duration = Gst.CLOCK_TIME_NONE;
+                    _flag_position = Gst.CLOCK_TIME_NONE;
+                    _large_image = get_cover_image (music?.cover_uri);
+                    if (music != null) {
+                        try_upload_cover (music, null, ((!)music).cover_uri);
+                    }
                 }
                 schedule_update ();
             });
-            app.player.duration_changed.connect ((duration) => {
+            _cover_changed_id = app.music_cover_parsed.connect ((music, pixbuf, uri) => {
+                if (music.uri != _current_uri)
+                    return;
+                var large_image = get_cover_image (uri);
+                if (_large_image != large_image) {
+                    _large_image = large_image;
+                    schedule_update ();
+                }
+                if (_large_image == DEFAULT_LARGE_IMAGE) {
+                    try_upload_cover (music, pixbuf, uri);
+                }
+            });
+            _duration_changed_id = app.player.duration_changed.connect ((duration) => {
                 _duration = duration;
                 schedule_update ();
             });
-            app.player.state_changed.connect (() => schedule_update ());
+            _position_updated_id = app.player.position_updated.connect ((position) => {
+                if (position_requires_update (position))
+                    schedule_update ();
+            });
+            _state_changed_id = app.player.state_changed.connect (() => schedule_update ());
 
             _retry_id = Timeout.add_seconds (RETRY_INTERVAL_SECONDS, () => {
                 if (_stopped)
@@ -57,6 +93,8 @@ namespace G4 {
                 enqueue_current_activity ();
                 return Source.CONTINUE;
             });
+
+            schedule_update ();
         }
 
         public void shutdown () {
@@ -73,9 +111,142 @@ namespace G4 {
                 _retry_id = 0;
             }
 
-            _commands.push (new DiscordRpcCommand (build_command (null), false, true));
+            disconnect_signals ();
+            _commands.push (new DiscordRpcCommand (build_command (null, false), false, true));
             _worker?.join ();
             _worker = null;
+        }
+
+                private void try_upload_cover (Music? music, Gdk.Pixbuf? pixbuf, string? uri) {
+            if (music == null) return;
+            if (_upload_cancellable != null) {
+                ((!)_upload_cancellable).cancel ();
+                _upload_cancellable = null;
+            }
+
+            var provider = _settings.get_uint ("discord-cover-provider");
+            if (provider == 0) return;
+
+            if (uri != null && (((!)uri).has_prefix ("http://") || ((!)uri).has_prefix ("https://")))
+                return;
+
+            Gdk.Pixbuf? cover = pixbuf;
+            if (cover == null && uri != null) {
+                try {
+                    var file = File.new_for_uri ((!)uri);
+                    if (file.query_exists ()) {
+                        var path = file.get_path ();
+                        if (path != null)
+                            cover = new Gdk.Pixbuf.from_file ((!)path);
+                    }
+                } catch (Error e) {
+                    return;
+                }
+            }
+
+            if (cover == null) return;
+
+            _upload_cancellable = new Cancellable ();
+            upload_cover_async.begin (((!)music).uri, (!)cover, provider, _settings.get_string ("discord-imgbb-api-key"), _upload_cancellable, (obj, res) => {
+                try {
+                    var url = upload_cover_async.end (res);
+                    if (url != null && url.length > 0 && ((!)music).uri == _current_uri) {
+                        _large_image = (!)url;
+                        schedule_update ();
+                    }
+                } catch (Error e) {
+                    if (!(e is IOError.CANCELLED))
+                        warning ("Cover upload failed: %s", e.message);
+                }
+            });
+        }
+
+        private async string? upload_cover_async (string music_uri, Gdk.Pixbuf original, uint provider, string api_key, Cancellable? cancellable) throws Error {
+            int width = original.get_width ();
+            int height = original.get_height ();
+            int size = int.min (width, height);
+            
+            Gdk.Pixbuf processed = original;
+            if (width != height) {
+                processed = new Gdk.Pixbuf.subpixbuf (original, (width - size) / 2, (height - size) / 2, size, size);
+            }
+            if (size > 512) {
+                processed = (!)processed.scale_simple (512, 512, Gdk.InterpType.BILINEAR);
+            }
+
+            uint8[] buffer;
+            processed.save_to_buffer (out buffer, "jpeg", "quality", "90");
+
+            var session = new Soup.Session ();
+            var multipart = new Soup.Multipart (Soup.FORM_MIME_TYPE_MULTIPART);
+
+            var uri_str = provider == 1 ? "https://catbox.moe/user/api.php" : "https://api.imgbb.com/1/upload";
+
+            if (provider == 1) {
+                multipart.append_form_string ("reqtype", "fileupload");
+                multipart.append_form_file ("fileToUpload", "cover.jpg", "image/jpeg", new Bytes (buffer));
+            } else if (provider == 2) {
+                multipart.append_form_string ("key", api_key);
+                multipart.append_form_file ("image", "cover.jpg", "image/jpeg", new Bytes (buffer));
+            }
+
+            var msg = new Soup.Message.from_multipart (uri_str, multipart);
+            var bytes = yield session.send_and_read_async (msg, Priority.DEFAULT, cancellable);
+            if (msg.status_code != 200) {
+                throw new IOError.FAILED ("HTTP Error: %u", msg.status_code);
+            }
+
+            string response = (string) bytes.get_data ();
+            
+            if (provider == 1) {
+                return response.strip ();
+            } else if (provider == 2) {
+                var parser = new Json.Parser ();
+                parser.load_from_data (response);
+                unowned Json.Object? root = parser.get_root ()?.get_object ();
+                if (root != null) {
+                    unowned Json.Object? data = ((!)root).get_object_member ("data");
+                    if (data != null) {
+                        return ((!)data).get_string_member ("url");
+                    }
+                }
+                throw new IOError.FAILED ("Invalid ImgBB response");
+            }
+            return null;
+        }
+
+        private void disconnect_signals () {
+            if (_music_changed_id != 0) {
+                SignalHandler.disconnect (_app, _music_changed_id);
+                _music_changed_id = 0;
+            }
+            if (_cover_changed_id != 0) {
+                SignalHandler.disconnect (_app, _cover_changed_id);
+                _cover_changed_id = 0;
+            }
+            if (_duration_changed_id != 0) {
+                SignalHandler.disconnect (_app.player, _duration_changed_id);
+                _duration_changed_id = 0;
+            }
+            if (_position_updated_id != 0) {
+                SignalHandler.disconnect (_app.player, _position_updated_id);
+                _position_updated_id = 0;
+            }
+            if (_state_changed_id != 0) {
+                SignalHandler.disconnect (_app.player, _state_changed_id);
+                _state_changed_id = 0;
+            }
+        }
+
+        private bool position_requires_update (Gst.ClockTime position) {
+            if (position == Gst.CLOCK_TIME_NONE)
+                return false;
+            if (_flag_position == Gst.CLOCK_TIME_NONE)
+                return true;
+            var difference = position > _flag_position
+                ? position - _flag_position
+                : _flag_position - position;
+            return difference > 10 * Gst.SECOND;
         }
 
         private void schedule_update () {
@@ -96,12 +267,13 @@ namespace G4 {
 
             unowned Music? music = _app.current_music;
             var playing = music != null && _app.player.state == Gst.State.PLAYING;
+            _flag_position = _app.player.position;
             _commands.push (new DiscordRpcCommand (
-                build_command (playing ? music : null), playing
+                build_command (music, playing), music != null
             ));
         }
 
-        private string build_command (Music? music) {
+        private string build_command (Music? music, bool playing) {
             var builder = new Json.Builder ();
             builder.begin_object ();
             builder.set_member_name ("cmd");
@@ -117,33 +289,62 @@ namespace G4 {
             } else {
                 var title = get_title ((!)music);
                 var artist = get_artist ((!)music);
+                var description = get_description ((!)music);
 
                 builder.begin_object ();
                 builder.set_member_name ("type");
                 builder.add_int_value (ACTIVITY_TYPE_LISTENING);
-                builder.set_member_name ("details");
-                builder.add_string_value (truncate_rpc_text (title));
+                if (title.strip ().length > 0) {
+                    builder.set_member_name ("details");
+                    builder.add_string_value (truncate_rpc_text (title));
+                }
                 if (artist.length > 0) {
                     builder.set_member_name ("state");
                     builder.add_string_value (truncate_rpc_text (artist));
                 }
 
-                var position = _app.player.position;
-                if (position != Gst.CLOCK_TIME_NONE) {
-                    var now = get_real_time () / 1000000;
-                    var position_seconds = (int64) (position / Gst.SECOND);
-                    var start = int64.max (0, now - position_seconds);
+                if (playing) {
+                    var position = _app.player.position;
+                    if (position != Gst.CLOCK_TIME_NONE) {
+                        var now = get_real_time () / 1000000;
+                        var position_seconds = (int64) (position / Gst.SECOND);
+                        var start = int64.max (0, now - position_seconds);
 
-                    builder.set_member_name ("timestamps");
-                    builder.begin_object ();
-                    builder.set_member_name ("start");
-                    builder.add_int_value (start);
-                    if (_duration != Gst.CLOCK_TIME_NONE && _duration > 0) {
-                        builder.set_member_name ("end");
-                        builder.add_int_value (start + (int64) (_duration / Gst.SECOND));
+                        builder.set_member_name ("timestamps");
+                        builder.begin_object ();
+                        builder.set_member_name ("start");
+                        builder.add_int_value (start);
+                        if (_duration != Gst.CLOCK_TIME_NONE && _duration > 0) {
+                            builder.set_member_name ("end");
+                            builder.add_int_value (start + (int64) (_duration / Gst.SECOND));
+                        }
+                        builder.end_object ();
                     }
-                    builder.end_object ();
                 }
+
+                builder.set_member_name ("assets");
+                builder.begin_object ();
+                builder.set_member_name ("large_image");
+                builder.add_string_value (_large_image);
+                builder.set_member_name ("small_image");
+                builder.add_string_value (playing ? PLAY_SMALL_IMAGE : PAUSE_SMALL_IMAGE);
+                if (description.length > 0) {
+                    builder.set_member_name ("large_text");
+                    builder.add_string_value (truncate_rpc_text (description));
+                }
+                builder.set_member_name ("small_text");
+                builder.add_string_value (playing ? _("Playing") : _("Paused"));
+                builder.end_object ();
+
+                builder.set_member_name ("buttons");
+                builder.begin_array ();
+                builder.begin_object ();
+                builder.set_member_name ("label");
+                builder.add_string_value (_("Find"));
+                builder.set_member_name ("url");
+                builder.add_string_value (build_search_url (title, artist));
+                builder.end_object ();
+                builder.end_array ();
                 builder.end_object ();
             }
 
@@ -169,11 +370,34 @@ namespace G4 {
             return artist == UNKNOWN_ARTIST ? "" : artist;
         }
 
+        private static string get_description (Music music) {
+            var album = music.album.strip ();
+            if (album == UNKNOWN_ALBUM)
+                album = "";
+            var year = music.date / 400;
+            if (album.length > 0 && year > 0)
+                return @"$album • $year";
+            if (album.length > 0)
+                return album;
+            return year > 0 ? year.to_string () : "";
+        }
+
+        private static string get_cover_image (string? uri) {
+            if (uri != null && (((!)uri).has_prefix ("https://") || ((!)uri).has_prefix ("http://")))
+                return (!)uri;
+            return DEFAULT_LARGE_IMAGE;
+        }
+
+        private static string build_search_url (string title, string artist) {
+            var query = artist.length > 0 ? @"$title $artist" : title;
+            return "https://www.google.com/search?q=" + Uri.escape_string (query, null, false);
+        }
+
         private static string truncate_rpc_text (string text) {
             const int MAX_CHARS = 128;
             if (text.char_count () <= MAX_CHARS)
                 return text;
-            return text.substring (0, text.index_of_nth_char (MAX_CHARS - 1)) + "…";
+            return text.substring (0, text.index_of_nth_char (MAX_CHARS - 3)) + "...";
         }
 
         private bool worker_loop () {

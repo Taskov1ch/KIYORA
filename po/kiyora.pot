@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiyora\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-23 08:45+0600\n"
+"POT-Creation-Date: 2026-08-29 08:44+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,7 +189,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: src/gtk/preferences.ui:15 src/ui/preferences.vala:81
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:83
 msgid "Changes take effect after restarting KIYORA"
 msgstr ""
 
@@ -209,55 +209,59 @@ msgstr ""
 msgid "Single click to activate item"
 msgstr ""
 
-#: src/gtk/preferences.ui:63 src/application.vala:436
+#: src/gtk/preferences.ui:63 src/application.vala:453
 msgid "Keep playing after window closed"
 msgstr ""
 
-#: src/gtk/preferences.ui:76
+#: src/gtk/preferences.ui:75
+msgid "Enable Discord Rich Presence"
+msgstr ""
+
+#: src/gtk/preferences.ui:88
 msgid "Library"
 msgstr ""
 
-#: src/gtk/preferences.ui:80
+#: src/gtk/preferences.ui:92
 msgid "Load music from folder"
 msgstr ""
 
-#: src/gtk/preferences.ui:92
+#: src/gtk/preferences.ui:104
 msgid "Monitor local file changes"
 msgstr ""
 
-#: src/gtk/preferences.ui:104
+#: src/gtk/preferences.ui:116
 msgid "Load thumbnails for non-local files"
 msgstr ""
 
-#: src/gtk/preferences.ui:105
+#: src/gtk/preferences.ui:117
 msgid "May cause slowdowns and excess network usage"
 msgstr ""
 
-#: src/gtk/preferences.ui:118
+#: src/gtk/preferences.ui:130
 msgid "Playback"
 msgstr ""
 
-#: src/gtk/preferences.ui:122
+#: src/gtk/preferences.ui:134
 msgid "Show audio peak level"
 msgstr ""
 
-#: src/gtk/preferences.ui:126
+#: src/gtk/preferences.ui:138
 msgid "Display characters"
 msgstr ""
 
-#: src/gtk/preferences.ui:141
+#: src/gtk/preferences.ui:153
 msgid "Rotate album cover"
 msgstr ""
 
-#: src/gtk/preferences.ui:153
+#: src/gtk/preferences.ui:165
 msgid "Enable gapless playback"
 msgstr ""
 
-#: src/gtk/preferences.ui:165
+#: src/gtk/preferences.ui:177
 msgid "Normalize volume with ReplayGain"
 msgstr ""
 
-#: src/gtk/preferences.ui:171
+#: src/gtk/preferences.ui:183
 msgid "Prefer audio sink of GStreamer"
 msgstr ""
 
@@ -313,7 +317,7 @@ msgstr ""
 msgid "_About"
 msgstr ""
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:106
+#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:109
 msgid "Album"
 msgstr ""
 
@@ -349,19 +353,19 @@ msgstr ""
 msgid "Export cover failed"
 msgstr ""
 
-#: src/application.vala:348
+#: src/application.vala:365
 msgid "Save playlist failed"
 msgstr ""
 
-#: src/application.vala:472
+#: src/application.vala:489
 msgid "Playlist Files"
 msgstr ""
 
-#: src/application.vala:487
+#: src/application.vala:504
 msgid "Save playlist successfully"
 msgstr ""
 
-#: src/application.vala:622
+#: src/application.vala:639
 msgid "Keep playing"
 msgstr ""
 
@@ -486,6 +490,7 @@ msgid "Play Next"
 msgstr ""
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
+#: src/utils/discord-rpc.vala:229
 msgid "Playing"
 msgstr ""
 
@@ -505,23 +510,23 @@ msgid "No playlist found in %s"
 msgstr ""
 
 #. Translators: "System" means following the system language.
-#: src/ui/preferences.vala:55
+#: src/ui/preferences.vala:57
 msgid "System"
 msgstr ""
 
-#: src/ui/preferences.vala:84 src/ui/preferences.vala:106
+#: src/ui/preferences.vala:86 src/ui/preferences.vala:109
 msgid "Never"
 msgstr ""
 
-#: src/ui/preferences.vala:84
+#: src/ui/preferences.vala:86
 msgid "Always"
 msgstr ""
 
-#: src/ui/preferences.vala:84
+#: src/ui/preferences.vala:86
 msgid "Art Only"
 msgstr ""
 
-#: src/ui/preferences.vala:106
+#: src/ui/preferences.vala:109
 msgid "Track"
 msgstr ""
 
@@ -549,6 +554,14 @@ msgstr ""
 
 #: src/ui/window.vala:127
 msgid "Show"
+msgstr ""
+
+#: src/utils/discord-rpc.vala:229
+msgid "Paused"
+msgstr ""
+
+#: src/utils/discord-rpc.vala:236
+msgid "Find"
 msgstr ""
 
 #: src/utils/music.vala:2

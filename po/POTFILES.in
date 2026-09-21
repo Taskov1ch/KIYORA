@@ -18,4 +18,5 @@ src/ui/store-panel.vala
 src/ui/taglist-dialog.vala
 src/ui/volume-button.vala
 src/ui/window.vala
+src/utils/discord-rpc.vala
 src/utils/music.vala

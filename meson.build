@@ -55,6 +55,7 @@ dependencies = [
   dependency('gstreamer-1.0'),
   dependency('gstreamer-tag-1.0'),
   dependency('gio-unix-2.0'),
+  dependency('libsoup-3.0'),
   dependency('json-glib-1.0'),
   adw_dep,
   libm_dep,
