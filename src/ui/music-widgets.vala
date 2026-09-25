@@ -282,8 +282,10 @@ namespace G4 {
             unowned var list_uri = ((Playlist) album).list_uri;
             if (list_uri.length > 0) {
                 var section2 = new Menu ();
+                section2.append_item (create_menu_item_for_uri (list_uri, _("Add Songs…"), ACTION_APP + ACTION_ADD_SONGS_TO_PLAYLIST));
+                section2.append_item (create_menu_item_for_uri (list_uri, _("Rename Playlist…"), ACTION_APP + ACTION_RENAME_PLAYLIST));
+                section2.append_item (create_menu_item_for_uri (list_uri, _("Delete Playlist"), ACTION_APP + ACTION_DELETE_PLAYLIST));
                 section2.append_item (create_menu_item_for_uri (list_uri, _("Show List _File"), ACTION_APP + ACTION_SHOW_FILE));
-                section2.append_item (create_menu_item_for_uri (list_uri, _("_Move to Trash"), ACTION_APP + ACTION_TRASH_FILE));
                 menu.append_section (null, section2);
             }
         }

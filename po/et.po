@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-25 17:08+0600\n"
+"POT-Creation-Date: 2026-09-25 18:07+0600\n"
 "PO-Revision-Date: 2022-08-01 18:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1106,8 +1106,8 @@ msgctxt "shortcut window"
 msgid "Save List"
 msgstr ""
 
-#: src/gtk/play-panel.ui:16 src/ui/music-list.vala:626
-#: src/ui/store-panel.vala:420
+#: src/gtk/play-panel.ui:16 src/ui/music-list.vala:637
+#: src/ui/store-panel.vala:437
 msgid "Back"
 msgstr "Tagasi"
 
@@ -1120,7 +1120,7 @@ msgstr "Üldine"
 msgid "Language"
 msgstr ""
 
-#: src/gtk/preferences.ui:15 src/ui/preferences.vala:87
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:89
 msgid "Changes take effect after restarting KIYORA"
 msgstr ""
 
@@ -1140,7 +1140,7 @@ msgstr ""
 msgid "Single click to activate item"
 msgstr ""
 
-#: src/gtk/preferences.ui:63 src/application.vala:484
+#: src/gtk/preferences.ui:63 src/application.vala:485
 msgid "Keep playing after window closed"
 msgstr "Mängi ka siis kui aken on suletud"
 
@@ -1156,51 +1156,51 @@ msgstr ""
 msgid "ImgBB API Key"
 msgstr ""
 
-#: src/gtk/preferences.ui:93
+#: src/gtk/preferences.ui:99
 msgid "Library"
 msgstr ""
 
-#: src/gtk/preferences.ui:97
+#: src/gtk/preferences.ui:103
 msgid "Load music from folder"
 msgstr "Lae muusikat kaustast"
 
-#: src/gtk/preferences.ui:109
+#: src/gtk/preferences.ui:115
 msgid "Monitor local file changes"
 msgstr ""
 
-#: src/gtk/preferences.ui:121
+#: src/gtk/preferences.ui:127
 msgid "Load thumbnails for non-local files"
 msgstr "Lae pisipilt võõrate failide jaoks"
 
-#: src/gtk/preferences.ui:122
+#: src/gtk/preferences.ui:128
 msgid "May cause slowdowns and excess network usage"
 msgstr "Võib põhjustada aeglustusi ja tekitada üleliigset võrgukasutust"
 
-#: src/gtk/preferences.ui:135
+#: src/gtk/preferences.ui:141
 msgid "Playback"
 msgstr "Esitamine"
 
-#: src/gtk/preferences.ui:139
+#: src/gtk/preferences.ui:145
 msgid "Show audio peak level"
 msgstr "Heli valjutaseme näitamine"
 
-#: src/gtk/preferences.ui:143
+#: src/gtk/preferences.ui:149
 msgid "Display characters"
 msgstr ""
 
-#: src/gtk/preferences.ui:158
+#: src/gtk/preferences.ui:164
 msgid "Rotate album cover"
 msgstr ""
 
-#: src/gtk/preferences.ui:170
+#: src/gtk/preferences.ui:176
 msgid "Enable gapless playback"
 msgstr "Ilma auguta järjest esitamine"
 
-#: src/gtk/preferences.ui:182
+#: src/gtk/preferences.ui:188
 msgid "Normalize volume with ReplayGain"
 msgstr "ReplayGain'i helitugevuse normaliseerimise kasutamine"
 
-#: src/gtk/preferences.ui:188
+#: src/gtk/preferences.ui:194
 #, fuzzy
 msgid "Prefer audio sink of GStreamer"
 msgstr "Pipewire tarkvara kasutamine"
@@ -1209,110 +1209,155 @@ msgstr "Pipewire tarkvara kasutamine"
 msgid "Main Menu"
 msgstr "Peamine menüü"
 
-#: src/gtk/store-panel.ui:30 src/ui/playlist-dialog.vala:36
+#: src/gtk/store-panel.ui:30 src/ui/playlist-dialog.vala:49
 msgid "Search"
 msgstr "Otsi"
 
-#: src/gtk/store-panel.ui:40
+#: src/gtk/store-panel.ui:36 src/action-handles.vala:149
+#: src/application.vala:609 src/ui/playlist-dialog.vala:24
+#: src/ui/playlist-dialog.vala:26 src/ui/store-panel.vala:662
+#, fuzzy
+msgid "New Playlist"
+msgstr "Esitusloend"
+
+#: src/gtk/store-panel.ui:47
 #, fuzzy
 msgid "Sort By"
 msgstr "Sorteerimine"
 
-#: src/gtk/store-panel.ui:71
+#: src/gtk/store-panel.ui:78
 msgid "_Color Scheme"
 msgstr ""
 
-#: src/gtk/store-panel.ui:73
+#: src/gtk/store-panel.ui:80
 msgid "_System"
 msgstr ""
 
-#: src/gtk/store-panel.ui:78
+#: src/gtk/store-panel.ui:85
 msgid "_Light"
 msgstr ""
 
-#: src/gtk/store-panel.ui:83
+#: src/gtk/store-panel.ui:90
 msgid "_Dark"
 msgstr ""
 
-#: src/gtk/store-panel.ui:90
+#: src/gtk/store-panel.ui:97
 #, fuzzy
 msgid "_Reload Library"
 msgstr "_Loetelu värskendamine"
 
-#: src/gtk/store-panel.ui:94
+#: src/gtk/store-panel.ui:101
 msgid "_Multiple Select"
 msgstr ""
 
-#: src/gtk/store-panel.ui:98
+#: src/gtk/store-panel.ui:105
 msgid "_Save List"
 msgstr ""
 
-#: src/gtk/store-panel.ui:104
+#: src/gtk/store-panel.ui:111
 msgid "_Preferences"
 msgstr "_Eelistused"
 
-#: src/gtk/store-panel.ui:108
+#: src/gtk/store-panel.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "_Kiirklahvid"
 
-#: src/gtk/store-panel.ui:112
+#: src/gtk/store-panel.ui:119
 msgid "_About"
 msgstr "_Teave"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:122
+#: src/gtk/store-panel.ui:128 src/ui/preferences.vala:124
 #, fuzzy
 msgid "Album"
 msgstr "Album"
 
-#: src/gtk/store-panel.ui:126
+#: src/gtk/store-panel.ui:133
 #, fuzzy
 msgid "Artist"
 msgstr "Esitaja"
 
-#: src/gtk/store-panel.ui:131
+#: src/gtk/store-panel.ui:138
 msgid "Artist/Album"
 msgstr ""
 
-#: src/gtk/store-panel.ui:136
+#: src/gtk/store-panel.ui:143
 #, fuzzy
 msgid "Title"
 msgstr "Pealkiri"
 
-#: src/gtk/store-panel.ui:141
+#: src/gtk/store-panel.ui:148
 msgid "Recent"
 msgstr ""
 
-#: src/gtk/store-panel.ui:146
+#: src/gtk/store-panel.ui:153
 msgid "Shuffle"
 msgstr "Juhuesitus"
 
-#: src/action-handles.vala:114
+#: src/action-handles.vala:123
 msgid "Image Files"
 msgstr ""
 
-#: src/action-handles.vala:121
+#: src/action-handles.vala:130
 msgid "Export cover successfully"
 msgstr ""
 
-#: src/action-handles.vala:121
+#: src/action-handles.vala:130
 #, fuzzy
 msgid "Export cover failed"
 msgstr "_Ekspordi loo pilt"
 
-#: src/application.vala:396
+#: src/action-handles.vala:149 src/application.vala:609
+#: src/ui/playlist-dialog.vala:26 src/ui/store-panel.vala:662
+msgid "Create"
+msgstr ""
+
+#: src/action-handles.vala:169
+#, fuzzy
+msgid "Rename Playlist"
+msgstr "Esitusloend"
+
+#: src/action-handles.vala:169
+msgid "Rename"
+msgstr ""
+
+#: src/application.vala:397
 msgid "Save playlist failed"
 msgstr ""
 
-#: src/application.vala:520
+#: src/application.vala:506
 #, fuzzy
-msgid "Playlist Files"
+msgid "Failed to create playlist"
 msgstr "Esitusloend"
 
-#: src/application.vala:535
+#: src/application.vala:519
+#, c-format
+msgid "Are you sure you want to delete playlist “%s”?"
+msgstr ""
+
+#: src/application.vala:549
+#, fuzzy
+msgid "Playlist deleted"
+msgstr "Esitusloend"
+
+#: src/application.vala:565
+#, fuzzy
+msgid "Playlist renamed"
+msgstr "Esitusloend"
+
+#: src/application.vala:572
+msgid "Audio Files"
+msgstr ""
+
+#: src/application.vala:583
+#, fuzzy
+msgid "Songs added to playlist"
+msgstr "Esitusloend"
+
+#: src/application.vala:622
 msgid "Save playlist successfully"
 msgstr ""
 
-#: src/application.vala:670
+#: src/application.vala:757
 msgid "Keep playing"
 msgstr "Jätka mängimist"
 
@@ -1329,101 +1374,128 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: src/ui/music-list.vala:270
+#: src/ui/dialogs.vala:273
+msgid "OK"
+msgstr ""
+
+#: src/ui/dialogs.vala:282
+msgid "Cancel"
+msgstr ""
+
+#: src/ui/dialogs.vala:299
+#, fuzzy
+msgid "Playlist name"
+msgstr "Esitusloend"
+
+#: src/ui/music-list.vala:273
 msgid "Playlist is modified, save it?"
 msgstr ""
 
 #. Translators: Play this music at next position of current playing music
-#: src/ui/music-list.vala:399 src/ui/music-list.vala:415
-#: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:299
+#: src/ui/music-list.vala:402 src/ui/music-list.vala:418
+#: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:301
 #, fuzzy
 msgid "Play at _Next"
 msgstr "Järgmine lugu"
 
-#: src/ui/music-list.vala:401 src/ui/music-list.vala:417
-#: src/ui/music-widgets.vala:278 src/ui/music-widgets.vala:300
+#: src/ui/music-list.vala:404 src/ui/music-list.vala:420
+#: src/ui/music-widgets.vala:278 src/ui/music-widgets.vala:302
 msgid "Add to _Queue"
 msgstr ""
 
-#: src/ui/music-list.vala:402 src/ui/music-widgets.vala:279
-#: src/ui/music-widgets.vala:301 src/ui/music-widgets.vala:320
+#: src/ui/music-list.vala:405 src/ui/music-widgets.vala:279
+#: src/ui/music-widgets.vala:303 src/ui/music-widgets.vala:322
 msgid "Add to _Playlist…"
 msgstr ""
 
-#: src/ui/music-list.vala:403 src/ui/music-list.vala:421
+#: src/ui/music-list.vala:406 src/ui/music-list.vala:424
 msgid "_Remove"
 msgstr ""
 
-#: src/ui/music-list.vala:422 src/ui/music-widgets.vala:286
+#: src/ui/music-list.vala:425
 msgid "_Move to Trash"
 msgstr ""
 
-#: src/ui/music-list.vala:630
+#: src/ui/music-list.vala:641
 msgid "Select All"
 msgstr ""
 
-#: src/ui/music-list.vala:647
+#: src/ui/music-list.vala:658
 #, fuzzy
 msgid "Play at Next"
 msgstr "Järgmine lugu"
 
-#: src/ui/music-list.vala:654
+#: src/ui/music-list.vala:665
 msgid "Add to Queue"
 msgstr ""
 
-#: src/ui/music-list.vala:661 src/ui/playlist-dialog.vala:19
+#: src/ui/music-list.vala:672 src/ui/playlist-dialog.vala:19
 #, fuzzy
 msgid "Add to Playlist"
 msgstr "Esitusloend"
 
-#: src/ui/music-list.vala:668
+#: src/ui/music-list.vala:679
 msgid "Remove"
 msgstr ""
 
-#: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
+#: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:298
+#: src/ui/store-panel.vala:459 src/utils/tray-icon.vala:118
 #, fuzzy
 msgid "Play"
 msgstr "Esitamine"
 
-#: src/ui/music-widgets.vala:275 src/ui/music-widgets.vala:297
+#: src/ui/music-widgets.vala:275 src/ui/music-widgets.vala:299
 msgid "_Random Play"
 msgstr ""
 
-#: src/ui/music-widgets.vala:285
+#: src/ui/music-widgets.vala:285 src/ui/store-panel.vala:448
+msgid "Add Songs…"
+msgstr ""
+
+#: src/ui/music-widgets.vala:286
+#, fuzzy
+msgid "Rename Playlist…"
+msgstr "Esitusloend"
+
+#: src/ui/music-widgets.vala:287
+#, fuzzy
+msgid "Delete Playlist"
+msgstr "Esitusloend"
+
+#: src/ui/music-widgets.vala:288
 #, fuzzy
 msgid "Show List _File"
 msgstr "_Kuva failides"
 
-#: src/ui/music-widgets.vala:308 src/ui/play-panel.vala:63
+#: src/ui/music-widgets.vala:310 src/ui/play-panel.vala:63
 #, fuzzy
 msgid "Search Title"
 msgstr "Otsi"
 
-#: src/ui/music-widgets.vala:309 src/ui/play-panel.vala:61
+#: src/ui/music-widgets.vala:311 src/ui/play-panel.vala:61
 #, fuzzy
 msgid "Search Album"
 msgstr "Kuva album"
 
-#: src/ui/music-widgets.vala:310 src/ui/play-panel.vala:62
+#: src/ui/music-widgets.vala:312 src/ui/play-panel.vala:62
 #, fuzzy
 msgid "Search Artist"
 msgstr "Kuva esitaja"
 
-#: src/ui/music-widgets.vala:314
+#: src/ui/music-widgets.vala:316
 #, fuzzy
 msgid "Show Cover _File"
 msgstr "_Kuva failides"
 
-#: src/ui/music-widgets.vala:316
+#: src/ui/music-widgets.vala:318
 msgid "_Export Cover"
 msgstr "_Ekspordi loo pilt"
 
-#: src/ui/music-widgets.vala:317
+#: src/ui/music-widgets.vala:319
 msgid "Show _Tags…"
 msgstr ""
 
-#: src/ui/music-widgets.vala:318
+#: src/ui/music-widgets.vala:320
 #, fuzzy
 msgid "Show Music _File"
 msgstr "_Kuva failides"
@@ -1446,8 +1518,8 @@ msgstr "Esita/Peata"
 msgid "Play Next"
 msgstr "Järgmine lugu"
 
-#: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:525
+#: src/ui/play-panel.vala:56 src/ui/store-panel.vala:86
+#: src/utils/discord-rpc.vala:502
 #, fuzzy
 msgid "Playing"
 msgstr "Esitusloend"
@@ -1460,62 +1532,62 @@ msgstr ""
 "Lohista muusikafail siia,\n"
 "või muuda muusika asukoht: "
 
-#: src/ui/playlist-dialog.vala:24
-#, fuzzy
-msgid "New Playlist"
-msgstr "Esitusloend"
-
-#: src/ui/playlist-dialog.vala:98 src/ui/store-panel.vala:712
+#: src/ui/playlist-dialog.vala:111 src/ui/store-panel.vala:773
 #, c-format
 msgid "No playlist found in %s"
 msgstr ""
 
 #. Translators: "System" means following the system language.
-#: src/ui/preferences.vala:61
+#: src/ui/preferences.vala:63
 msgid "System"
 msgstr ""
 
-#: src/ui/preferences.vala:90 src/ui/preferences.vala:122
+#: src/ui/preferences.vala:92 src/ui/preferences.vala:124
 msgid "Never"
 msgstr ""
 
-#: src/ui/preferences.vala:90
+#: src/ui/preferences.vala:92
 msgid "Always"
 msgstr ""
 
-#: src/ui/preferences.vala:90
+#: src/ui/preferences.vala:92
 msgid "Art Only"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "None"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "Catbox.moe"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "ImgBB"
 msgstr ""
 
-#: src/ui/preferences.vala:122
+#: src/ui/preferences.vala:124
 msgid "Track"
 msgstr ""
 
-#: src/ui/store-panel.vala:89
+#: src/ui/store-panel.vala:91
 #, fuzzy
 msgid "Artists"
 msgstr "Esitaja"
 
-#: src/ui/store-panel.vala:94
+#: src/ui/store-panel.vala:96
 #, fuzzy
 msgid "Albums"
 msgstr "Album"
 
-#: src/ui/store-panel.vala:99
+#: src/ui/store-panel.vala:101
 #, fuzzy
 msgid "Playlists"
+msgstr "Esitusloend"
+
+#: src/ui/store-panel.vala:327
+#, fuzzy
+msgid "Playlist is empty"
 msgstr "Esitusloend"
 
 #: src/ui/taglist-dialog.vala:125
@@ -1532,15 +1604,15 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: src/utils/discord-rpc.vala:454
+#: src/utils/discord-rpc.vala:440
 msgid "Choosing a track"
 msgstr "Valib lugu"
 
-#: src/utils/discord-rpc.vala:525
+#: src/utils/discord-rpc.vala:502
 msgid "Paused"
 msgstr "Pausil"
 
-#: src/utils/discord-rpc.vala:532
+#: src/utils/discord-rpc.vala:509
 msgid "Find"
 msgstr "Otsi"
 

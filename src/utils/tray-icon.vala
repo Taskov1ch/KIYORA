@@ -25,7 +25,7 @@ namespace G4 {
         public string icon_theme_path { owned get { return _tray.icon_theme_path; } }
         public ObjectPath menu { owned get { return new ObjectPath ("/MenuBar"); } }
         public bool item_is_menu { get { return false; } }
-        public string icon_name { owned get { return Config.APP_ID + "-symbolic"; } }
+        public string icon_name { owned get { return Config.APP_ID; } }
         public Variant icon_pixmap { owned get { return _tray.icon_pixmap; } }
         public string overlay_icon_name { owned get { return ""; } }
         public Variant overlay_icon_pixmap { owned get { return new Variant.array (new VariantType ("(iiay)"), {}); } }
@@ -303,7 +303,7 @@ namespace G4 {
 
         public Variant build_tool_tip () {
             var b = new VariantBuilder (new VariantType ("(sa(iiay)ss)"));
-            b.add ("s", Config.APP_ID + "-symbolic");
+            b.add ("s", Config.APP_ID);
             b.open (new VariantType ("a(iiay)"));
             b.close ();
             b.add ("s", _app.name);
@@ -326,21 +326,12 @@ namespace G4 {
 
         private Variant build_icon_pixmap () {
             var builder = new VariantBuilder (new VariantType ("a(iiay)"));
-            int[] sizes = { 16, 22, 24, 32, 48 };
-            bool is_dark = Adw.StyleManager.get_default ().dark;
-
-            uint8 fg_r = is_dark ? (uint8) 238 : (uint8) 45;
-            uint8 fg_g = is_dark ? (uint8) 238 : (uint8) 45;
-            uint8 fg_b = is_dark ? (uint8) 238 : (uint8) 45;
-
-            uint8 bg_r = is_dark ? (uint8) 20 : (uint8) 240;
-            uint8 bg_g = is_dark ? (uint8) 20 : (uint8) 240;
-            uint8 bg_b = is_dark ? (uint8) 20 : (uint8) 240;
+            int[] sizes = { 16, 22, 24, 32, 48, 64 };
 
             foreach (var size in sizes) {
                 try {
                     var pixbuf = new Gdk.Pixbuf.from_resource_at_scale (
-                        "/io/github/Taskov1ch/KIYORA/icons/app-symbolic.svg",
+                        "/io/github/Taskov1ch/KIYORA/icons/app.svg",
                         size, size, true
                     );
                     int w = pixbuf.get_width ();
@@ -353,43 +344,12 @@ namespace G4 {
                     for (int y = 0; y < h; y++) {
                         for (int x = 0; x < w; x++) {
                             int src_idx = y * stride + x * 4;
-                            uint8 alpha = pixels[src_idx + 3];
                             int dst_idx = (y * w + x) * 4;
 
-                            if (alpha > 25) {
-                                data[dst_idx + 0] = alpha;
-                                data[dst_idx + 1] = fg_r;
-                                data[dst_idx + 2] = fg_g;
-                                data[dst_idx + 3] = fg_b;
-                            } else {
-                                bool has_neighbor = false;
-                                for (int dy = -1; dy <= 1; dy++) {
-                                    int ny = y + dy;
-                                    if (ny < 0 || ny >= h) continue;
-                                    for (int dx = -1; dx <= 1; dx++) {
-                                        if (dx == 0 && dy == 0) continue;
-                                        int nx = x + dx;
-                                        if (nx < 0 || nx >= w) continue;
-                                        if (pixels[ny * stride + nx * 4 + 3] > 60) {
-                                            has_neighbor = true;
-                                            break;
-                                        }
-                                    }
-                                    if (has_neighbor) break;
-                                }
-
-                                if (has_neighbor) {
-                                    data[dst_idx + 0] = 50;
-                                    data[dst_idx + 1] = bg_r;
-                                    data[dst_idx + 2] = bg_g;
-                                    data[dst_idx + 3] = bg_b;
-                                } else {
-                                    data[dst_idx + 0] = 0;
-                                    data[dst_idx + 1] = 0;
-                                    data[dst_idx + 2] = 0;
-                                    data[dst_idx + 3] = 0;
-                                }
-                            }
+                            data[dst_idx + 0] = pixels[src_idx + 3]; // Alpha
+                            data[dst_idx + 1] = pixels[src_idx + 0]; // Red
+                            data[dst_idx + 2] = pixels[src_idx + 1]; // Green
+                            data[dst_idx + 3] = pixels[src_idx + 2]; // Blue
                         }
                     }
 

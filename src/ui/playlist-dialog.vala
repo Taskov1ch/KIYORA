@@ -20,9 +20,22 @@ namespace G4 {
             header.add_css_class ("flat");
             content.append (header);
 
-            var new_btn = new Gtk.Button.from_icon_name ("folder-new-symbolic");
+            var new_btn = new Gtk.Button.from_icon_name ("list-add-symbolic");
             new_btn.tooltip_text = _("New Playlist");
-            new_btn.clicked.connect (() => close_with_result (new Playlist ("")));
+            new_btn.clicked.connect (() => {
+                var dialog = new EntryDialog (_("New Playlist"), null, _("Create"));
+                dialog.prompt.begin (this, (obj, res) => {
+                    var title = dialog.prompt.end (res);
+                    if (title != null && ((!)title).length > 0) {
+                        _app.create_new_playlist_async.begin ((!)title, (o, r) => {
+                            var pls = _app.create_new_playlist_async.end (r);
+                            if (pls != null) {
+                                close_with_result (pls);
+                            }
+                        });
+                    }
+                });
+            });
             header.pack_start (new_btn);
 
             header.pack_end (search_btn);

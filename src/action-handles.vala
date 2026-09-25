@@ -2,6 +2,10 @@ namespace G4 {
 
     public const string ACTION_APP = "app.";
     public const string ACTION_ABOUT = "about";
+    public const string ACTION_NEW_PLAYLIST = "new-playlist";
+    public const string ACTION_RENAME_PLAYLIST = "rename-playlist";
+    public const string ACTION_DELETE_PLAYLIST = "delete-playlist";
+    public const string ACTION_ADD_SONGS_TO_PLAYLIST = "add-songs-to-playlist";
     public const string ACTION_PREFS = "preferences";
     public const string ACTION_ADD_TO_PLAYLIST = "add-to-playlist";
     public const string ACTION_ADD_TO_QUEUE = "add-to-queue";
@@ -44,6 +48,10 @@ namespace G4 {
 
             ActionEntry[] action_entries = {
                 { ACTION_ABOUT, () => show_about_dialog (_app) },
+                { ACTION_NEW_PLAYLIST, new_playlist },
+                { ACTION_RENAME_PLAYLIST, rename_playlist, "s" },
+                { ACTION_DELETE_PLAYLIST, delete_playlist, "s" },
+                { ACTION_ADD_SONGS_TO_PLAYLIST, add_songs_to_playlist, "s" },
                 { ACTION_ADD_TO_PLAYLIST, add_to_playlist, "s" },
                 { ACTION_ADD_TO_QUEUE, play_or_queue, "s" },
                 { ACTION_EXPORT_COVER, export_cover, "s" },
@@ -68,6 +76,7 @@ namespace G4 {
 
             ActionShortKey[] app_keys = {
                 { ACTION_PREFS, "<primary>comma" },
+                { ACTION_NEW_PLAYLIST, "<primary>n" },
                 { ACTION_PLAY_PAUSE, "<primary>p" },
                 { ACTION_PREV, "<primary>Left" },
                 { ACTION_NEXT, "<primary>Right" },
@@ -121,6 +130,67 @@ namespace G4 {
                         saved ? _("Export cover successfully") : _("Export cover failed"), saved ? file?.get_uri () : (string?) null);
                 }
             }
+        }
+
+        private Playlist? find_playlist_by_uri (string? uri) {
+            if (uri == null)
+                return null;
+            var playlist = _app.loader.library.get_playlist ((!)uri);
+            if (playlist != null)
+                return playlist;
+            string? ar = null, al = null, pl = null;
+            parse_library_uri ((!)uri, out ar, out al, out pl);
+            if (pl != null)
+                return _app.loader.library.get_playlist ((!)pl);
+            return null;
+        }
+
+        private void new_playlist () {
+            var dialog = new EntryDialog (_("New Playlist"), null, _("Create"));
+            dialog.prompt.begin (_app.active_window, (obj, res) => {
+                var title = dialog.prompt.end (res);
+                if (title != null && ((!)title).length > 0) {
+                    _app.create_new_playlist_async.begin ((!)title, (o, r) => {
+                        var pls = _app.create_new_playlist_async.end (r);
+                        if (pls != null) {
+                            Window.get_default ()?.open_page (build_library_uri (null, pls), false);
+                        }
+                    });
+                }
+            });
+        }
+
+        private void rename_playlist (SimpleAction action, Variant? parameter) {
+            var uri = parameter?.get_string ();
+            var playlist = find_playlist_by_uri (uri);
+            if (playlist == null)
+                return;
+
+            var dialog = new EntryDialog (_("Rename Playlist"), ((!)playlist).title, _("Rename"));
+            dialog.prompt.begin (_app.active_window, (obj, res) => {
+                var title = dialog.prompt.end (res);
+                if (title != null && ((!)title).length > 0) {
+                    _app.rename_playlist_async.begin ((!)playlist, (!)title);
+                }
+            });
+        }
+
+        private void delete_playlist (SimpleAction action, Variant? parameter) {
+            var uri = parameter?.get_string ();
+            var playlist = find_playlist_by_uri (uri);
+            if (playlist == null)
+                return;
+
+            _app.delete_playlist_async.begin ((!)playlist, _app.active_window);
+        }
+
+        private void add_songs_to_playlist (SimpleAction action, Variant? parameter) {
+            var uri = parameter?.get_string ();
+            var playlist = find_playlist_by_uri (uri);
+            if (playlist == null)
+                return;
+
+            _app.add_songs_to_playlist_dialog.begin ((!)playlist);
         }
 
         private void add_to_playlist (SimpleAction action, Variant? parameter) {

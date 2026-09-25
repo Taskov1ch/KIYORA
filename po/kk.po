@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-25 17:08+0600\n"
+"POT-Creation-Date: 2026-09-25 18:07+0600\n"
 "PO-Revision-Date: 2025-07-16 12:00+0600\n"
 "Last-Translator: AnmiTaliDev <anmitalli198@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
@@ -1117,8 +1117,8 @@ msgctxt "shortcut window"
 msgid "Save List"
 msgstr "Тізімді сақтау"
 
-#: src/gtk/play-panel.ui:16 src/ui/music-list.vala:626
-#: src/ui/store-panel.vala:420
+#: src/gtk/play-panel.ui:16 src/ui/music-list.vala:637
+#: src/ui/store-panel.vala:437
 msgid "Back"
 msgstr "Артқа"
 
@@ -1130,7 +1130,7 @@ msgstr "Жалпы"
 msgid "Language"
 msgstr ""
 
-#: src/gtk/preferences.ui:15 src/ui/preferences.vala:87
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:89
 msgid "Changes take effect after restarting KIYORA"
 msgstr ""
 
@@ -1150,7 +1150,7 @@ msgstr "Орындаушылар/альбомдар үшін тор көріні
 msgid "Single click to activate item"
 msgstr "Элементті белсендіру үшін бір рет басу"
 
-#: src/gtk/preferences.ui:63 src/application.vala:484
+#: src/gtk/preferences.ui:63 src/application.vala:485
 msgid "Keep playing after window closed"
 msgstr "Терезе жабылғаннан кейін ойнатуды жалғастыру"
 
@@ -1166,51 +1166,51 @@ msgstr ""
 msgid "ImgBB API Key"
 msgstr ""
 
-#: src/gtk/preferences.ui:93
+#: src/gtk/preferences.ui:99
 msgid "Library"
 msgstr "Кітапхана"
 
-#: src/gtk/preferences.ui:97
+#: src/gtk/preferences.ui:103
 msgid "Load music from folder"
 msgstr "Қалтадан музыка жүктеу"
 
-#: src/gtk/preferences.ui:109
+#: src/gtk/preferences.ui:115
 msgid "Monitor local file changes"
 msgstr "Жергілікті файл өзгерістерін бақылау"
 
-#: src/gtk/preferences.ui:121
+#: src/gtk/preferences.ui:127
 msgid "Load thumbnails for non-local files"
 msgstr "Жергілікті емес файлдар үшін кішірейтілген суреттерді жүктеу"
 
-#: src/gtk/preferences.ui:122
+#: src/gtk/preferences.ui:128
 msgid "May cause slowdowns and excess network usage"
 msgstr "Баяулауға және желі трафигінің артық қолданылуына әкелуі мүмкін"
 
-#: src/gtk/preferences.ui:135
+#: src/gtk/preferences.ui:141
 msgid "Playback"
 msgstr "Ойнату"
 
-#: src/gtk/preferences.ui:139
+#: src/gtk/preferences.ui:145
 msgid "Show audio peak level"
 msgstr "Аудио шыңының деңгейін көрсету"
 
-#: src/gtk/preferences.ui:143
+#: src/gtk/preferences.ui:149
 msgid "Display characters"
 msgstr "Таңбаларды көрсету"
 
-#: src/gtk/preferences.ui:158
+#: src/gtk/preferences.ui:164
 msgid "Rotate album cover"
 msgstr "Альбом мұқабасын бұру"
 
-#: src/gtk/preferences.ui:170
+#: src/gtk/preferences.ui:176
 msgid "Enable gapless playback"
 msgstr "Үзіліссіз ойнатуды қосу"
 
-#: src/gtk/preferences.ui:182
+#: src/gtk/preferences.ui:188
 msgid "Normalize volume with ReplayGain"
 msgstr "ReplayGain арқылы дыбыс деңгейін қалыпқа келтіру"
 
-#: src/gtk/preferences.ui:188
+#: src/gtk/preferences.ui:194
 msgid "Prefer audio sink of GStreamer"
 msgstr "GStreamer аудио шығысын таңдау"
 
@@ -1218,103 +1218,148 @@ msgstr "GStreamer аудио шығысын таңдау"
 msgid "Main Menu"
 msgstr "Басты мәзір"
 
-#: src/gtk/store-panel.ui:30 src/ui/playlist-dialog.vala:36
+#: src/gtk/store-panel.ui:30 src/ui/playlist-dialog.vala:49
 msgid "Search"
 msgstr "Іздеу"
 
-#: src/gtk/store-panel.ui:40
+#: src/gtk/store-panel.ui:36 src/action-handles.vala:149
+#: src/application.vala:609 src/ui/playlist-dialog.vala:24
+#: src/ui/playlist-dialog.vala:26 src/ui/store-panel.vala:662
+msgid "New Playlist"
+msgstr "Жаңа плейлист"
+
+#: src/gtk/store-panel.ui:47
 msgid "Sort By"
 msgstr "Сұрыптау"
 
-#: src/gtk/store-panel.ui:71
+#: src/gtk/store-panel.ui:78
 msgid "_Color Scheme"
 msgstr "_Түстер схемасы"
 
-#: src/gtk/store-panel.ui:73
+#: src/gtk/store-panel.ui:80
 msgid "_System"
 msgstr "_Жүйе"
 
-#: src/gtk/store-panel.ui:78
+#: src/gtk/store-panel.ui:85
 msgid "_Light"
 msgstr "_Ашық"
 
-#: src/gtk/store-panel.ui:83
+#: src/gtk/store-panel.ui:90
 msgid "_Dark"
 msgstr "_Қараңғы"
 
-#: src/gtk/store-panel.ui:90
+#: src/gtk/store-panel.ui:97
 msgid "_Reload Library"
 msgstr "_Кітапхананы қайта жүктеу"
 
-#: src/gtk/store-panel.ui:94
+#: src/gtk/store-panel.ui:101
 msgid "_Multiple Select"
 msgstr "_Бірнеше таңдау"
 
-#: src/gtk/store-panel.ui:98
+#: src/gtk/store-panel.ui:105
 msgid "_Save List"
 msgstr "_Тізімді сақтау"
 
-#: src/gtk/store-panel.ui:104
+#: src/gtk/store-panel.ui:111
 msgid "_Preferences"
 msgstr "_Баптаулар"
 
-#: src/gtk/store-panel.ui:108
+#: src/gtk/store-panel.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "_Пернетақта жылдам пернелері"
 
-#: src/gtk/store-panel.ui:112
+#: src/gtk/store-panel.ui:119
 msgid "_About"
 msgstr "_Туралы"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:122
+#: src/gtk/store-panel.ui:128 src/ui/preferences.vala:124
 msgid "Album"
 msgstr "Альбом"
 
-#: src/gtk/store-panel.ui:126
+#: src/gtk/store-panel.ui:133
 msgid "Artist"
 msgstr "Орындаушы"
 
-#: src/gtk/store-panel.ui:131
+#: src/gtk/store-panel.ui:138
 msgid "Artist/Album"
 msgstr "Орындаушы/Альбом"
 
-#: src/gtk/store-panel.ui:136
+#: src/gtk/store-panel.ui:143
 msgid "Title"
 msgstr "Атауы"
 
-#: src/gtk/store-panel.ui:141
+#: src/gtk/store-panel.ui:148
 msgid "Recent"
 msgstr "Соңғы"
 
-#: src/gtk/store-panel.ui:146
+#: src/gtk/store-panel.ui:153
 msgid "Shuffle"
 msgstr "Араластыру"
 
-#: src/action-handles.vala:114
+#: src/action-handles.vala:123
 msgid "Image Files"
 msgstr "Сурет файлдары"
 
-#: src/action-handles.vala:121
+#: src/action-handles.vala:130
 msgid "Export cover successfully"
 msgstr "Мұқаба сәтті экспортталды"
 
-#: src/action-handles.vala:121
+#: src/action-handles.vala:130
 msgid "Export cover failed"
 msgstr "Мұқабаны экспорттау сәтсіз аяқталды"
 
-#: src/application.vala:396
+#: src/action-handles.vala:149 src/application.vala:609
+#: src/ui/playlist-dialog.vala:26 src/ui/store-panel.vala:662
+msgid "Create"
+msgstr ""
+
+#: src/action-handles.vala:169
+#, fuzzy
+msgid "Rename Playlist"
+msgstr "Жаңа плейлист"
+
+#: src/action-handles.vala:169
+msgid "Rename"
+msgstr ""
+
+#: src/application.vala:397
 msgid "Save playlist failed"
 msgstr "Плейлистті сақтау сәтсіз аяқталды"
 
-#: src/application.vala:520
-msgid "Playlist Files"
+#: src/application.vala:506
+#, fuzzy
+msgid "Failed to create playlist"
+msgstr "Плейлистке қосу"
+
+#: src/application.vala:519
+#, c-format
+msgid "Are you sure you want to delete playlist “%s”?"
+msgstr ""
+
+#: src/application.vala:549
+#, fuzzy
+msgid "Playlist deleted"
 msgstr "Плейлист файлдары"
 
-#: src/application.vala:535
+#: src/application.vala:565
+#, fuzzy
+msgid "Playlist renamed"
+msgstr "Плейлист көрінісі"
+
+#: src/application.vala:572
+msgid "Audio Files"
+msgstr ""
+
+#: src/application.vala:583
+#, fuzzy
+msgid "Songs added to playlist"
+msgstr "Плейлистке қосу"
+
+#: src/application.vala:622
 msgid "Save playlist successfully"
 msgstr "Плейлист сәтті сақталды"
 
-#: src/application.vala:670
+#: src/application.vala:757
 msgid "Keep playing"
 msgstr "Ойнатуды жалғастыру"
 
@@ -1331,92 +1376,119 @@ msgstr "Жоқ"
 msgid "Yes"
 msgstr "Ия"
 
-#: src/ui/music-list.vala:270
+#: src/ui/dialogs.vala:273
+msgid "OK"
+msgstr ""
+
+#: src/ui/dialogs.vala:282
+msgid "Cancel"
+msgstr ""
+
+#: src/ui/dialogs.vala:299
+#, fuzzy
+msgid "Playlist name"
+msgstr "Плейлист көрінісі"
+
+#: src/ui/music-list.vala:273
 msgid "Playlist is modified, save it?"
 msgstr "Плейлист өзгертілді, сақтау керек пе?"
 
 #. Translators: Play this music at next position of current playing music
-#: src/ui/music-list.vala:399 src/ui/music-list.vala:415
-#: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:299
+#: src/ui/music-list.vala:402 src/ui/music-list.vala:418
+#: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:301
 msgid "Play at _Next"
 msgstr "_Келесі орында ойнату"
 
-#: src/ui/music-list.vala:401 src/ui/music-list.vala:417
-#: src/ui/music-widgets.vala:278 src/ui/music-widgets.vala:300
+#: src/ui/music-list.vala:404 src/ui/music-list.vala:420
+#: src/ui/music-widgets.vala:278 src/ui/music-widgets.vala:302
 msgid "Add to _Queue"
 msgstr "_Кезекке қосу"
 
-#: src/ui/music-list.vala:402 src/ui/music-widgets.vala:279
-#: src/ui/music-widgets.vala:301 src/ui/music-widgets.vala:320
+#: src/ui/music-list.vala:405 src/ui/music-widgets.vala:279
+#: src/ui/music-widgets.vala:303 src/ui/music-widgets.vala:322
 msgid "Add to _Playlist…"
 msgstr "_Плейлистке қосу…"
 
-#: src/ui/music-list.vala:403 src/ui/music-list.vala:421
+#: src/ui/music-list.vala:406 src/ui/music-list.vala:424
 msgid "_Remove"
 msgstr "_Жою"
 
-#: src/ui/music-list.vala:422 src/ui/music-widgets.vala:286
+#: src/ui/music-list.vala:425
 msgid "_Move to Trash"
 msgstr "_Қоқыс шелегіне тастау"
 
-#: src/ui/music-list.vala:630
+#: src/ui/music-list.vala:641
 msgid "Select All"
 msgstr "Барлығын таңдау"
 
-#: src/ui/music-list.vala:647
+#: src/ui/music-list.vala:658
 msgid "Play at Next"
 msgstr "Келесі орында ойнату"
 
-#: src/ui/music-list.vala:654
+#: src/ui/music-list.vala:665
 msgid "Add to Queue"
 msgstr "Кезекке қосу"
 
-#: src/ui/music-list.vala:661 src/ui/playlist-dialog.vala:19
+#: src/ui/music-list.vala:672 src/ui/playlist-dialog.vala:19
 msgid "Add to Playlist"
 msgstr "Плейлистке қосу"
 
-#: src/ui/music-list.vala:668
+#: src/ui/music-list.vala:679
 msgid "Remove"
 msgstr "Жою"
 
-#: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
+#: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:298
+#: src/ui/store-panel.vala:459 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Ойнату"
 
-#: src/ui/music-widgets.vala:275 src/ui/music-widgets.vala:297
+#: src/ui/music-widgets.vala:275 src/ui/music-widgets.vala:299
 msgid "_Random Play"
 msgstr "_Кездейсоқ ойнату"
 
-#: src/ui/music-widgets.vala:285
+#: src/ui/music-widgets.vala:285 src/ui/store-panel.vala:448
+msgid "Add Songs…"
+msgstr ""
+
+#: src/ui/music-widgets.vala:286
+#, fuzzy
+msgid "Rename Playlist…"
+msgstr "Жаңа плейлист"
+
+#: src/ui/music-widgets.vala:287
+#, fuzzy
+msgid "Delete Playlist"
+msgstr "Жаңа плейлист"
+
+#: src/ui/music-widgets.vala:288
 msgid "Show List _File"
 msgstr "Тізім _файлын көрсету"
 
-#: src/ui/music-widgets.vala:308 src/ui/play-panel.vala:63
+#: src/ui/music-widgets.vala:310 src/ui/play-panel.vala:63
 msgid "Search Title"
 msgstr "Атауын іздеу"
 
-#: src/ui/music-widgets.vala:309 src/ui/play-panel.vala:61
+#: src/ui/music-widgets.vala:311 src/ui/play-panel.vala:61
 msgid "Search Album"
 msgstr "Альбомды іздеу"
 
-#: src/ui/music-widgets.vala:310 src/ui/play-panel.vala:62
+#: src/ui/music-widgets.vala:312 src/ui/play-panel.vala:62
 msgid "Search Artist"
 msgstr "Орындаушыны іздеу"
 
-#: src/ui/music-widgets.vala:314
+#: src/ui/music-widgets.vala:316
 msgid "Show Cover _File"
 msgstr "Мұқаба _файлын көрсету"
 
-#: src/ui/music-widgets.vala:316
+#: src/ui/music-widgets.vala:318
 msgid "_Export Cover"
 msgstr "_Мұқабаны экспорттау"
 
-#: src/ui/music-widgets.vala:317
+#: src/ui/music-widgets.vala:319
 msgid "Show _Tags…"
 msgstr "_Тегтерді көрсету…"
 
-#: src/ui/music-widgets.vala:318
+#: src/ui/music-widgets.vala:320
 msgid "Show Music _File"
 msgstr "Музыка _файлын көрсету"
 
@@ -1438,8 +1510,8 @@ msgstr "Ойнату/Тоқтату"
 msgid "Play Next"
 msgstr "Келесіні ойнату"
 
-#: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:525
+#: src/ui/play-panel.vala:56 src/ui/store-panel.vala:86
+#: src/utils/discord-rpc.vala:502
 msgid "Playing"
 msgstr "Ойнатылуда"
 
@@ -1451,60 +1523,61 @@ msgstr ""
 "Музыка файлдарын осында сүйреп тастаңыз,\n"
 "немесе музыка орнын өзгертіңіз: "
 
-#: src/ui/playlist-dialog.vala:24
-msgid "New Playlist"
-msgstr "Жаңа плейлист"
-
-#: src/ui/playlist-dialog.vala:98 src/ui/store-panel.vala:712
+#: src/ui/playlist-dialog.vala:111 src/ui/store-panel.vala:773
 #, c-format
 msgid "No playlist found in %s"
 msgstr "%s ішінде плейлист табылмады"
 
 #. Translators: "System" means following the system language.
-#: src/ui/preferences.vala:61
+#: src/ui/preferences.vala:63
 #, fuzzy
 msgid "System"
 msgstr "_Жүйе"
 
-#: src/ui/preferences.vala:90 src/ui/preferences.vala:122
+#: src/ui/preferences.vala:92 src/ui/preferences.vala:124
 msgid "Never"
 msgstr "Ешқашан"
 
-#: src/ui/preferences.vala:90
+#: src/ui/preferences.vala:92
 msgid "Always"
 msgstr "Әрқашан"
 
-#: src/ui/preferences.vala:90
+#: src/ui/preferences.vala:92
 msgid "Art Only"
 msgstr "Тек сурет"
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "None"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "Catbox.moe"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "ImgBB"
 msgstr ""
 
-#: src/ui/preferences.vala:122
+#: src/ui/preferences.vala:124
 msgid "Track"
 msgstr "Трек"
 
-#: src/ui/store-panel.vala:89
+#: src/ui/store-panel.vala:91
 msgid "Artists"
 msgstr "Орындаушылар"
 
-#: src/ui/store-panel.vala:94
+#: src/ui/store-panel.vala:96
 msgid "Albums"
 msgstr "Альбомдар"
 
-#: src/ui/store-panel.vala:99
+#: src/ui/store-panel.vala:101
 msgid "Playlists"
 msgstr "Плейлисттер"
+
+#: src/ui/store-panel.vala:327
+#, fuzzy
+msgid "Playlist is empty"
+msgstr "Плейлист көрінісі"
 
 #: src/ui/taglist-dialog.vala:125
 msgid "Copy"
@@ -1520,15 +1593,15 @@ msgstr "Дыбыс деңгейі %d%%"
 msgid "Show"
 msgstr "Көрсету"
 
-#: src/utils/discord-rpc.vala:454
+#: src/utils/discord-rpc.vala:440
 msgid "Choosing a track"
 msgstr "Трек таңдауда"
 
-#: src/utils/discord-rpc.vala:525
+#: src/utils/discord-rpc.vala:502
 msgid "Paused"
 msgstr "Кідіртілген"
 
-#: src/utils/discord-rpc.vala:532
+#: src/utils/discord-rpc.vala:509
 msgid "Find"
 msgstr "Табу"
 
@@ -1587,6 +1660,3 @@ msgstr "Ойнатуды жалғастыру"
 
 #~ msgid "Playing view"
 #~ msgstr "Ойнату көрінісі"
-
-#~ msgid "Playlist view"
-#~ msgstr "Плейлист көрінісі"

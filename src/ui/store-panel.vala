@@ -35,6 +35,8 @@ namespace G4 {
         [GtkChild]
         private unowned Gtk.ToggleButton search_btn;
         [GtkChild]
+        private unowned Gtk.Button new_playlist_btn;
+        [GtkChild]
         private unowned Gtk.SearchBar search_bar;
         [GtkChild]
         private unowned Gtk.SearchEntry search_entry;
@@ -130,7 +132,11 @@ namespace G4 {
             app.music_changed.connect (on_music_changed);
             app.music_library_changed.connect (on_music_library_changed);
             app.playlist_added.connect (on_playlist_added);
+            app.playlist_removed.connect (on_playlist_removed);
             app.thumbnail_changed.connect (on_thumbnail_changed);
+
+            new_playlist_btn.clicked.connect (on_new_playlist_clicked);
+            _playlist_stack.notify["visible-child"].connect (update_new_playlist_btn_visibility);
 
             var settings = app.settings;
             settings.bind ("sort-mode", this, "sort-mode", SettingsBindFlags.DEFAULT);
@@ -189,8 +195,13 @@ namespace G4 {
                     var scroll = !_overlayed_lists.remove (list);
                     set_to_current_music (scroll);
                 }
+                update_new_playlist_btn_visibility ();
                 save_current_page ();
             }
+        }
+
+        private void update_new_playlist_btn_visibility () {
+            new_playlist_btn.visible = (stack_view.visible_child == _playlist_stack.widget && _playlist_stack.visible_child == _playlist_list);
         }
 
         public void first_allocated () {
@@ -203,6 +214,9 @@ namespace G4 {
             if (_current_list.data_store.find (music, out position)) {
                 _current_list.data_store.remove (position);
                 _current_list.modified = true;
+                if (_current_list.music_node is Playlist) {
+                    _current_list.save_if_modified.begin (false);
+                }
             }
         }
 
@@ -309,6 +323,9 @@ namespace G4 {
             var is_artist_playlist = is_playlist && from_artist;
             var sort_mode = is_artist_playlist ? SortMode.ALBUM : SortMode.TITLE;
             var list = new MusicList (_app, typeof (Music), album, is_playlist);
+            if (is_playlist) {
+                list.set_empty_text (_("Playlist is empty"));
+            }
             list.item_activated.connect ((position, obj) => play_current_list ((int) position));
             list.item_binded.connect ((item) => {
                 var entry = (MusicEntry) item.child;
@@ -418,8 +435,22 @@ namespace G4 {
             var stack = artist_mode ? _artist_stack : playlist_mode ? _playlist_stack : _album_stack;
             var back_btn = new Gtk.Button.from_icon_name ("go-previous-symbolic");
             back_btn.tooltip_text = _("Back");
-            back_btn.clicked.connect (stack.pop);
+            back_btn.clicked.connect (() => {
+                if (mlist.modified && mlist.music_node is Playlist) {
+                    mlist.save_if_modified.begin (false);
+                }
+                stack.pop ();
+            });
             header.prepend (back_btn);
+
+            if (playlist_mode) {
+                var add_songs_btn = new Gtk.Button.from_icon_name ("list-add-symbolic");
+                add_songs_btn.tooltip_text = _("Add Songs…");
+                add_songs_btn.clicked.connect (() => {
+                    _app.add_songs_to_playlist_dialog.begin ((Playlist) album);
+                });
+                header.append (add_songs_btn);
+            }
 
             var key_length = album?.album_key?.length ?? 0;
             if (artist_mode || key_length > 0) {
@@ -610,6 +641,36 @@ namespace G4 {
             uint position = -1;
             merge_items_to_store (_playlist_list.data_store, arr, ref position);
             sort_music_store (_playlist_list.data_store, SortMode.TITLE);
+        }
+
+        private void on_playlist_removed (string list_uri) {
+            var list = _playlist_stack.visible_child as MusicList;
+            var node = list?.music_node as Playlist;
+            if (node != null && ((!)node).list_uri == list_uri) {
+                _playlist_stack.pop ();
+            }
+            for (uint i = 0; i < _playlist_list.data_store.get_n_items (); i++) {
+                var p = _playlist_list.data_store.get_item (i) as Playlist;
+                if (p != null && ((!)p).list_uri == list_uri) {
+                    _playlist_list.data_store.remove (i);
+                    break;
+                }
+            }
+        }
+
+        private void on_new_playlist_clicked () {
+            var dialog = new EntryDialog (_("New Playlist"), null, _("Create"));
+            dialog.prompt.begin (Window.get_default (), (obj, res) => {
+                var title = dialog.prompt.end (res);
+                if (title != null && ((!)title).length > 0) {
+                    _app.create_new_playlist_async.begin ((!)title, (o, r) => {
+                        var pls = _app.create_new_playlist_async.end (r);
+                        if (pls != null) {
+                            create_stack_page (null, (!)pls);
+                        }
+                    });
+                }
+            });
         }
 
         private void on_search_btn_toggled () {

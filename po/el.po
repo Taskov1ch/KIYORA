@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-25 17:08+0600\n"
+"POT-Creation-Date: 2026-09-25 18:07+0600\n"
 "PO-Revision-Date: 2025-09-13 00:09+0300\n"
 "Last-Translator: Dimitris Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: \n"
@@ -1121,8 +1121,8 @@ msgctxt "shortcut window"
 msgid "Save List"
 msgstr "Αποθήκευση λίστας"
 
-#: src/gtk/play-panel.ui:16 src/ui/music-list.vala:626
-#: src/ui/store-panel.vala:420
+#: src/gtk/play-panel.ui:16 src/ui/music-list.vala:637
+#: src/ui/store-panel.vala:437
 msgid "Back"
 msgstr "Πϊσω"
 
@@ -1134,7 +1134,7 @@ msgstr "Γενικά"
 msgid "Language"
 msgstr ""
 
-#: src/gtk/preferences.ui:15 src/ui/preferences.vala:87
+#: src/gtk/preferences.ui:15 src/ui/preferences.vala:89
 msgid "Changes take effect after restarting KIYORA"
 msgstr ""
 
@@ -1154,7 +1154,7 @@ msgstr "Προβολή πλέγματος για καλλιτέχνες/άλμπ
 msgid "Single click to activate item"
 msgstr "Ενεργοποίηση στοιχείων με ένα κλικ"
 
-#: src/gtk/preferences.ui:63 src/application.vala:484
+#: src/gtk/preferences.ui:63 src/application.vala:485
 msgid "Keep playing after window closed"
 msgstr "Συνέχεια αναπαραγωγής μετά το κλείσιμο του παραθύρου"
 
@@ -1170,51 +1170,51 @@ msgstr ""
 msgid "ImgBB API Key"
 msgstr ""
 
-#: src/gtk/preferences.ui:93
+#: src/gtk/preferences.ui:99
 msgid "Library"
 msgstr "Βιβλιοθήκη"
 
-#: src/gtk/preferences.ui:97
+#: src/gtk/preferences.ui:103
 msgid "Load music from folder"
 msgstr "Φόρτωση μουσικής από φάκελο"
 
-#: src/gtk/preferences.ui:109
+#: src/gtk/preferences.ui:115
 msgid "Monitor local file changes"
 msgstr "Εποπτεία για αλλαγές στα τοπικά αρχεία"
 
-#: src/gtk/preferences.ui:121
+#: src/gtk/preferences.ui:127
 msgid "Load thumbnails for non-local files"
 msgstr "Φόρτωση μικρογραφιών για μη τοπικά αρχεία"
 
-#: src/gtk/preferences.ui:122
+#: src/gtk/preferences.ui:128
 msgid "May cause slowdowns and excess network usage"
 msgstr "Ενδέχεται να προκαλέσει καθυστερήσεις και υπερβολική χρήση δικτύου"
 
-#: src/gtk/preferences.ui:135
+#: src/gtk/preferences.ui:141
 msgid "Playback"
 msgstr "Αναπαραγωγή"
 
-#: src/gtk/preferences.ui:139
+#: src/gtk/preferences.ui:145
 msgid "Show audio peak level"
 msgstr "Εμφάνιση επιπέδου κορύφωσης ήχου"
 
-#: src/gtk/preferences.ui:143
+#: src/gtk/preferences.ui:149
 msgid "Display characters"
 msgstr "Εμφανιζόμενοι χαρακτήρες"
 
-#: src/gtk/preferences.ui:158
+#: src/gtk/preferences.ui:164
 msgid "Rotate album cover"
 msgstr "Περιστροφή εξώφυλλου άλμπουμ"
 
-#: src/gtk/preferences.ui:170
+#: src/gtk/preferences.ui:176
 msgid "Enable gapless playback"
 msgstr "Ενεργοποίηση απρόσκοπτης αναπαραγωγής"
 
-#: src/gtk/preferences.ui:182
+#: src/gtk/preferences.ui:188
 msgid "Normalize volume with ReplayGain"
 msgstr "Κανονικοποίηση έντασης με το ReplayGain"
 
-#: src/gtk/preferences.ui:188
+#: src/gtk/preferences.ui:194
 msgid "Prefer audio sink of GStreamer"
 msgstr "Προτιμώμενη διεπαφή ήχου για το GStreamer"
 
@@ -1222,103 +1222,148 @@ msgstr "Προτιμώμενη διεπαφή ήχου για το GStreamer"
 msgid "Main Menu"
 msgstr "Κύριο μενού"
 
-#: src/gtk/store-panel.ui:30 src/ui/playlist-dialog.vala:36
+#: src/gtk/store-panel.ui:30 src/ui/playlist-dialog.vala:49
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: src/gtk/store-panel.ui:40
+#: src/gtk/store-panel.ui:36 src/action-handles.vala:149
+#: src/application.vala:609 src/ui/playlist-dialog.vala:24
+#: src/ui/playlist-dialog.vala:26 src/ui/store-panel.vala:662
+msgid "New Playlist"
+msgstr "Νέα λίστα"
+
+#: src/gtk/store-panel.ui:47
 msgid "Sort By"
 msgstr "Ταξινόμηση κατά"
 
-#: src/gtk/store-panel.ui:71
+#: src/gtk/store-panel.ui:78
 msgid "_Color Scheme"
 msgstr "_Σύνολο χρωμάτων"
 
-#: src/gtk/store-panel.ui:73
+#: src/gtk/store-panel.ui:80
 msgid "_System"
 msgstr "_Θέμα συστήματος"
 
-#: src/gtk/store-panel.ui:78
+#: src/gtk/store-panel.ui:85
 msgid "_Light"
 msgstr "_Ανοιχτόχρωμο"
 
-#: src/gtk/store-panel.ui:83
+#: src/gtk/store-panel.ui:90
 msgid "_Dark"
 msgstr "Σ_κουρόχρωμο"
 
-#: src/gtk/store-panel.ui:90
+#: src/gtk/store-panel.ui:97
 msgid "_Reload Library"
 msgstr "_Επαναφόρτωση βιβλιοθήκης"
 
-#: src/gtk/store-panel.ui:94
+#: src/gtk/store-panel.ui:101
 msgid "_Multiple Select"
 msgstr "_Πολλαπλή επιλογή"
 
-#: src/gtk/store-panel.ui:98
+#: src/gtk/store-panel.ui:105
 msgid "_Save List"
 msgstr "_Αποθήκευση λίστας"
 
-#: src/gtk/store-panel.ui:104
+#: src/gtk/store-panel.ui:111
 msgid "_Preferences"
 msgstr "_Προτιμήσεις"
 
-#: src/gtk/store-panel.ui:108
+#: src/gtk/store-panel.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "Συντομεύσεις π_ληκτρολογίου"
 
-#: src/gtk/store-panel.ui:112
+#: src/gtk/store-panel.ui:119
 msgid "_About"
 msgstr "Πλ_ηροφορίες"
 
-#: src/gtk/store-panel.ui:121 src/ui/preferences.vala:122
+#: src/gtk/store-panel.ui:128 src/ui/preferences.vala:124
 msgid "Album"
 msgstr "Άλμπουμ"
 
-#: src/gtk/store-panel.ui:126
+#: src/gtk/store-panel.ui:133
 msgid "Artist"
 msgstr "Καλλιτέχνης"
 
-#: src/gtk/store-panel.ui:131
+#: src/gtk/store-panel.ui:138
 msgid "Artist/Album"
 msgstr "Καλλιτέχνης/άλμπουμ"
 
-#: src/gtk/store-panel.ui:136
+#: src/gtk/store-panel.ui:143
 msgid "Title"
 msgstr "Τίτλος"
 
-#: src/gtk/store-panel.ui:141
+#: src/gtk/store-panel.ui:148
 msgid "Recent"
 msgstr "Πρόσφατα"
 
-#: src/gtk/store-panel.ui:146
+#: src/gtk/store-panel.ui:153
 msgid "Shuffle"
 msgstr "Τυχαία αναπαραγωγή"
 
-#: src/action-handles.vala:114
+#: src/action-handles.vala:123
 msgid "Image Files"
 msgstr "Αρχεία εικόνων"
 
-#: src/action-handles.vala:121
+#: src/action-handles.vala:130
 msgid "Export cover successfully"
 msgstr "Επιτυχής εξαγωγή εξώφυλλου"
 
-#: src/action-handles.vala:121
+#: src/action-handles.vala:130
 msgid "Export cover failed"
 msgstr "Αποτυχία εξαγωγής εξώφυλλου"
 
-#: src/application.vala:396
+#: src/action-handles.vala:149 src/application.vala:609
+#: src/ui/playlist-dialog.vala:26 src/ui/store-panel.vala:662
+msgid "Create"
+msgstr ""
+
+#: src/action-handles.vala:169
+#, fuzzy
+msgid "Rename Playlist"
+msgstr "Νέα λίστα"
+
+#: src/action-handles.vala:169
+msgid "Rename"
+msgstr ""
+
+#: src/application.vala:397
 msgid "Save playlist failed"
 msgstr "Αποτυχία αποθήκευσης λίστας αναπαραγωγής"
 
-#: src/application.vala:520
-msgid "Playlist Files"
+#: src/application.vala:506
+#, fuzzy
+msgid "Failed to create playlist"
+msgstr "Προσθήκη σε λίστα αναπαραγωγής"
+
+#: src/application.vala:519
+#, c-format
+msgid "Are you sure you want to delete playlist “%s”?"
+msgstr ""
+
+#: src/application.vala:549
+#, fuzzy
+msgid "Playlist deleted"
 msgstr "Αρχεία λιστών αναπαραγωγής"
 
-#: src/application.vala:535
+#: src/application.vala:565
+#, fuzzy
+msgid "Playlist renamed"
+msgstr "Προβολή λιστών αναπαραγωγής"
+
+#: src/application.vala:572
+msgid "Audio Files"
+msgstr ""
+
+#: src/application.vala:583
+#, fuzzy
+msgid "Songs added to playlist"
+msgstr "Προσθήκη σε λίστα αναπαραγωγής"
+
+#: src/application.vala:622
 msgid "Save playlist successfully"
 msgstr "Επιτυχής αποθήκευση λίστας αναπαραγωγής"
 
-#: src/application.vala:670
+#: src/application.vala:757
 msgid "Keep playing"
 msgstr "Συνέχεια αναπαραγωγής"
 
@@ -1337,92 +1382,119 @@ msgstr "Όχι"
 msgid "Yes"
 msgstr "Ναι"
 
-#: src/ui/music-list.vala:270
+#: src/ui/dialogs.vala:273
+msgid "OK"
+msgstr ""
+
+#: src/ui/dialogs.vala:282
+msgid "Cancel"
+msgstr ""
+
+#: src/ui/dialogs.vala:299
+#, fuzzy
+msgid "Playlist name"
+msgstr "Προβολή λιστών αναπαραγωγής"
+
+#: src/ui/music-list.vala:273
 msgid "Playlist is modified, save it?"
 msgstr "Η λίστα αναπαραγωγής τροποποιήθηκε, θέλετε να κάνετε αποθήκευση;"
 
 #. Translators: Play this music at next position of current playing music
-#: src/ui/music-list.vala:399 src/ui/music-list.vala:415
-#: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:299
+#: src/ui/music-list.vala:402 src/ui/music-list.vala:418
+#: src/ui/music-widgets.vala:277 src/ui/music-widgets.vala:301
 msgid "Play at _Next"
 msgstr "Αναπαραγωγή στο _επόμενο"
 
-#: src/ui/music-list.vala:401 src/ui/music-list.vala:417
-#: src/ui/music-widgets.vala:278 src/ui/music-widgets.vala:300
+#: src/ui/music-list.vala:404 src/ui/music-list.vala:420
+#: src/ui/music-widgets.vala:278 src/ui/music-widgets.vala:302
 msgid "Add to _Queue"
 msgstr "Προσθήκη στην _ουρά αναπαραγωγής"
 
-#: src/ui/music-list.vala:402 src/ui/music-widgets.vala:279
-#: src/ui/music-widgets.vala:301 src/ui/music-widgets.vala:320
+#: src/ui/music-list.vala:405 src/ui/music-widgets.vala:279
+#: src/ui/music-widgets.vala:303 src/ui/music-widgets.vala:322
 msgid "Add to _Playlist…"
 msgstr "Προσθήκη σε _λίστα αναπαραγωγής…"
 
-#: src/ui/music-list.vala:403 src/ui/music-list.vala:421
+#: src/ui/music-list.vala:406 src/ui/music-list.vala:424
 msgid "_Remove"
 msgstr "_Αφαίρεση"
 
-#: src/ui/music-list.vala:422 src/ui/music-widgets.vala:286
+#: src/ui/music-list.vala:425
 msgid "_Move to Trash"
 msgstr "_Μετακίνηση στα απορρίμματα"
 
-#: src/ui/music-list.vala:630
+#: src/ui/music-list.vala:641
 msgid "Select All"
 msgstr "Επιλογή όλων"
 
-#: src/ui/music-list.vala:647
+#: src/ui/music-list.vala:658
 msgid "Play at Next"
 msgstr "Αναπαραγωγή στο επόμενο"
 
-#: src/ui/music-list.vala:654
+#: src/ui/music-list.vala:665
 msgid "Add to Queue"
 msgstr "Προσθήκη στην ουρά αναπαραγωγής"
 
-#: src/ui/music-list.vala:661 src/ui/playlist-dialog.vala:19
+#: src/ui/music-list.vala:672 src/ui/playlist-dialog.vala:19
 msgid "Add to Playlist"
 msgstr "Προσθήκη σε λίστα αναπαραγωγής"
 
-#: src/ui/music-list.vala:668
+#: src/ui/music-list.vala:679
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
+#: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:298
+#: src/ui/store-panel.vala:459 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Αναπαραγωγή"
 
-#: src/ui/music-widgets.vala:275 src/ui/music-widgets.vala:297
+#: src/ui/music-widgets.vala:275 src/ui/music-widgets.vala:299
 msgid "_Random Play"
 msgstr "_Τυχαία αναπαραγωγή"
 
-#: src/ui/music-widgets.vala:285
+#: src/ui/music-widgets.vala:285 src/ui/store-panel.vala:448
+msgid "Add Songs…"
+msgstr ""
+
+#: src/ui/music-widgets.vala:286
+#, fuzzy
+msgid "Rename Playlist…"
+msgstr "Νέα λίστα"
+
+#: src/ui/music-widgets.vala:287
+#, fuzzy
+msgid "Delete Playlist"
+msgstr "Νέα λίστα"
+
+#: src/ui/music-widgets.vala:288
 msgid "Show List _File"
 msgstr "Εμφάνιση _αρχείου λίστας"
 
-#: src/ui/music-widgets.vala:308 src/ui/play-panel.vala:63
+#: src/ui/music-widgets.vala:310 src/ui/play-panel.vala:63
 msgid "Search Title"
 msgstr "Αναζήτηση τίτλου"
 
-#: src/ui/music-widgets.vala:309 src/ui/play-panel.vala:61
+#: src/ui/music-widgets.vala:311 src/ui/play-panel.vala:61
 msgid "Search Album"
 msgstr "Αναζήτηση άλμπουμ"
 
-#: src/ui/music-widgets.vala:310 src/ui/play-panel.vala:62
+#: src/ui/music-widgets.vala:312 src/ui/play-panel.vala:62
 msgid "Search Artist"
 msgstr "Αναζήτηση καλλιτέχνη"
 
-#: src/ui/music-widgets.vala:314
+#: src/ui/music-widgets.vala:316
 msgid "Show Cover _File"
 msgstr "Εμφάνιση _αρχείου εξώφυλλου"
 
-#: src/ui/music-widgets.vala:316
+#: src/ui/music-widgets.vala:318
 msgid "_Export Cover"
 msgstr "_Εξαγωγή εξώφυλλου"
 
-#: src/ui/music-widgets.vala:317
+#: src/ui/music-widgets.vala:319
 msgid "Show _Tags…"
 msgstr "Εμφάνιση _ετικετών…"
 
-#: src/ui/music-widgets.vala:318
+#: src/ui/music-widgets.vala:320
 msgid "Show Music _File"
 msgstr "Εμφάνιση _αρχείου μουσικής"
 
@@ -1444,8 +1516,8 @@ msgstr "Αναπαραγωγή/παύση"
 msgid "Play Next"
 msgstr "Αναπαραγωγή επόμενου"
 
-#: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:525
+#: src/ui/play-panel.vala:56 src/ui/store-panel.vala:86
+#: src/utils/discord-rpc.vala:502
 msgid "Playing"
 msgstr "Αναπαραγωγή"
 
@@ -1457,60 +1529,61 @@ msgstr ""
 "Σύρετε και αποθέστε αρχεία μουσικής εδώ\n"
 "ή αλλάξτε την τοποθεσία μουσικής: "
 
-#: src/ui/playlist-dialog.vala:24
-msgid "New Playlist"
-msgstr "Νέα λίστα"
-
-#: src/ui/playlist-dialog.vala:98 src/ui/store-panel.vala:712
+#: src/ui/playlist-dialog.vala:111 src/ui/store-panel.vala:773
 #, c-format
 msgid "No playlist found in %s"
 msgstr "Δεν βρέθηκε λίστα αναπαραγωγής στον φάκελο «%s»"
 
 #. Translators: "System" means following the system language.
-#: src/ui/preferences.vala:61
+#: src/ui/preferences.vala:63
 #, fuzzy
 msgid "System"
 msgstr "_Θέμα συστήματος"
 
-#: src/ui/preferences.vala:90 src/ui/preferences.vala:122
+#: src/ui/preferences.vala:92 src/ui/preferences.vala:124
 msgid "Never"
 msgstr "Ποτέ"
 
-#: src/ui/preferences.vala:90
+#: src/ui/preferences.vala:92
 msgid "Always"
 msgstr "Πάντα"
 
-#: src/ui/preferences.vala:90
+#: src/ui/preferences.vala:92
 msgid "Art Only"
 msgstr "Μόνο με εξώφυλλο"
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "None"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "Catbox.moe"
 msgstr ""
 
-#: src/ui/preferences.vala:98
+#: src/ui/preferences.vala:100
 msgid "ImgBB"
 msgstr ""
 
-#: src/ui/preferences.vala:122
+#: src/ui/preferences.vala:124
 msgid "Track"
 msgstr "Κομμάτι"
 
-#: src/ui/store-panel.vala:89
+#: src/ui/store-panel.vala:91
 msgid "Artists"
 msgstr "Καλλιτέχνες"
 
-#: src/ui/store-panel.vala:94
+#: src/ui/store-panel.vala:96
 msgid "Albums"
 msgstr "Άλμπουμ"
 
-#: src/ui/store-panel.vala:99
+#: src/ui/store-panel.vala:101
 msgid "Playlists"
 msgstr "Λίστες αναπαραγωγής"
+
+#: src/ui/store-panel.vala:327
+#, fuzzy
+msgid "Playlist is empty"
+msgstr "Προβολή λιστών αναπαραγωγής"
 
 #: src/ui/taglist-dialog.vala:125
 msgid "Copy"
@@ -1526,15 +1599,15 @@ msgstr "Ένταση: %d%%"
 msgid "Show"
 msgstr "Εμφάνιση"
 
-#: src/utils/discord-rpc.vala:454
+#: src/utils/discord-rpc.vala:440
 msgid "Choosing a track"
 msgstr "Επιλογή κομματιού"
 
-#: src/utils/discord-rpc.vala:525
+#: src/utils/discord-rpc.vala:502
 msgid "Paused"
 msgstr "Σε παύση"
 
-#: src/utils/discord-rpc.vala:532
+#: src/utils/discord-rpc.vala:509
 msgid "Find"
 msgstr "Εύρεση"
 
@@ -1593,6 +1666,3 @@ msgstr "Συνέχεια αναπαραγωγής"
 
 #~ msgid "Playing view"
 #~ msgstr "Προβολή αναπαραγωγής"
-
-#~ msgid "Playlist view"
-#~ msgstr "Προβολή λιστών αναπαραγωγής"

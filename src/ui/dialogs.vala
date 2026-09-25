@@ -212,4 +212,131 @@ namespace G4 {
         return result;
 #endif
     }
+
+    public async File[]? show_open_files_dialog (Gtk.Window? parent, Gtk.FileFilter[]? filters = null) {
+#if GTK_4_10
+        var dialog = new Gtk.FileDialog ();
+        if (filters != null) {
+            var filter_list = new ListStore (typeof (Gtk.FileFilter));
+            foreach (var filter in (!)filters)
+                filter_list.append (filter);
+            dialog.filters = filter_list;
+            if (((!)filters).length > 0)
+                dialog.default_filter = ((!)filters)[0];
+        }
+        dialog.modal = true;
+        try {
+            var list = yield dialog.open_multiple (parent, null);
+            var count = list.get_n_items ();
+            var files = new File[count];
+            for (var i = 0; i < count; i++) {
+                files[i] = (File) list.get_item (i);
+            }
+            return files;
+        } catch (Error e) {
+        }
+        return null;
+#else
+        var chooser = new Gtk.FileChooserNative (null, parent, Gtk.FileChooserAction.OPEN, null, null);
+        chooser.modal = true;
+        chooser.select_multiple = true;
+        if (filters != null) {
+            foreach (var filter in (!)filters)
+                chooser.add_filter (filter);
+            if (((!)filters).length > 0)
+                chooser.set_filter (((!)filters)[0]);
+        }
+        File[]? result = null;
+        chooser.response.connect ((id) => {
+            if (id == Gtk.ResponseType.ACCEPT) {
+                var files = chooser.get_files ();
+                var count = files.get_n_items ();
+                result = new File[count];
+                for (var i = 0; i < count; i++) {
+                    result[i] = (File) files.get_item (i);
+                }
+            }
+            Idle.add (show_open_files_dialog.callback);
+        });
+        chooser.show ();
+        yield;
+        return result;
+#endif
+    }
+
+    public class EntryDialog : Dialog {
+        private Gtk.Entry _entry = new Gtk.Entry ();
+        private Gtk.Button _confirm_btn;
+        private SourceFunc? _callback = null;
+        private string? _result = null;
+
+        public EntryDialog (string title_text, string? initial_text = null, string action_label = _("OK")) {
+            var content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            this.child = content;
+
+            var header = new Gtk.HeaderBar ();
+            header.title_widget = new Gtk.Label (title_text);
+            header.add_css_class ("flat");
+            content.append (header);
+
+            var cancel_btn = new Gtk.Button.with_label (_("Cancel"));
+            cancel_btn.clicked.connect (() => close ());
+            header.pack_start (cancel_btn);
+
+            _confirm_btn = new Gtk.Button.with_label (action_label);
+            _confirm_btn.add_css_class ("suggested-action");
+            _confirm_btn.clicked.connect (on_confirm);
+            header.pack_end (_confirm_btn);
+
+            var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+            box.margin_top = 16;
+            box.margin_bottom = 20;
+            box.margin_start = 20;
+            box.margin_end = 20;
+
+            _entry.text = initial_text ?? "";
+            _entry.hexpand = true;
+            _entry.placeholder_text = _("Playlist name");
+            _entry.changed.connect (() => {
+                _confirm_btn.sensitive = _entry.text.strip ().length > 0;
+            });
+            _entry.activate.connect (() => {
+                if (_confirm_btn.sensitive)
+                    on_confirm ();
+            });
+            _confirm_btn.sensitive = _entry.text.strip ().length > 0;
+
+            box.append (_entry);
+            content.append (box);
+        }
+
+        private void on_confirm () {
+            var text = _entry.text.strip ();
+            if (text.length > 0) {
+                _result = text;
+                close ();
+            }
+        }
+
+        public async string? prompt (Gtk.Widget? parent = null) {
+            _callback = prompt.callback;
+#if ADW_1_5
+            present (parent ?? Window.get_default ());
+#else
+            present (parent as Gtk.Window ?? Window.get_default ());
+#endif
+            _entry.grab_focus ();
+            if (_entry.text.length > 0)
+                _entry.select_region (0, -1);
+            yield;
+            return _result;
+        }
+
+        public override void closed () {
+            var callback = _callback;
+            _callback = null;
+            if (callback != null)
+                Idle.add ((!)callback);
+        }
+    }
 }

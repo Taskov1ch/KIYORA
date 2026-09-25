@@ -240,6 +240,9 @@ namespace G4 {
                 case Button.REMOVE:
                     modified |= remove_items_from_store (_data_store, playlist.items) != 0;
                     on_selection_changed (0, 0);
+                    if (_music_node is Playlist) {
+                        save_if_modified.begin (false);
+                    }
                     break;
             }
         }
@@ -505,10 +508,18 @@ namespace G4 {
                         position = _data_store.get_n_items ();
                     var playlist = (Playlist) value.get_object ();
                     modified |= merge_items_to_store (_data_store, playlist.items, ref position);
+                    if (_music_node is Playlist) {
+                        save_if_modified.begin (false);
+                    }
                 } else {
                     var files = get_dropped_files (value);
                     _app.open_files_async.begin (files, position, false,
-                                                (obj, res) => modified |= _app.open_files_async.end (res));
+                                                (obj, res) => {
+                                                    modified |= _app.open_files_async.end (res);
+                                                    if (_music_node is Playlist) {
+                                                        save_if_modified.begin (false);
+                                                    }
+                                                });
                 }
             }
             dropping_item = -1;

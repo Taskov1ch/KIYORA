@@ -35,6 +35,7 @@ namespace G4 {
         public signal void music_cover_parsed (Music music, Gdk.Pixbuf? cover, string? cover_uri);
         public signal void music_library_changed (bool external);
         public signal void playlist_added (Playlist playlist);
+        public signal void playlist_removed (string list_uri);
         public signal void thumbnail_changed (Music music, Gdk.Paintable paintable);
 
         public Application () {
@@ -485,16 +486,104 @@ namespace G4 {
                 (obj, res) => portal.request_background_async.end (res));
         }
 
+        public async Playlist? create_new_playlist_async (string title) {
+            var trimmed = title.strip ();
+            if (trimmed.length == 0)
+                return null;
+
+            var safe_name = trimmed.replace ("/", "_").replace ("\\", "_");
+            var folder = File.new_for_uri (music_folder);
+            var file = folder.get_child (safe_name + ".m3u");
+            int counter = 1;
+            while (file.query_exists ()) {
+                file = folder.get_child (@"$(safe_name) ($counter).m3u");
+                counter++;
+            }
+
+            var uris = new GenericArray<string> (0);
+            var saved = yield run_async<bool> (() => save_playlist_file (file, uris, trimmed));
+            if (!saved) {
+                Window.get_default ()?.show_toast (_("Failed to create playlist"));
+                return null;
+            }
+
+            var playlist = new Playlist (trimmed, file.get_uri ());
+            var added = _loader.library.add_playlist (playlist);
+            playlist_added (added);
+            on_music_library_changed (0, 1, 1);
+            return added;
+        }
+
+        public async bool delete_playlist_async (Playlist playlist, Gtk.Window? parent = null) {
+            var confirmed = yield show_alert_dialog (
+                _("Are you sure you want to delete playlist “%s”?").printf (playlist.title),
+                parent ?? Window.get_default ()
+            );
+            if (!confirmed)
+                return false;
+
+            var uri = playlist.list_uri;
+            if (uri.length > 0) {
+                var file = File.new_for_uri (uri);
+                yield run_async<bool> (() => {
+                    try {
+                        file.trash (null);
+                        return true;
+                    } catch (Error e) {
+                        try {
+                            file.delete (null);
+                            return true;
+                        } catch (Error e2) {
+                            return false;
+                        }
+                    }
+                });
+            }
+
+            _loader.library.remove_playlist (uri);
+            var removed = new GenericSet<Music> (direct_hash, direct_equal);
+            removed.add (playlist);
+            _loader.music_lost (removed);
+            playlist_removed (uri);
+            on_music_library_changed (0, 0, 1);
+            Window.get_default ()?.show_toast (_("Playlist deleted"));
+            return true;
+        }
+
         public async bool rename_playlist_async (Playlist playlist, string title) {
+            var trimmed = title.strip ();
+            if (trimmed.length == 0 || trimmed == playlist.title)
+                return false;
+
             var file = File.new_for_uri (playlist.list_uri);
             var uris = new GenericArray<string> (playlist.length);
             playlist.items.foreach ((music) => uris.add (music.uri));
-            var saved = yield run_async<bool> (() => save_playlist_file (file, uris, title));
+            var saved = yield run_async<bool> (() => save_playlist_file (file, uris, trimmed));
             if (saved) {
-                playlist.set_title (title);
+                playlist.set_title (trimmed);
                 playlist_added (_loader.library.add_playlist (playlist));
+                Window.get_default ()?.show_toast (_("Playlist renamed"));
             }
             return saved;
+        }
+
+        public async void add_songs_to_playlist_dialog (Playlist playlist) {
+            var filter = new Gtk.FileFilter ();
+            filter.name = _("Audio Files");
+            filter.add_mime_type ("audio/*");
+            var files = yield show_open_files_dialog (active_window, {filter});
+            if (files != null && ((!)files).length > 0) {
+                var loaded = new GenericArray<Music> (((!)files).length);
+                yield _loader.load_files_async ((!)files, loaded);
+                if (loaded.length > 0) {
+                    var to_add = new Playlist (playlist.title, playlist.list_uri);
+                    to_add.extend (loaded);
+                    var saved = yield add_playlist_to_file_async (to_add, true);
+                    if (saved) {
+                        Window.get_default ()?.show_toast (_("Songs added to playlist"));
+                    }
+                }
+            }
         }
 
         public async bool save_queue_to_file () {
@@ -513,25 +602,23 @@ namespace G4 {
 
         public async void save_to_playlist_file_async (Playlist playlist) {
             var uri = playlist.list_uri;
-            var file = File.new_for_uri (uri);
-            var append = uri.length == 0;
-            if (append) {
-                var filter = new Gtk.FileFilter ();
-                filter.name = _("Playlist Files");
-                filter.add_mime_type ("audio/x-mpegurl");
-                filter.add_mime_type ("audio/x-scpls");
-                filter.add_mime_type ("public.m3u-playlist");
-                var initial = File.new_for_uri (music_folder).get_child (playlist.title + ".m3u");
-                var file_new = yield show_save_file_dialog (active_window, initial, {filter});
-                if (file_new == null)
+            if (uri.length == 0) {
+                string? init_title = null;
+                if (playlist.title.length > 0)
+                    init_title = playlist.title;
+                var dialog = new EntryDialog (_("New Playlist"), init_title, _("Create"));
+                var title = yield dialog.prompt (active_window);
+                if (title == null || ((!)title).length == 0)
                     return;
-                file = (!)file_new;
-                playlist.set_list_uri (file.get_uri ());
-                playlist.set_title (get_file_display_name (file));
-                _settings.set_string ("recent-playlist", playlist.list_uri);
+                var pls = yield create_new_playlist_async ((!)title);
+                if (pls == null)
+                    return;
+                uri = ((!)pls).list_uri;
+                playlist.set_list_uri (uri);
+                playlist.set_title ((!)title);
             }
-            var saved = yield add_playlist_to_file_async (playlist, append);
-            if (saved && append)
+            var saved = yield add_playlist_to_file_async (playlist, true);
+            if (saved)
                 Window.get_default ()?.show_toast (_("Save playlist successfully"), build_library_uri (null, playlist));
         }
 
