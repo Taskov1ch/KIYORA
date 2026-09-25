@@ -21,7 +21,14 @@ namespace G4 {
         private uint _sort_mode = SortMode.TITLE;
         private bool _store_external_changed = false;
         private Thumbnailer _thumbnailer = new Thumbnailer ();
+        private TrayIcon? _tray_icon = null;
         private bool _window_inited = false;
+
+        public TrayIcon? tray_icon {
+            get {
+                return _tray_icon;
+            }
+        }
 
         public signal void index_changed (int index, uint size);
         public signal void music_changed (Music? music);
@@ -82,6 +89,30 @@ namespace G4 {
             settings.bind ("replay-gain", _player, "replay-gain", SettingsBindFlags.DEFAULT);
             settings.bind ("audio-sink", _player, "audio-sink", SettingsBindFlags.DEFAULT);
             settings.bind ("volume", _player, "volume", SettingsBindFlags.DEFAULT);
+
+            _tray_icon = new TrayIcon (this);
+            settings.changed["play-background"].connect (on_play_background_changed);
+        }
+
+        private void on_play_background_changed () {
+            var window = Window.get_default ();
+            if (window != null && !((!)window).visible) {
+                if (_settings.get_boolean ("play-background")) {
+                    _tray_icon?.set_active (true);
+                } else {
+                    present_window ();
+                }
+            }
+        }
+
+        public void present_window () {
+            var window = Window.get_default ();
+            if (window != null) {
+                ((!)window).visible = true;
+                ((!)window).present ();
+            } else {
+                (new Window (this)).present ();
+            }
         }
 
         private void update_discord_rpc () {
@@ -97,8 +128,7 @@ namespace G4 {
         public override void activate () {
             base.activate ();
 
-            var window = Window.get_default ();
-            (window ?? new Window (this))?.present ();
+            present_window ();
 
             if (!_window_inited) {
                 open ({}, "");
@@ -106,9 +136,8 @@ namespace G4 {
         }
 
         public override void open (File[] files, string hint) {
-            var window = Window.get_default ();
             var initial = !_window_inited;
-            (window ?? new Window (this))?.present ();
+            present_window ();
             _window_inited = true;
 
             if (initial && _current_music == null) {
@@ -148,6 +177,8 @@ namespace G4 {
         }
 
         public override void shutdown () {
+            _tray_icon?.shutdown ();
+            _tray_icon = null;
             _discord_rpc?.shutdown ();
             _discord_rpc = null;
             _actions = null;

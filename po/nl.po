@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-10-30 18:08+0100\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
@@ -1154,7 +1154,7 @@ msgstr "Rasterweergave voor artiesten/albums"
 msgid "Single click to activate item"
 msgstr "Eén keer klikken om item te activeren"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Doorgaan met afspelen wanneer het venster gesloten is"
 
@@ -1306,19 +1306,19 @@ msgstr "Albumhoes geëxporteerd"
 msgid "Export cover failed"
 msgstr "Exporteren van hoes mislukt"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Opslaan van afspeellijst mislukt"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Afspeellijstbestanden"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Afspeellijst opgeslagen"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Blijven afspelen"
 
@@ -1387,7 +1387,7 @@ msgid "Remove"
 msgstr "Verwijderen"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Afspelen"
 
@@ -1446,7 +1446,7 @@ msgid "Play Next"
 msgstr "Volgend nummer afspelen"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "U luistert naar"
 
@@ -1523,19 +1523,19 @@ msgstr "Kopiëren"
 msgid "Volume %d%%"
 msgstr "Volume %d%%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Tonen"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Kiest een nummer"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Zoeken"
 
@@ -1546,6 +1546,35 @@ msgstr "Onbekend album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Onbekende artiest"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Gepauzeerd"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Volgend nummer afspelen"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Vorig nummer afspelen"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Blijven afspelen"
 
 #~ msgid "Gapless"
 #~ msgstr "Gapless"

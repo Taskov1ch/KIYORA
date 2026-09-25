@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2025-02-18 15:06+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -1153,7 +1153,7 @@ msgstr "Gittervisning af kunstnere/album"
 msgid "Single click to activate item"
 msgstr "Enkeltklik for at aktivere element"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Fortsæt med at afspille, efter vinduet er lukket"
 
@@ -1305,19 +1305,19 @@ msgstr "Eksport af cover gennemført"
 msgid "Export cover failed"
 msgstr "Eksport af cover mislykkedes"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Afspilningsliste kunne ikke gemmes"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Afspilningslistefiler"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Afspilningsliste blev gemt"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Fortsæt med at afspille"
 
@@ -1388,7 +1388,7 @@ msgid "Remove"
 msgstr "Fjern"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Afspil"
 
@@ -1447,7 +1447,7 @@ msgid "Play Next"
 msgstr "Afspil næste"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Afspiller"
 
@@ -1524,19 +1524,19 @@ msgstr "Kopiér"
 msgid "Volume %d%%"
 msgstr "Lydstyrke %d %%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Vis"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Vælger et nummer"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "På pause"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Find"
 
@@ -1547,6 +1547,35 @@ msgstr "Ukendt album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Ukendt kunstner"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "På pause"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Afspil næste"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Afspil forrige"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Afslut"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Fortsæt med at afspille"
 
 #~ msgid "Gapless"
 #~ msgstr "Uden pauser"

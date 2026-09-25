@@ -8,11 +8,13 @@ namespace G4 {
         public string payload;
         public bool has_activity;
         public bool quit;
+        public bool reset_first;
 
-        public DiscordRpcCommand (string payload, bool has_activity, bool quit = false) {
+        public DiscordRpcCommand (string payload, bool has_activity, bool quit = false, bool reset_first = false) {
             this.payload = payload;
             this.has_activity = has_activity;
             this.quit = quit;
+            this.reset_first = reset_first;
         }
     }
 
@@ -44,16 +46,29 @@ namespace G4 {
         private ulong _duration_changed_id = 0;
         private ulong _music_changed_id = 0;
         private ulong _position_updated_id = 0;
+        private ulong _seeked_id = 0;
         private ulong _state_changed_id = 0;
         private uint _retry_id = 0;
         private uint _update_id = 0;
         private bool _connected = false;
         private bool _stopped = false;
+        private bool _reset_required = false;
+        private int64 _current_activity_start = 0;
 
         public DiscordRpc (Application app) {
             _settings = app.settings;
             _app = app;
             _worker = new Thread<bool> ("discord-rpc", worker_loop);
+
+            _seeked_id = app.player.seeked.connect ((position) => {
+                if (_has_started && _app.player.state == Gst.State.PLAYING) {
+                    var now = get_real_time () / 1000000;
+                    var position_seconds = (int64) (position / Gst.SECOND);
+                    _last_start_time = int64.max (0, now - position_seconds);
+                    _reset_required = true;
+                    schedule_update ();
+                }
+            });
 
             _music_changed_id = app.music_changed.connect ((music) => {
                 var uri = music?.uri ?? "";
@@ -61,6 +76,8 @@ namespace G4 {
                     _current_uri = uri;
                     _duration = Gst.CLOCK_TIME_NONE;
                     _last_start_time = 0;
+                    _current_activity_start = 0;
+                    _reset_required = true;
 
                     if (_has_started && music != null) {
                         var cache_key = ((!)music).cover_key;
@@ -107,6 +124,7 @@ namespace G4 {
 
             _state_changed_id = app.player.state_changed.connect (() => {
                 if (_app.player.state == Gst.State.PLAYING) {
+                    _reset_required = true;
                     if (!_has_started) {
                         _has_started = true;
                         unowned Music? music = _app.current_music;
@@ -334,6 +352,10 @@ namespace G4 {
         }
 
         private void disconnect_signals () {
+            if (_seeked_id != 0) {
+                SignalHandler.disconnect (_app.player, _seeked_id);
+                _seeked_id = 0;
+            }
             if (_music_changed_id != 0) {
                 SignalHandler.disconnect (_app, _music_changed_id);
                 _music_changed_id = 0;
@@ -373,10 +395,11 @@ namespace G4 {
                 ? position - expected_pos
                 : expected_pos - position;
 
-            // Only update if position drifted from timer by more than 3 seconds (e.g. seeking)
-            if (difference > 3 * Gst.SECOND) {
+            // Only update if position drifted from timer by more than 2 seconds (e.g. seeking)
+            if (difference > 2 * Gst.SECOND) {
                 var position_seconds = (int64) (position / Gst.SECOND);
                 _last_start_time = int64.max (0, now - position_seconds);
+                _reset_required = true;
                 return true;
             }
 
@@ -401,12 +424,16 @@ namespace G4 {
 
             unowned Music? music = _app.current_music;
             var playing = _has_started && music != null && _app.player.state == Gst.State.PLAYING;
+            bool reset = _reset_required;
+            _reset_required = false;
+
+            var payload = build_command (music, playing, ref reset);
             _commands.push (new DiscordRpcCommand (
-                build_command (music, playing), true
+                payload, true, false, reset
             ));
         }
 
-        private string build_command (Music? music, bool playing) {
+        private string build_command (Music? music, bool playing, ref bool reset) {
             var builder = new Json.Builder ();
             builder.begin_object ();
             builder.set_member_name ("cmd");
@@ -419,6 +446,7 @@ namespace G4 {
 
             if (!_has_started || music == null) {
                 _last_start_time = 0;
+                _current_activity_start = 0;
                 builder.begin_object ();
                 builder.set_member_name ("type");
                 builder.add_int_value (ACTIVITY_TYPE_LISTENING);
@@ -455,6 +483,13 @@ namespace G4 {
                         var now = get_real_time () / 1000000;
                         var position_seconds = (int64) (position / Gst.SECOND);
                         var start = int64.max (0, now - position_seconds);
+                        if (_current_activity_start != 0) {
+                            var diff = start > _current_activity_start ? start - _current_activity_start : _current_activity_start - start;
+                            if (diff >= 2) {
+                                reset = true;
+                            }
+                        }
+                        _current_activity_start = start;
                         _last_start_time = start;
 
                         builder.set_member_name ("timestamps");
@@ -469,9 +504,11 @@ namespace G4 {
                         builder.end_object ();
                     } else {
                         _last_start_time = 0;
+                        _current_activity_start = 0;
                     }
                 } else {
                     _last_start_time = 0;
+                    _current_activity_start = 0;
                 }
 
                 builder.set_member_name ("assets");
@@ -587,8 +624,12 @@ namespace G4 {
             while (true) {
                 var command = _commands.pop ();
                 DiscordRpcCommand? newer = null;
-                while ((newer = _commands.try_pop ()) != null)
+                while ((newer = _commands.try_pop ()) != null) {
+                    var was_reset = command.reset_first;
                     command = (!)newer;
+                    if (was_reset)
+                        command.reset_first = true;
+                }
 
                 if (command.quit) {
                     if (connection != null && activity_set) {
@@ -616,6 +657,13 @@ namespace G4 {
                 }
 
                 try {
+                    if (command.reset_first && connection != null && activity_set) {
+                        send_frame ((!)connection, 1, build_clear_command ());
+                        receive_frame ((!)connection);
+                        activity_set = false;
+                        Thread.usleep (50000);
+                    }
+
                     send_frame ((!)connection, 1, command.payload);
                     receive_frame ((!)connection);
                     activity_set = command.has_activity;

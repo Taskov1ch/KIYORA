@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2026-06-18 00:09+0200\n"
 "Last-Translator: Victoria Niedzielska <victorian@gnome.org>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
@@ -1158,7 +1158,7 @@ msgstr "Widok siatki dla wykonawców/albumów"
 msgid "Single click to activate item"
 msgstr "Otwieranie elementów po pojedynczym kliknięciu"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Kontynuowanie odtwarzania po zamknięciu okna"
 
@@ -1310,19 +1310,19 @@ msgstr "Pomyślnie eksportowano okładkę"
 msgid "Export cover failed"
 msgstr "eksportować okładki nie powiodło się"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Nie udało się zapisać playlisty"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Pliki playlisty"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Pomyślnie zapisano playlistę"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Kontynuuj odtwarzanie"
 
@@ -1390,7 +1390,7 @@ msgid "Remove"
 msgstr "Usuń"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Odtwarzaj"
 
@@ -1449,7 +1449,7 @@ msgid "Play Next"
 msgstr "Odtwórz następny"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Odtwarzane"
 
@@ -1526,19 +1526,19 @@ msgstr "Skopiuj"
 msgid "Volume %d%%"
 msgstr "Głośność %d%%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Wyświetlanie"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Wybiera utwór"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Wstrzymano"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Znajdź"
 
@@ -1549,6 +1549,35 @@ msgstr "Nieznany album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Nieznany wykonawca"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Wstrzymano"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Odtwórz następny"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Odtwórz poprzedni"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Zakończenie działania"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Kontynuuj odtwarzanie"
 
 #~ msgid "Gapless"
 #~ msgstr "Gapless"

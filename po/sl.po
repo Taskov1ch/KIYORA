@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-10-11 14:31+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
@@ -1155,7 +1155,7 @@ msgstr "Mrežni pogled za izvajalce/albume"
 msgid "Single click to activate item"
 msgstr "En klik za aktiviranje elementa"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Nadaljuj s predvajanjem po zaprtju okna"
 
@@ -1307,19 +1307,19 @@ msgstr "Izvoz ovitka je uspešno zaključen"
 msgid "Export cover failed"
 msgstr "Izvoz ovitka je spodletel"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Shranjevanje seznama predvajanja je spodletelo"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Datoteke seznama predvajanja"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Seznam predvajanja uspešno shranjen"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Nadaljuj s predvajanjem"
 
@@ -1385,7 +1385,7 @@ msgid "Remove"
 msgstr "Odstrani"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Predvajaj"
 
@@ -1444,7 +1444,7 @@ msgid "Play Next"
 msgstr "Predvajaj naslednje"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Trenutno se predvaja"
 
@@ -1521,19 +1521,19 @@ msgstr "Kopiraj"
 msgid "Volume %d%%"
 msgstr "Glasnost %d %%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Pokaži"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Izbira skladbo"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Zaustavljeno"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Najdi"
 
@@ -1544,6 +1544,35 @@ msgstr "Neznani album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Neznani izvajalec"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Zaustavljeno"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Predvajaj naslednje"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Predvajaj prejšnje"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Izhod"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Nadaljuj s predvajanjem"
 
 #~ msgid "Gapless"
 #~ msgstr "Brez vrzeli"

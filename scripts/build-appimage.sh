@@ -146,6 +146,22 @@ sed -i \
     -e '/^export GDK_BACKEND=x11/d' \
     "$gtk_hook"
 
+gio_moduledir="$(pkg-config --variable=giomoduledir gio-2.0 || true)"
+if [[ -n "$gio_moduledir" && -d "$gio_moduledir" ]]; then
+    mkdir -p "$appdir/usr/lib/gio/modules"
+    for mod in "$gio_moduledir"/libgio*.so*; do
+        if [[ -f "$mod" ]]; then
+            cp -L "$mod" "$appdir/usr/lib/gio/modules/"
+        fi
+    done
+    if command -v gio-querymodules >/dev/null; then
+        gio-querymodules "$appdir/usr/lib/gio/modules" || true
+    fi
+    cat >> "$gtk_hook" <<'EOF'
+export GIO_MODULE_DIR="${GIO_MODULE_DIR:-$APPDIR/usr/lib/gio/modules}"
+EOF
+fi
+
 "$linuxdeploy" \
     --appdir "$appdir" \
     --output appimage

@@ -34,11 +34,13 @@ jobs:
           sudo apt-get install --yes --no-install-recommends \
             appstream \
             build-essential \
+            ca-certificates \
             curl \
             desktop-file-utils \
             dpkg-dev \
             file \
             gettext \
+            glib-networking \
             gobject-introspection \
             gstreamer1.0-libav \
             gstreamer1.0-plugins-bad \
@@ -54,6 +56,7 @@ jobs:
             libgstreamer1.0-dev \
             libgtk-4-dev \
             libjson-glib-dev \
+            libsoup-3.0-dev \
             libunwind-dev \
             librsvg2-dev \
             meson \

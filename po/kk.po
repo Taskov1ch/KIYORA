@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2025-07-16 12:00+0600\n"
 "Last-Translator: AnmiTaliDev <anmitalli198@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
@@ -1150,7 +1150,7 @@ msgstr "Орындаушылар/альбомдар үшін тор көріні
 msgid "Single click to activate item"
 msgstr "Элементті белсендіру үшін бір рет басу"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Терезе жабылғаннан кейін ойнатуды жалғастыру"
 
@@ -1302,19 +1302,19 @@ msgstr "Мұқаба сәтті экспортталды"
 msgid "Export cover failed"
 msgstr "Мұқабаны экспорттау сәтсіз аяқталды"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Плейлистті сақтау сәтсіз аяқталды"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Плейлист файлдары"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Плейлист сәтті сақталды"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Ойнатуды жалғастыру"
 
@@ -1380,7 +1380,7 @@ msgid "Remove"
 msgstr "Жою"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Ойнату"
 
@@ -1439,7 +1439,7 @@ msgid "Play Next"
 msgstr "Келесіні ойнату"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Ойнатылуда"
 
@@ -1516,19 +1516,19 @@ msgstr "Көшіру"
 msgid "Volume %d%%"
 msgstr "Дыбыс деңгейі %d%%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Көрсету"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Трек таңдауда"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Кідіртілген"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Табу"
 
@@ -1539,6 +1539,35 @@ msgstr "Белгісіз альбом"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Белгісіз орындаушы"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Кідіртілген"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Келесіні ойнату"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Алдыңғыны ойнату"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Шығу"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Ойнатуды жалғастыру"
 
 #~ msgid "Gapless"
 #~ msgstr "Үзіліссіз"

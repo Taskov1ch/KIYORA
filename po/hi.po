@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-07-21 09:56+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -1146,7 +1146,7 @@ msgstr "कलाकारों/एल्बमों के लिए ग्�
 msgid "Single click to activate item"
 msgstr ""
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "विंडो बंद होने के बाद भी बजाते रहें"
 
@@ -1299,21 +1299,21 @@ msgstr ""
 msgid "Export cover failed"
 msgstr "कवर निर्यात (_E)"
 
-#: src/application.vala:365
+#: src/application.vala:396
 #, fuzzy
 msgid "Save playlist failed"
 msgstr "सघन प्लेलिस्ट दृश्य"
 
-#: src/application.vala:489
+#: src/application.vala:520
 #, fuzzy
 msgid "Playlist Files"
 msgstr "प्लेलिस्ट"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr ""
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "बजते रहें"
 
@@ -1381,7 +1381,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "बजाएं"
 
@@ -1443,7 +1443,7 @@ msgid "Play Next"
 msgstr "अगला बजाएं"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "बज रहा है"
 
@@ -1520,19 +1520,19 @@ msgstr ""
 msgid "Volume %d%%"
 msgstr "आवाज़ %d%% "
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr ""
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "ट्रैक चुन रहा है"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "रुका हुआ"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "ढूँढें"
 
@@ -1543,6 +1543,35 @@ msgstr "अज्ञात एल्बम"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "अज्ञात कलाकार"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "रुका हुआ"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "अगला बजाएं"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "पिछला बजाएं"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "बंद करें"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "बजते रहें"
 
 #~ msgid "Gapless"
 #~ msgstr "गैपलेस"

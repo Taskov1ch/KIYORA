@@ -39,6 +39,7 @@ sources = [
   'utils/portal.vala',
   'utils/tag-cache.vala',
   'utils/thumbnailer.vala',
+  'utils/tray-icon.vala',
 ]
 
 conf = configuration_data()

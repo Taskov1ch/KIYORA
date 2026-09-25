@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-11-04 09:02+0100\n"
 "Last-Translator: Patrik Tapušík <2tapusik00patrik6@gmail.com>\n"
 "Language-Team: Slovak <Slovak>\n"
@@ -1151,7 +1151,7 @@ msgstr "Zobrazenie interpretov/albumov v mriežke"
 msgid "Single click to activate item"
 msgstr "Aktivovať položku jedným kliknutím"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Pokračovať v prehrávaní po zatvorení okna"
 
@@ -1305,19 +1305,19 @@ msgstr "Export obalu bol úspešný"
 msgid "Export cover failed"
 msgstr "Export obalu zlyhal"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Uloženie zoznamu zlyhalo"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Súbory zoznamu"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Uloženie zoznamu bolo úspešné"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Pokračovať v prehrávaní"
 
@@ -1383,7 +1383,7 @@ msgid "Remove"
 msgstr "Odstrániť"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Prehrať"
 
@@ -1442,7 +1442,7 @@ msgid "Play Next"
 msgstr "Prehrať nasledujúcu"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Práve hrá"
 
@@ -1519,19 +1519,19 @@ msgstr "Kopírovať"
 msgid "Volume %d%%"
 msgstr "Hlasitosť %d%%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Zobraziť"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Vyberá skladbu"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Pozastavené"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Nájsť"
 
@@ -1542,6 +1542,35 @@ msgstr "Neznámy album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Neznámy umelec"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Pozastavené"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Prehrať nasledujúcu"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Prehrať predchádzajúcu"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Ukončiť"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Pokračovať v prehrávaní"
 
 #~ msgid "Gapless"
 #~ msgstr "Gapless"

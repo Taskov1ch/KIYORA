@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-11-11 20:34+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
@@ -1151,7 +1151,7 @@ msgstr "Ruudukkonäkymä esittäjille/albumeille"
 msgid "Single click to activate item"
 msgstr "Kertanapsautus aktivoi kohteen"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Jatka toistamista ikkunan sulkemisen jälkeen"
 
@@ -1303,19 +1303,19 @@ msgstr "Kansi viety onnistuneesti"
 msgid "Export cover failed"
 msgstr "Kannen vienti epäonnistui"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Soittolistan tallentaminen epäonnistui"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Soittolistatiedostot"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Soittolista tallennettu"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Jatka toistamista"
 
@@ -1381,7 +1381,7 @@ msgid "Remove"
 msgstr "Poista"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Toista"
 
@@ -1440,7 +1440,7 @@ msgid "Play Next"
 msgstr "Toista seuraava"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Toistetaan"
 
@@ -1517,19 +1517,19 @@ msgstr "Kopioi"
 msgid "Volume %d%%"
 msgstr "Äänenvoimakkuus %d% %"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Näytä"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Valitsee kappaletta"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Tauolla"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Etsi"
 
@@ -1540,6 +1540,35 @@ msgstr "Tuntematon albumi"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Tuntematon esittäjä"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Tauolla"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Toista seuraava"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Toista edellinen"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Lopeta"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Jatka toistamista"
 
 #~ msgid "Gapless"
 #~ msgstr "Gapless"

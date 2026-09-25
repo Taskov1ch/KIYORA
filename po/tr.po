@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-10-23 22:55+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -1155,7 +1155,7 @@ msgstr "Sanatçılar/albümler için ızgara görünümü"
 msgid "Single click to activate item"
 msgstr "Tek tıkla ögeyi etkinleştir"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Pencere kapatıldıktan sonra oynatmayı sürdür"
 
@@ -1307,19 +1307,19 @@ msgstr "Kapak dışa aktarıldı"
 msgid "Export cover failed"
 msgstr "Kapak dışa aktarılamadı"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Oynatma listesi kaydedilemedi"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Çalma Listesi Dosyaları"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Oynatma listesi kaydedildi"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Oynamayı sürdür"
 
@@ -1385,7 +1385,7 @@ msgid "Remove"
 msgstr "Kaldır"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Çal"
 
@@ -1444,7 +1444,7 @@ msgid "Play Next"
 msgstr "Sonrakini Çal"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Çalıyor"
 
@@ -1521,19 +1521,19 @@ msgstr "Kopyala"
 msgid "Volume %d%%"
 msgstr "Ses %%%d"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Göster"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Parça seçiyor"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Duraklatıldı"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Bul"
 
@@ -1544,6 +1544,35 @@ msgstr "Bilinmeyen Albüm"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Bilinmeyen Sanatçı"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Duraklatıldı"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Sonrakini Çal"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Öncekini Çal"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Çık"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Oynamayı sürdür"
 
 #~ msgid "Gapless"
 #~ msgstr "Aralıksız"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2025-09-11 09:31+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
@@ -1154,7 +1154,7 @@ msgstr "Előadók vagy albumok rácsnézete"
 msgid "Single click to activate item"
 msgstr "Egy kattintás az elem aktiválásához"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Lejátszás folytatása az ablak bezárása után"
 
@@ -1306,19 +1306,19 @@ msgstr "A borító sikeresen exportálva"
 msgid "Export cover failed"
 msgstr "Nem sikerült a borító exportálása"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Nem sikerült a lejátszási lista mentése"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Lejátszási lista fájlok"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "A lejátszási lista sikeresen elmentve"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Lejátszás folytatása"
 
@@ -1384,7 +1384,7 @@ msgid "Remove"
 msgstr "Eltávolítás"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Lejátszás"
 
@@ -1443,7 +1443,7 @@ msgid "Play Next"
 msgstr "Következő lejátszása"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Lejátszás"
 
@@ -1520,19 +1520,19 @@ msgstr "Másolás"
 msgid "Volume %d%%"
 msgstr "Hangerő %d%%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Megjelenítés"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Szám kiválasztása"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Szünetel"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Keresés"
 
@@ -1543,6 +1543,35 @@ msgstr "Ismeretlen album"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Ismeretlen előadó"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Szünetel"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Következő lejátszása"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Előző lejátszása"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Kilépés"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Lejátszás folytatása"
 
 #~ msgid "Gapless"
 #~ msgstr "Szünetmentes"

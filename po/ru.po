@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2024-10-11 13:49+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
@@ -1155,7 +1155,7 @@ msgstr "Вид сеткой для исполнителей/альбомов"
 msgid "Single click to activate item"
 msgstr "Активация элемента одним щелчком мыши"
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Продолжать воспроизведение после закрытия окна"
 
@@ -1307,19 +1307,19 @@ msgstr "Обложка успешно экспортирована"
 msgid "Export cover failed"
 msgstr "Экспортировать обложку не удалось"
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr "Сохранить список воспроизведения не удалось"
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr "Файлы списка воспроизведения"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr "Список воспроизведения успешно сохранен"
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Продолжать воспроизведение"
 
@@ -1385,7 +1385,7 @@ msgid "Remove"
 msgstr "Удалить"
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Воспроизвести"
 
@@ -1444,7 +1444,7 @@ msgid "Play Next"
 msgstr "Воспроизвести следующую"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Играет сейчас"
 
@@ -1520,19 +1520,19 @@ msgstr "Копировать"
 msgid "Volume %d%%"
 msgstr "Громкость %d%%"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr "Показать"
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Выбирает трек"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "На паузе"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Найти"
 
@@ -1543,6 +1543,30 @@ msgstr "Неизвестный альбом"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Неизвестный исполнитель"
+
+#: src/utils/tray-icon.vala:118
+msgid "Pause"
+msgstr "Пауза"
+
+#: src/utils/tray-icon.vala:124
+msgid "Next"
+msgstr "Следующий трек"
+
+#: src/utils/tray-icon.vala:130
+msgid "Previous"
+msgstr "Предыдущий трек"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr "Открыть KIYORA"
+
+#: src/utils/tray-icon.vala:146
+msgid "Quit"
+msgstr "Выход"
+
+#: src/utils/tray-icon.vala:321
+msgid "Not playing"
+msgstr "Воспроизведение остановлено"
 
 #~ msgid "Gapless"
 #~ msgstr "Gapless"

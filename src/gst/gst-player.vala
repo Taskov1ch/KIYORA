@@ -46,6 +46,7 @@ namespace G4 {
         public signal void error (Error error);
         public signal void end_of_stream ();
         public signal void position_updated (Gst.ClockTime position);
+        public signal void seeked (Gst.ClockTime position);
         public signal string? next_uri_request ();
         public signal void next_uri_start ();
         public signal void state_changed (Gst.State state);
@@ -259,7 +260,10 @@ namespace G4 {
             switch (message.type) {
                 case Gst.MessageType.ASYNC_DONE:
                     parse_position ();
-                    _seeking = false;
+                    if (_seeking) {
+                        _seeking = false;
+                        seeked (_position);
+                    }
                     break;
 
                 case Gst.MessageType.DURATION_CHANGED:

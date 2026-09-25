@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: g4music master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: 2023-08-17 17:18+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
@@ -1140,7 +1140,7 @@ msgstr "Tampilan kisi bagi artis/album"
 msgid "Single click to activate item"
 msgstr ""
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr "Tetap memutar setelah jendela ditutup"
 
@@ -1293,21 +1293,21 @@ msgstr ""
 msgid "Export cover failed"
 msgstr "_Ekspor Sampul"
 
-#: src/application.vala:365
+#: src/application.vala:396
 #, fuzzy
 msgid "Save playlist failed"
 msgstr "Tampilan daftar putar ringkas"
 
-#: src/application.vala:489
+#: src/application.vala:520
 #, fuzzy
 msgid "Playlist Files"
 msgstr "Daftar Putar"
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr ""
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr "Tetap memutar"
 
@@ -1375,7 +1375,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr "Putar"
 
@@ -1437,7 +1437,7 @@ msgid "Play Next"
 msgstr "Putar Berikutnya"
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr "Memutar"
 
@@ -1514,19 +1514,19 @@ msgstr ""
 msgid "Volume %d%%"
 msgstr "Volume %d"
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr ""
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr "Memilih trek"
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr "Dijeda"
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr "Temukan"
 
@@ -1537,6 +1537,35 @@ msgstr "Album Tak Dikenal"
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
 msgstr "Artis Tak Dikenal"
+
+#: src/utils/tray-icon.vala:118
+#, fuzzy
+msgid "Pause"
+msgstr "Dijeda"
+
+#: src/utils/tray-icon.vala:124
+#, fuzzy
+msgid "Next"
+msgstr "Putar Berikutnya"
+
+#: src/utils/tray-icon.vala:130
+#, fuzzy
+msgid "Previous"
+msgstr "Putar Sebelumnya"
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+#, fuzzy
+msgid "Quit"
+msgstr "Keluar"
+
+#: src/utils/tray-icon.vala:321
+#, fuzzy
+msgid "Not playing"
+msgstr "Tetap memutar"
 
 #~ msgid "G4Music"
 #~ msgstr "G4Music"

@@ -20,3 +20,4 @@ src/ui/volume-button.vala
 src/ui/window.vala
 src/utils/discord-rpc.vala
 src/utils/music.vala
+src/utils/tray-icon.vala

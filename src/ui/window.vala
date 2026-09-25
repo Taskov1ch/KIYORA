@@ -20,6 +20,15 @@ namespace G4 {
             this.width_request = ContentWidth.MIN;
             this.close_request.connect (on_close_request);
 
+            this.notify["visible"].connect (() => {
+                var a = (Application) application;
+                if (this.visible) {
+                    a.tray_icon?.set_active (false);
+                } else if (a.settings.get_boolean ("play-background")) {
+                    a.tray_icon?.set_active (true);
+                }
+            });
+
             var overlay = new Gtk.Overlay ();
             this.content = overlay;
             overlay.child = _toast;
@@ -147,7 +156,7 @@ namespace G4 {
 
         private bool on_close_request () {
             var app = (Application) application;
-            if (app.player.playing && app.settings.get_boolean ("play-background")) {
+            if (app.settings.get_boolean ("play-background")) {
                 app.request_background ();
                 this.visible = false;
                 return true;

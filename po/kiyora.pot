@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiyora\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 00:02+0600\n"
+"POT-Creation-Date: 2026-09-25 17:08+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1126,7 +1126,7 @@ msgstr ""
 msgid "Single click to activate item"
 msgstr ""
 
-#: src/gtk/preferences.ui:63 src/application.vala:453
+#: src/gtk/preferences.ui:63 src/application.vala:484
 msgid "Keep playing after window closed"
 msgstr ""
 
@@ -1278,19 +1278,19 @@ msgstr ""
 msgid "Export cover failed"
 msgstr ""
 
-#: src/application.vala:365
+#: src/application.vala:396
 msgid "Save playlist failed"
 msgstr ""
 
-#: src/application.vala:489
+#: src/application.vala:520
 msgid "Playlist Files"
 msgstr ""
 
-#: src/application.vala:504
+#: src/application.vala:535
 msgid "Save playlist successfully"
 msgstr ""
 
-#: src/application.vala:639
+#: src/application.vala:670
 msgid "Keep playing"
 msgstr ""
 
@@ -1356,7 +1356,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/ui/music-widgets.vala:274 src/ui/music-widgets.vala:296
-#: src/ui/store-panel.vala:428
+#: src/ui/store-panel.vala:428 src/utils/tray-icon.vala:118
 msgid "Play"
 msgstr ""
 
@@ -1415,7 +1415,7 @@ msgid "Play Next"
 msgstr ""
 
 #: src/ui/play-panel.vala:56 src/ui/store-panel.vala:84
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Playing"
 msgstr ""
 
@@ -1489,19 +1489,19 @@ msgstr ""
 msgid "Volume %d%%"
 msgstr ""
 
-#: src/ui/window.vala:127
+#: src/ui/window.vala:136
 msgid "Show"
 msgstr ""
 
-#: src/utils/discord-rpc.vala:426
+#: src/utils/discord-rpc.vala:454
 msgid "Choosing a track"
 msgstr ""
 
-#: src/utils/discord-rpc.vala:488
+#: src/utils/discord-rpc.vala:525
 msgid "Paused"
 msgstr ""
 
-#: src/utils/discord-rpc.vala:495
+#: src/utils/discord-rpc.vala:532
 msgid "Find"
 msgstr ""
 
@@ -1511,4 +1511,28 @@ msgstr ""
 
 #: src/utils/music.vala:3
 msgid "Unknown Artist"
+msgstr ""
+
+#: src/utils/tray-icon.vala:118
+msgid "Pause"
+msgstr ""
+
+#: src/utils/tray-icon.vala:124
+msgid "Next"
+msgstr ""
+
+#: src/utils/tray-icon.vala:130
+msgid "Previous"
+msgstr ""
+
+#: src/utils/tray-icon.vala:140
+msgid "Open KIYORA"
+msgstr ""
+
+#: src/utils/tray-icon.vala:146
+msgid "Quit"
+msgstr ""
+
+#: src/utils/tray-icon.vala:321
+msgid "Not playing"
 msgstr ""
