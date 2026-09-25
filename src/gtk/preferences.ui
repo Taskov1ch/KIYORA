@@ -80,8 +80,14 @@
                   </object>
                 </child>
                 <child>
-                  <object class="AdwEntryRow" id="discord_imgbb_key_row">
+                  <object class="AdwActionRow" id="discord_imgbb_key_row">
                     <property name="title" translatable="yes">ImgBB API Key</property>
+                    <child>
+                      <object class="GtkPasswordEntry" id="discord_imgbb_key_entry">
+                        <property name="valign">center</property>
+                        <property name="show-peek-icon">true</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>

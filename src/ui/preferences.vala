@@ -29,7 +29,9 @@ namespace G4 {
         [GtkChild]
         unowned Adw.ComboRow discord_provider_row;
         [GtkChild]
-        unowned Adw.EntryRow discord_imgbb_key_row;
+        unowned Adw.ActionRow discord_imgbb_key_row;
+        [GtkChild]
+        unowned Gtk.PasswordEntry discord_imgbb_key_entry;
         [GtkChild]
         unowned Gtk.Button music_dir_btn;
         [GtkChild]
@@ -97,7 +99,7 @@ namespace G4 {
 
             discord_provider_row.model = new Gtk.StringList ({_("None"), _("Catbox.moe"), _("ImgBB")});
             settings.bind ("discord-cover-provider", discord_provider_row, "selected", SettingsBindFlags.DEFAULT);
-            settings.bind ("discord-imgbb-api-key", discord_imgbb_key_row, "text", SettingsBindFlags.DEFAULT);
+            settings.bind ("discord-imgbb-api-key", discord_imgbb_key_entry, "text", SettingsBindFlags.DEFAULT);
 
             discord_provider_row.notify["selected"].connect (() => {
                 discord_imgbb_key_row.visible = discord_provider_row.selected == 2;
