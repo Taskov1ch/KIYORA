@@ -87,10 +87,11 @@ linuxdeploy="$tools_dir/linuxdeploy-$appimage_arch.AppImage"
 # Keep the pristine cache outside linuxdeploy's plugin filename pattern.
 gtk_plugin_upstream="$tools_dir/upstream-gtk-plugin.sh"
 gtk_plugin="$tools_dir/linuxdeploy-plugin-gtk.sh"
+gstreamer_plugin_upstream="$tools_dir/upstream-gstreamer-plugin.sh"
 gstreamer_plugin="$tools_dir/linuxdeploy-plugin-gstreamer.sh"
 download_tool "$linuxdeploy_url" "$linuxdeploy" "$linuxdeploy_sha256"
 download_tool "$gtk_plugin_url" "$gtk_plugin_upstream" "$gtk_plugin_sha256"
-download_tool "$gstreamer_plugin_url" "$gstreamer_plugin" "$gstreamer_plugin_sha256"
+download_tool "$gstreamer_plugin_url" "$gstreamer_plugin_upstream" "$gstreamer_plugin_sha256"
 
 # GTK 4 can be built without a separate gtk-4.0 modules directory. The
 # upstream plugin treats the directory as mandatory, so make that copy
@@ -101,6 +102,20 @@ sed -i '/^        copy_lib_tree "$gtk4_libdir" "$APPDIR\/"$/c\
             copy_lib_tree "$gtk4_libdir" "$APPDIR/"\
         fi' "$gtk_plugin"
 chmod +x "$gtk_plugin"
+
+# Filter out GStreamer plugins that link against libsoup-2.4 or libgupnp before linuxdeploy
+# analyzes dependencies, preventing libsoup-2.4 from being bundled and colliding with libsoup-3.0.
+# Also restrict helper tools copying to gst-* so non-helper plugins are not duplicated on distros
+# where pluginscannerdir points to the main plugins directory.
+cp "$gstreamer_plugin_upstream" "$gstreamer_plugin"
+sed -i '/^"\$LINUXDEPLOY" --appdir "\$APPDIR"$/i\
+for p in "$plugins_target_dir"/*.so; do\
+    if [ -f "$p" ] && (grep -q "libsoup-2.4" "$p" 2>/dev/null || grep -q "libgupnp-1.2" "$p" 2>/dev/null); then\
+        rm -f "$p"\
+    fi\
+done' "$gstreamer_plugin"
+sed -i 's|"\$helpers_dir"/\*|"\$helpers_dir"/gst-\*|g' "$gstreamer_plugin"
+chmod +x "$gstreamer_plugin"
 
 if [[ -z "${VERSION:-}" ]]; then
     VERSION="$(meson introspect --projectinfo "$meson_build_dir" \
@@ -130,10 +145,37 @@ export NO_STRIP=1
 export GSTREAMER_PLUGINS_DIR="${GSTREAMER_PLUGINS_DIR:-$(pkg-config --variable=pluginsdir gstreamer-1.0)}"
 export GSTREAMER_HELPERS_DIR="${GSTREAMER_HELPERS_DIR:-$(pkg-config --variable=pluginscannerdir gstreamer-1.0)}"
 
+exclude_args=(
+    --exclude-library "libsoup-2.4*"
+    --exclude-library "libgupnp-1.2*"
+    --exclude-library "libgssdp-1.2*"
+    --exclude-library "libleancrypto*"
+)
+
 "$linuxdeploy" \
     --appdir "$appdir" \
+    "${exclude_args[@]}" \
     --plugin gtk \
     --plugin gstreamer
+
+# Clean up any leftover libsoup-2.4 or conflicting distro-specific crypto libraries
+find "$appdir" -type f \( -name 'libgstsoup*.so' -o -name 'libgstadaptivedemux*.so' -o -name 'libsoup-2.4.so*' -o -name 'libgssdp-1.2.so*' -o -name 'libgupnp-1.2.so*' -o -name 'libleancrypto.so*' \) -delete
+
+# Configure GStreamer AppRun hook to avoid scanning host plugins and ensure scanner is found
+gst_hook="$appdir/apprun-hooks/linuxdeploy-plugin-gstreamer.sh"
+if [[ -f "$gst_hook" ]]; then
+    cat >> "$gst_hook" <<'EOF'
+if [ -f "$APPDIR/usr/lib/gstreamer-1.0/gst-plugin-scanner" ]; then
+    export GST_PLUGIN_SCANNER="$APPDIR/usr/lib/gstreamer-1.0/gst-plugin-scanner"
+    export GST_PLUGIN_SCANNER_1_0="$APPDIR/usr/lib/gstreamer-1.0/gst-plugin-scanner"
+elif [ -f "$APPDIR/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" ]; then
+    export GST_PLUGIN_SCANNER="$APPDIR/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+    export GST_PLUGIN_SCANNER_1_0="$APPDIR/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+fi
+export GST_PLUGIN_SYSTEM_PATH_1_0="${APPDIR}/usr/lib/gstreamer-1.0"
+export GST_PLUGIN_SYSTEM_PATH=""
+EOF
+fi
 
 # Libadwaita provides its own stylesheet and color-scheme handling. Forcing
 # GTK_THEME makes GTK load the legacy Adwaita theme on top of it, which changes
@@ -164,6 +206,7 @@ fi
 
 "$linuxdeploy" \
     --appdir "$appdir" \
+    "${exclude_args[@]}" \
     --output appimage
 
 test -x "$output"
